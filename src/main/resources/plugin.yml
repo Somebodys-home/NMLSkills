@@ -1,0 +1,4 @@
+name: NMLSkills
+version: '1'
+main: io.github.NoOne.nMLSkills.NMLSkills
+api-version: '1.21'
