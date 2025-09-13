@@ -10,7 +10,7 @@ public class SkillSetListener implements Listener {
     private SkillSetManager skillSetManager;
 
     public SkillSetListener(NMLSkills nmlSkills) {
-        skillSetManager = nmlSkills.getSkillProfileManager();
+        skillSetManager = nmlSkills.getSkillSetManager();
     }
 
     @EventHandler

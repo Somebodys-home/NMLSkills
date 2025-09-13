@@ -21,7 +21,7 @@ public class SetSkillLevelCommand implements CommandExecutor, TabCompleter {
     private final SkillSetManager skillSetManager;
 
     public SetSkillLevelCommand(NMLSkills nmlSkills) {
-        this.skillSetManager = nmlSkills.getSkillProfileManager();
+        this.skillSetManager = nmlSkills.getSkillSetManager();
     }
 
     @Override

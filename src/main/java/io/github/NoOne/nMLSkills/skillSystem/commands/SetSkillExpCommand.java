@@ -20,7 +20,7 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
     private final SkillSetManager skillSetManager;
 
     public SetSkillExpCommand(NMLSkills nmlSkills) {
-        this.skillSetManager = nmlSkills.getSkillProfileManager();
+        this.skillSetManager = nmlSkills.getSkillSetManager();
     }
 
     @Override

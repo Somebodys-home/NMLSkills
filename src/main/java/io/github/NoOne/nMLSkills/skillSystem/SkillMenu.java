@@ -7,18 +7,18 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
-public class SkillsMenu extends Menu {
+public class SkillMenu extends Menu {
     private Player player;
     private Skills skills;
     private ItemStack offenseStats;
     private ItemStack defenseStats;
     private ItemStack gatheringStats;
 
-    public SkillsMenu(PlayerMenuUtility playerMenuUtility, NMLSkills nmlSkills) {
+    public SkillMenu(PlayerMenuUtility playerMenuUtility, NMLSkills nmlSkills) {
         super(playerMenuUtility);
 
         player = playerMenuUtility.getOwner();
-        skills = nmlSkills.getSkillProfileManager().getSkillSet(player.getUniqueId()).getSkills();
+        skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
     }
 
     @Override

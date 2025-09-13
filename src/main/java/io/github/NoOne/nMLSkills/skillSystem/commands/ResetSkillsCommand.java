@@ -15,7 +15,7 @@ public class ResetSkillsCommand implements CommandExecutor {
     private final SkillSetManager skillSetManager;
 
     public ResetSkillsCommand(NMLSkills nmlSkills) {
-        this.skillSetManager = nmlSkills.getSkillProfileManager();
+        this.skillSetManager = nmlSkills.getSkillSetManager();
     }
 
     @Override

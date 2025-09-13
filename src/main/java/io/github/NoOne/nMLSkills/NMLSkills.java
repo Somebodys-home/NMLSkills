@@ -51,7 +51,7 @@ public final class NMLSkills extends JavaPlugin {
         return instance;
     }
 
-    public SkillSetManager getSkillProfileManager() {
+    public SkillSetManager getSkillSetManager() {
         return skillSetManager;
     }
 

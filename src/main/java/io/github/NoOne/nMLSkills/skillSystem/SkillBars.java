@@ -28,7 +28,7 @@ public class SkillBars {
                 UUID uuid = player.getUniqueId();
 
                 if (!skillBars.containsKey(uuid)) {
-                    Skills skills = nmlSkills.getSkillProfileManager().getSkillSet(uuid).getSkills();
+                    Skills skills = nmlSkills.getSkillSetManager().getSkillSet(uuid).getSkills();
                     BossBar foragingBar = Bukkit.createBossBar("Lvl. §b" + skills.getForagingLevel() + "§r Foraging" , BarColor.WHITE, BarStyle.SOLID);
                     BossBar miningBar = Bukkit.createBossBar("Lvl. §b" + skills.getMiningLevel() + "§r Mining" , BarColor.WHITE, BarStyle.SOLID);
                     BossBar fishingBar = Bukkit.createBossBar("Lvl. §b" + skills.getFishingLevel() + "§r Fishing" , BarColor.WHITE, BarStyle.SOLID);
@@ -107,7 +107,7 @@ public class SkillBars {
     }
 
     public static double getSkillBarProgress(Player player, String skill) {
-        Skills skills = nmlSkills.getSkillProfileManager().getSkillSet(player.getUniqueId()).getSkills();
+        Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
         switch (skill) {
             case "foraging" -> {
@@ -141,7 +141,7 @@ public class SkillBars {
 
     public static void updateSkillBarProgress(Player player, String skill) {
         UUID uuid = player.getUniqueId();
-        Skills skills = nmlSkills.getSkillProfileManager().getSkillSet(player.getUniqueId()).getSkills();
+        Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
         switch (skill) {
             case "foragingexp" -> {
@@ -252,7 +252,7 @@ public class SkillBars {
 
     public static void updateSkillBarLevel(Player player, String skill) {
         UUID uuid = player.getUniqueId();
-        Skills skills = nmlSkills.getSkillProfileManager().getSkillSet(player.getUniqueId()).getSkills();
+        Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
         switch (skill) {
             case "foraging" -> {
