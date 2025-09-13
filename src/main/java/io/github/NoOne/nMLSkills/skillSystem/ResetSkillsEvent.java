@@ -5,11 +5,11 @@ import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
-public class ResetStatsEvent extends Event {
+public class ResetSkillsEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
 
-    public ResetStatsEvent(@NotNull Player player) {
+    public ResetSkillsEvent(@NotNull Player player) {
         this.player = player;
     }
 

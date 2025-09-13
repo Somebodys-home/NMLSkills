@@ -1,4 +1,4 @@
-package io.github.NoOne.nMLSkills.skillProfileSystem;
+package io.github.NoOne.nMLSkills.skillSetSystem;
 
 import io.github.NoOne.nMLSkills.NMLSkills;
 import io.github.NoOne.nMLSkills.skillSystem.ResetSkillsEvent;
@@ -29,7 +29,7 @@ public class SkillSetManager {
         return skillSet;
     }
 
-    public SkillSet getPlayerProfile(UUID uuid) {
+    public SkillSet getSkillSet(UUID uuid) {
         return profileMap.get(uuid);
     }
 

@@ -2,3 +2,16 @@ name: NMLSkills
 version: '1'
 main: io.github.NoOne.nMLSkills.NMLSkills
 api-version: '1.21'
+commands:
+  skills:
+    description: Opens your skills menu
+    usage: /<command>
+  resetSkills:
+    description: Resets your skills
+    usage: /<command>
+  setSkillLevel:
+    description: Sets a skill's level
+    usage: /<command> <skill> <level>
+  setSkillExp:
+    description: Sets a skill's exp
+    usage: /<command> <skill> <level>

@@ -1,4 +1,4 @@
-package io.github.NoOne.nMLSkills.skillProfileSystem;
+package io.github.NoOne.nMLSkills.skillSetSystem;
 
 import io.github.NoOne.nMLSkills.NMLSkills;
 import org.bukkit.entity.Player;
@@ -16,7 +16,7 @@ public class SkillSetListener implements Listener {
     @EventHandler
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
-        SkillSet skillSet = skillSetManager.getPlayerProfile(player.getUniqueId());
+        SkillSet skillSet = skillSetManager.getSkillSet(player.getUniqueId());
         
         if (skillSet == null) {
             skillSetManager.createNewbieProfile(player);

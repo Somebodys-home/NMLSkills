@@ -1,0 +1,26 @@
+cf942050-e942-4990-a113-e3df70b289be:
+  skills:
+    foragingLevel: 1
+    miningLevel: 1
+    fishingLevel: 1
+    cultivatingLevel: 1
+    craftingLevel: 1
+    cookingLevel: 1
+    acrobaticsLevel: 5
+    stealthLevel: 1
+    foragingExp: 30.0
+    miningExp: 0.0
+    fishingExp: 0.0
+    cultivatingExp: 0.0
+    craftingExp: 0.0
+    cookingExp: 0.0
+    acrobaticsExp: 30.0
+    stealthExp: 0.0
+    exp2LvlUpForaging: 100
+    exp2LvlUpMining: 100
+    exp2LvlUpFishing: 100
+    exp2LvlUpCultivating: 100
+    exp2LvlUpCrafting: 100
+    exp2LvlUpCooking: 100
+    exp2LvlUpAcrobatics: 100
+    exp2LvlUpStealth: 100

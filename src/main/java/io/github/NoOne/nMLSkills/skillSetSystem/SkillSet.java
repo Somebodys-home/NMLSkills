@@ -1,4 +1,4 @@
-package io.github.NoOne.nMLSkills.skillProfileSystem;
+package io.github.NoOne.nMLSkills.skillSetSystem;
 
 import io.github.NoOne.nMLSkills.skillSystem.Skills;
 
