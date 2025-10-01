@@ -6,7 +6,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     cultivatingLevel: 1
     craftingLevel: 1
     cookingLevel: 1
-    acrobaticsLevel: 5
+    acrobaticsLevel: 50
     stealthLevel: 1
     foragingExp: 50.0
     miningExp: 0.0
@@ -14,7 +14,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     cultivatingExp: 0.0
     craftingExp: 0.0
     cookingExp: 0.0
-    acrobaticsExp: 30.0
+    acrobaticsExp: 0.0
     stealthExp: 0.0
     exp2LvlUpForaging: 100
     exp2LvlUpMining: 100

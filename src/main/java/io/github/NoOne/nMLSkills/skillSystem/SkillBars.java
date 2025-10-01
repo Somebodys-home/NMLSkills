@@ -102,6 +102,17 @@ public class SkillBars {
     }
 
     public void stop() {
+        for (Player player : Bukkit.getOnlinePlayers()) {
+            player.removeMetadata("foraging bar", nmlSkills);
+            player.removeMetadata("mining bar", nmlSkills);
+            player.removeMetadata("fishing bar", nmlSkills);
+            player.removeMetadata("cultivating bar", nmlSkills);
+            player.removeMetadata("crafting bar", nmlSkills);
+            player.removeMetadata("cooking bar", nmlSkills);
+            player.removeMetadata("acrobatics bar", nmlSkills);
+            player.removeMetadata("stealth bar", nmlSkills);
+        }
+
         skillBarsTask.cancel();
         skillBars.clear();
     }
