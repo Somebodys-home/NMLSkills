@@ -42,7 +42,7 @@ public class AcrobaticsMenu extends Menu {
             maneuversBookItemMeta.setDisplayName("§f§nAcrobatics levels unlock maneuvers!");
             manueversLore.add("§7- Maneuvers are actions you can do to move around better");
             manueversLore.add("§7- Do a set of inputs quickly to do a maneuver");
-            manueversLore.add("§7- (Most) Maneuvers use §6energy ⚡ §7");
+            manueversLore.add("§7- Most maneuvers use §6energy ⚡");
             maneuversBookItemMeta.setLore(manueversLore);
             maneuversBook.setItemMeta(maneuversBookItemMeta);
 
@@ -172,31 +172,29 @@ public class AcrobaticsMenu extends Menu {
             climb = new ItemStack(Material.WHITE_CONCRETE);
                 ItemMeta rollItemMeta = climb.getItemMeta();
                 List<String> rollLore = new ArrayList<>();
-                rollItemMeta.setDisplayName("§f§lClimbing (Shift + Jump near a wall)");
+                rollItemMeta.setDisplayName("§f§lWall Running (Long jump near a wall)");
                 rollLore.add("§7§oUnlocks at Lv. 30");
-                rollLore.add("§7§o§nCost§r§7§o: §65⚡§r§7§o/s");
+                rollLore.add("§7§o§nCost§r§7§o: §620⚡§r§7§o/s");
                 rollItemMeta.setLore(rollLore);
                 climb.setItemMeta(rollItemMeta);
 
             climbInformation = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
-                ItemMeta rollInformationItemMeta = climbInformation.getItemMeta();
+                ItemMeta climbInformationItemMeta = climbInformation.getItemMeta();
                 List<String> rollInformationLore = new ArrayList<>();
-                rollInformationItemMeta.setDisplayName("§7- Or smack your face on a wall after long jumping");
-                rollInformationLore.add("§7- A \"wall\" being a ≥2 blocks high surface that you're LOOKING at");
-                rollInformationLore.add("§7- Sprint to §nwall run§r§7 to move faster");
+                climbInformationItemMeta.setDisplayName("§7- A \"wall\" being a ≥2 blocks high surface");
                 rollInformationLore.add("§7- Reach the lip of a wall to pull yourself up");
-                rollInformationLore.add("§7- Land to stop / (Shift + Jump) to §nwall jump");
+                rollInformationLore.add("§7- Land to stop / jump to §nwall jump");
                 rollInformationLore.add("§7- A wall jump has the same properties of a long jump");
-                rollInformationItemMeta.setLore(rollInformationLore);
-                climbInformation.setItemMeta(rollInformationItemMeta);
+                climbInformationItemMeta.setLore(rollInformationLore);
+                climbInformation.setItemMeta(climbInformationItemMeta);
         } else {
             climb = new ItemStack(Material.RED_CONCRETE);
-                ItemMeta rollItemMeta = climb.getItemMeta();
+                ItemMeta climbItemMeta = climb.getItemMeta();
                 List<String> rollLore = new ArrayList<>();
-                rollItemMeta.setDisplayName("§4§l§mClimbing (Shift + Jump near a wall)");
+                climbItemMeta.setDisplayName("§7- A \"wall\" being a ≥2 blocks high surface");
                 rollLore.add("§7§oUnlocks at Lv. 30");
-                rollItemMeta.setLore(rollLore);
-                climb.setItemMeta(rollItemMeta);
+                climbItemMeta.setLore(rollLore);
+                climb.setItemMeta(climbItemMeta);
 
             climbInformation = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
                 ItemMeta rollInformationItemMeta = climbInformation.getItemMeta();
