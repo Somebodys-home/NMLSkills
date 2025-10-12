@@ -1,6 +1,7 @@
 package io.github.NoOne.nMLSkills.skillSystem;
 
 public class Skills {
+    private int combatLevel;
     private int foragingLevel;
     private int miningLevel;
     private int fishingLevel;
@@ -10,6 +11,7 @@ public class Skills {
     private int acrobaticsLevel;
     private int stealthLevel;
 
+    private double combatExp;
     private double foragingExp;
     private double miningExp;
     private double fishingExp;
@@ -19,6 +21,7 @@ public class Skills {
     private double acrobaticsExp;
     private double stealthExp;
 
+    private int exp2LvlUpCombat;
     private int exp2LvlUpForaging;
     private int exp2LvlUpMining;
     private int exp2LvlUpFishing;
@@ -28,10 +31,11 @@ public class Skills {
     private int exp2LvlUpAcrobatics;
     private int exp2LvlUpStealth;
 
-    public Skills(int foragingLevel, int miningLevel, int fishingLevel, int cultivatingLevel, int craftingLevel, int cookingLevel, int acrobaticsLevel, int stealthLevel,
-                  double foragingExp, double miningExp, double fishingExp, double cultivatingExp, double craftingExp, double cookingExp, double acrobaticsExp,
+    public Skills(int combatLevel, int foragingLevel, int miningLevel, int fishingLevel, int cultivatingLevel, int craftingLevel, int cookingLevel, int acrobaticsLevel, int stealthLevel,
+                  double combatExp, double foragingExp, double miningExp, double fishingExp, double cultivatingExp, double craftingExp, double cookingExp, double acrobaticsExp,
                   double stealthExp) {
 
+        this.combatLevel = combatLevel;
         this.foragingLevel = foragingLevel;
         this.miningLevel = miningLevel;
         this.fishingLevel = fishingLevel;
@@ -40,6 +44,8 @@ public class Skills {
         this.cookingLevel = cookingLevel;
         this.acrobaticsLevel = acrobaticsLevel;
         this.stealthLevel = stealthLevel;
+
+        this.combatExp = combatExp;
         this.foragingExp = foragingExp;
         this.miningExp = miningExp;
         this.fishingExp = fishingExp;
@@ -50,6 +56,7 @@ public class Skills {
         this.stealthExp = stealthExp;
 
         // todo: come up with a formula for this eventually
+        this.exp2LvlUpCombat = 100;
         this.exp2LvlUpForaging = 100;
         this.exp2LvlUpMining = 100;
         this.exp2LvlUpFishing = 100;
@@ -61,12 +68,13 @@ public class Skills {
     }
 
     public static Skills generateNewbieSkills() {
-        return new Skills(1, 1, 1, 1, 1, 1, 1, 1,
-                        0, 0, 0, 0, 0, 0, 0, 0);
+        return new Skills(1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0);
     }
 
     public void add2Skill(String skill, double amount) {
         switch (skill.toLowerCase()) {
+            case "combatlvl" -> combatLevel += (int) amount;
             case "foraginglvl" -> foragingLevel += (int) amount;
             case "mininglvl" -> miningLevel += (int) amount;
             case "fishinglvl" -> fishingLevel += (int) amount;
@@ -76,6 +84,7 @@ public class Skills {
             case "acrobaticslvl" -> acrobaticsLevel += (int) amount;
             case "stealthlvl" -> stealthLevel += (int) amount;
 
+            case "combatexp" -> combatExp += amount;
             case "foragingexp" -> foragingExp += amount;
             case "miningexp" -> miningExp += amount;
             case "fishingexp" -> fishingExp += amount;
@@ -89,6 +98,7 @@ public class Skills {
 
     public void removeFromSkill(String skill, double amount) {
         switch (skill.toLowerCase()) {
+            case "combatlvl" -> combatLevel -= (int) amount;
             case "foraginglvl" -> foragingLevel -= (int) amount;
             case "mininglvl" -> miningLevel -= (int) amount;
             case "fishinglvl" -> fishingLevel -= (int) amount;
@@ -98,6 +108,7 @@ public class Skills {
             case "acrobaticslvl" -> acrobaticsLevel -= (int) amount;
             case "stealthlvl" -> stealthLevel -= (int) amount;
 
+            case "combatexp" -> combatExp -= amount;
             case "foragingexp" -> foragingExp -= amount;
             case "miningexp" -> miningExp -= amount;
             case "fishingexp" -> fishingExp -= amount;
@@ -109,12 +120,12 @@ public class Skills {
         }
     }
 
-    public int getForagingLevel() {
-        return foragingLevel;
+    public int getCombatLevel() {
+        return combatLevel;
     }
 
-    public void setForagingLevel(int foragingLevel) {
-        this.foragingLevel = foragingLevel;
+    public void setCombatLevel(int combatLevel) {
+        this.combatLevel = combatLevel;
     }
 
     public int getMiningLevel() {
@@ -125,20 +136,20 @@ public class Skills {
         this.miningLevel = miningLevel;
     }
 
+    public int getForagingLevel() {
+        return foragingLevel;
+    }
+
+    public void setForagingLevel(int foragingLevel) {
+        this.foragingLevel = foragingLevel;
+    }
+
     public int getFishingLevel() {
         return fishingLevel;
     }
 
     public void setFishingLevel(int fishingLevel) {
         this.fishingLevel = fishingLevel;
-    }
-
-    public int getCookingLevel() {
-        return cookingLevel;
-    }
-
-    public void setCookingLevel(int cookingLevel) {
-        this.cookingLevel = cookingLevel;
     }
 
     public int getCultivatingLevel() {
@@ -157,6 +168,14 @@ public class Skills {
         this.craftingLevel = craftingLevel;
     }
 
+    public int getCookingLevel() {
+        return cookingLevel;
+    }
+
+    public void setCookingLevel(int cookingLevel) {
+        this.cookingLevel = cookingLevel;
+    }
+
     public int getAcrobaticsLevel() {
         return acrobaticsLevel;
     }
@@ -171,6 +190,14 @@ public class Skills {
 
     public void setStealthLevel(int stealthLevel) {
         this.stealthLevel = stealthLevel;
+    }
+
+    public double getCombatExp() {
+        return combatExp;
+    }
+
+    public void setCombatExp(double combatExp) {
+        this.combatExp = combatExp;
     }
 
     public double getForagingExp() {
@@ -235,6 +262,14 @@ public class Skills {
 
     public void setStealthExp(double stealthExp) {
         this.stealthExp = stealthExp;
+    }
+
+    public int getExp2LvlUpCombat() {
+        return exp2LvlUpCombat;
+    }
+
+    public void setExp2LvlUpCombat(int exp2LvlUpCombat) {
+        this.exp2LvlUpCombat = exp2LvlUpCombat;
     }
 
     public int getExp2LvlUpForaging() {

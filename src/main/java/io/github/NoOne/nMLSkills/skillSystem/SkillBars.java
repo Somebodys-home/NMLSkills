@@ -155,6 +155,7 @@ public class SkillBars {
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
         switch (skill) {
+            case "combatexp" -> player.setExp((float) (skills.getForagingExp() / skills.getExp2LvlUpForaging()));
             case "foragingexp" -> {
                 BossBar foragingBar = skillBars.get(uuid)[0];
                 foragingBar.setProgress(skills.getForagingExp() / skills.getExp2LvlUpForaging());
@@ -266,6 +267,7 @@ public class SkillBars {
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
         switch (skill) {
+            case "combat" -> player.setLevel(skills.getCombatLevel());
             case "foraging" -> {
                 BossBar foragingBar = skillBars.get(uuid)[0];
 

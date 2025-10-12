@@ -22,10 +22,10 @@ public class SkillListener implements Listener {
     @EventHandler
     public void updateSkillBar(SkillChangeEvent event) {
         switch (event.getStat()) {
-            case "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth" -> {
+            case "combat", "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth" -> {
                 SkillBars.updateSkillBarLevel(event.getPlayer(), event.getStat());
             }
-            case "foragingexp", "miningexp", "fishingexp", "cultivatingexp", "craftingexp", "cookingexp", "acrobaticsexp", "stealthexp" -> {
+            case "combatexp", "foragingexp", "miningexp", "fishingexp", "cultivatingexp", "craftingexp", "cookingexp", "acrobaticsexp", "stealthexp" -> {
                 SkillBars.updateSkillBarProgress(event.getPlayer(), event.getStat());
             }
         }

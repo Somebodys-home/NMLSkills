@@ -30,6 +30,7 @@ public class SetSkillLevelCommand implements CommandExecutor, TabCompleter {
             Skills skills = skillSetManager.getSkillSet(player.getUniqueId()).getSkills();
 
             switch (args[0]) {
+                case "combat" -> skills.setCombatLevel(Integer.parseInt(args[1]));
                 case "foraging" -> skills.setForagingLevel(Integer.parseInt(args[1]));
                 case "mining" -> skills.setMiningLevel(Integer.parseInt(args[1]));
                 case "fishing" -> skills.setFishingLevel(Integer.parseInt(args[1]));
@@ -49,7 +50,7 @@ public class SetSkillLevelCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(List.of("foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth")).stream()
+            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth")).stream()
                     .filter(string -> string.toLowerCase().startsWith(strings[0].toLowerCase()))
                     .collect(Collectors.toList());
         }

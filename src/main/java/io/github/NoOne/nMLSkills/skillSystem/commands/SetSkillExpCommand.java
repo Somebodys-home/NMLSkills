@@ -29,39 +29,18 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
             Skills skills = skillSetManager.getSkillSet(player.getUniqueId()).getSkills();
 
             switch (args[0]) {
-                case "foraging" -> {
-                    skills.setForagingExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "foragingexp"));
-                }
-                case "mining" -> {
-                    skills.setMiningExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "miningexp"));
-                }
-                case "fishing" -> {
-                    skills.setFishingExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "fishingexp"));
-                }
-                case "cultivating" -> {
-                    skills.setCultivatingExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "cultivatingexp"));
-                }
-                case "crafting" -> {
-                    skills.setCraftingExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "craftingexp"));
-                }
-                case "cooking" -> {
-                    skills.setCookingExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "cookingexp"));
-                }
-                case "acrobatics" -> {
-                    skills.setAcrobaticsExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "acrobaticsexp"));
-                }
-                case "stealth" -> {
-                    skills.setStealthExp(Double.parseDouble(args[1]));
-                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, "stealthexp"));
-                }
+                case "combat" -> skills.setCombatExp(Double.parseDouble(args[1]));
+                case "foraging" -> skills.setForagingExp(Double.parseDouble(args[1]));
+                case "mining" -> skills.setMiningExp(Double.parseDouble(args[1]));
+                case "fishing" -> skills.setFishingExp(Double.parseDouble(args[1]));
+                case "cultivating" -> skills.setCultivatingExp(Double.parseDouble(args[1]));
+                case "crafting" -> skills.setCraftingExp(Double.parseDouble(args[1]));
+                case "cooking" -> skills.setCookingExp(Double.parseDouble(args[1]));
+                case "acrobatics" -> skills.setAcrobaticsExp(Double.parseDouble(args[1]));
+                case "stealth" -> skills.setStealthExp(Double.parseDouble(args[1]));
             }
+
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0]+"exp"));
         }
 
         return true;
@@ -70,7 +49,7 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(List.of("foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth")).stream()
+            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth")).stream()
                     .filter(string -> string.toLowerCase().startsWith(strings[0].toLowerCase()))
                     .collect(Collectors.toList());
         }

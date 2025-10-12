@@ -37,6 +37,7 @@ public class SkillSetManager {
         for (String id : config.getConfigurationSection("").getKeys(false)) {
             UUID uuid = UUID.fromString(id);
 
+            int combatLevel = config.getInt(id + ".skills.combatLevel");
             int foragingLevel = config.getInt(id + ".skills.foragingLevel");
             int miningLevel = config.getInt(id + ".skills.miningLevel");
             int fishingLevel = config.getInt(id + ".skills.fishingLevel");
@@ -46,6 +47,7 @@ public class SkillSetManager {
             int acrobaticsLevel = config.getInt(id + ".skills.acrobaticsLevel");
             int stealthLevel = config.getInt(id + ".skills.stealthLevel");
 
+            double combatExp = config.getDouble(id + ".skills.combatExp");
             double foragingExp = config.getDouble(id + ".skills.foragingExp");
             double miningExp = config.getDouble(id + ".skills.miningExp");
             double fishingExp = config.getDouble(id + ".skills.fishingExp");
@@ -55,6 +57,7 @@ public class SkillSetManager {
             double acrobaticsExp = config.getDouble(id + ".skills.acrobaticsExp");
             double stealthExp = config.getDouble(id + ".skills.stealthExp");
 
+            int exp2LvlUpCombat = config.getInt(id + ".skills.exp2LvlUpCombat");
             int exp2LvlUpForaging = config.getInt(id + ".skills.exp2LvlUpForaging");
             int exp2LvlUpMining = config.getInt(id + ".skills.exp2LvlUpMining");
             int exp2LvlUpFishing = config.getInt(id + ".skills.exp2LvlUpFishing");
@@ -64,8 +67,8 @@ public class SkillSetManager {
             int exp2LvlUpAcrobatics = config.getInt(id + ".skills.exp2LvlUpAcrobatics");
             int exp2LvlUpStealth = config.getInt(id + ".skills.exp2LvlUpStealth");
 
-            Skills skills = new Skills(foragingLevel, miningLevel, fishingLevel, cultivatingLevel, craftingLevel, cookingLevel, acrobaticsLevel, stealthLevel,
-                                        foragingExp, miningExp, fishingExp, cultivatingExp, craftingExp, cookingExp, acrobaticsExp, stealthExp);
+            Skills skills = new Skills(combatLevel, foragingLevel, miningLevel, fishingLevel, cultivatingLevel, craftingLevel, cookingLevel, acrobaticsLevel, stealthLevel,
+                                       combatExp, foragingExp, miningExp, fishingExp, cultivatingExp, craftingExp, cookingExp, acrobaticsExp, stealthExp);
 
             SkillSet skillSet = new SkillSet(skills);
             profileMap.put(uuid, skillSet);
@@ -78,6 +81,7 @@ public class SkillSetManager {
             SkillSet skillSet = profileMap.get(uuid);
             Skills skills = skillSet.getSkills();
 
+            config.set(id + ".skills.combatLevel", skills.getCombatLevel());
             config.set(id + ".skills.foragingLevel", skills.getForagingLevel());
             config.set(id + ".skills.miningLevel", skills.getMiningLevel());
             config.set(id + ".skills.fishingLevel", skills.getFishingLevel());
@@ -87,6 +91,7 @@ public class SkillSetManager {
             config.set(id + ".skills.acrobaticsLevel", skills.getAcrobaticsLevel());
             config.set(id + ".skills.stealthLevel", skills.getStealthLevel());
 
+            config.set(id + ".skills.combatExp", skills.getCombatExp());
             config.set(id + ".skills.foragingExp", skills.getForagingExp());
             config.set(id + ".skills.miningExp", skills.getMiningExp());
             config.set(id + ".skills.fishingExp", skills.getFishingExp());
@@ -96,6 +101,7 @@ public class SkillSetManager {
             config.set(id + ".skills.acrobaticsExp", skills.getAcrobaticsExp());
             config.set(id + ".skills.stealthExp", skills.getStealthExp());
 
+            config.set(id + ".skills.exp2LvlUpCombat", skills.getExp2LvlUpCombat());
             config.set(id + ".skills.exp2LvlUpForaging", skills.getExp2LvlUpForaging());
             config.set(id + ".skills.exp2LvlUpMining", skills.getExp2LvlUpMining());
             config.set(id + ".skills.exp2LvlUpFishing", skills.getExp2LvlUpFishing());
@@ -112,6 +118,7 @@ public class SkillSetManager {
         SkillSet skillSet = profileMap.get(player.getUniqueId());
         Skills skills = skillSet.getSkills();
 
+        config.set(id + ".skills.combatLevel", skills.getCombatLevel());
         config.set(id + ".skills.foragingLevel", skills.getForagingLevel());
         config.set(id + ".skills.miningLevel", skills.getMiningLevel());
         config.set(id + ".skills.fishingLevel", skills.getFishingLevel());
@@ -121,6 +128,7 @@ public class SkillSetManager {
         config.set(id + ".skills.acrobaticsLevel", skills.getAcrobaticsLevel());
         config.set(id + ".skills.stealthLevel", skills.getStealthLevel());
 
+        config.set(id + ".skills.combatExp", skills.getCombatExp());
         config.set(id + ".skills.foragingExp", skills.getForagingExp());
         config.set(id + ".skills.miningExp", skills.getMiningExp());
         config.set(id + ".skills.fishingExp", skills.getFishingExp());
@@ -130,6 +138,7 @@ public class SkillSetManager {
         config.set(id + ".skills.acrobaticsExp", skills.getAcrobaticsExp());
         config.set(id + ".skills.stealthExp", skills.getStealthExp());
 
+        config.set(id + ".skills.exp2LvlUpCombat", skills.getExp2LvlUpCombat());
         config.set(id + ".skills.exp2LvlUpForaging", skills.getExp2LvlUpForaging());
         config.set(id + ".skills.exp2LvlUpMining", skills.getExp2LvlUpMining());
         config.set(id + ".skills.exp2LvlUpFishing", skills.getExp2LvlUpFishing());
