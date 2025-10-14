@@ -27,20 +27,49 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
             Skills skills = skillSetManager.getSkillSet(player.getUniqueId()).getSkills();
+            double prevExp = 0;
+            double newExp = Double.parseDouble(args[1]);
 
             switch (args[0]) {
-                case "combat" -> skills.setCombatExp(Double.parseDouble(args[1]));
-                case "foraging" -> skills.setForagingExp(Double.parseDouble(args[1]));
-                case "mining" -> skills.setMiningExp(Double.parseDouble(args[1]));
-                case "fishing" -> skills.setFishingExp(Double.parseDouble(args[1]));
-                case "cultivating" -> skills.setCultivatingExp(Double.parseDouble(args[1]));
-                case "crafting" -> skills.setCraftingExp(Double.parseDouble(args[1]));
-                case "cooking" -> skills.setCookingExp(Double.parseDouble(args[1]));
-                case "acrobatics" -> skills.setAcrobaticsExp(Double.parseDouble(args[1]));
-                case "stealth" -> skills.setStealthExp(Double.parseDouble(args[1]));
+                case "combat" -> {
+                    prevExp = skills.getCombatExp();
+                    skills.setCombatExp(newExp);
+                }
+                case "foraging" -> {
+                    prevExp = skills.getForagingExp();
+                    skills.setForagingExp(newExp);
+                }
+                case "mining" -> {
+                    prevExp = skills.getMiningExp();
+                    skills.setMiningExp(newExp);
+                }
+                case "fishing" -> {
+                    prevExp = skills.getFishingExp();
+                    skills.setFishingExp(newExp);
+                }
+                case "cultivating" -> {
+                    prevExp = skills.getCultivatingExp();
+                    skills.setCultivatingExp(newExp);
+                }
+                case "crafting" -> {
+                    prevExp = skills.getCraftingExp();
+                    skills.setCraftingExp(newExp);
+                }
+                case "cooking" -> {
+                    prevExp = skills.getCookingExp();
+                    skills.setCookingExp(newExp);
+                }
+                case "acrobatics" -> {
+                    prevExp = skills.getAcrobaticsExp();
+                    skills.setAcrobaticsExp(newExp);
+                }
+                case "stealth" -> {
+                    prevExp = skills.getStealthExp();
+                    skills.setStealthExp(newExp);
+                }
             }
 
-            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0]+"exp"));
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0]+"exp", newExp - prevExp));
         }
 
         return true;

@@ -28,20 +28,49 @@ public class SetSkillLevelCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
             Skills skills = skillSetManager.getSkillSet(player.getUniqueId()).getSkills();
+            int prevLevel = 0;
+            int newLevel = Integer.parseInt(args[1]);
 
             switch (args[0]) {
-                case "combat" -> skills.setCombatLevel(Integer.parseInt(args[1]));
-                case "foraging" -> skills.setForagingLevel(Integer.parseInt(args[1]));
-                case "mining" -> skills.setMiningLevel(Integer.parseInt(args[1]));
-                case "fishing" -> skills.setFishingLevel(Integer.parseInt(args[1]));
-                case "cultivating" -> skills.setCultivatingLevel(Integer.parseInt(args[1]));
-                case "crafting" -> skills.setCraftingLevel(Integer.parseInt(args[1]));
-                case "cooking" -> skills.setCookingLevel(Integer.parseInt(args[1]));
-                case "acrobatics" -> skills.setAcrobaticsLevel(Integer.parseInt(args[1]));
-                case "stealth" -> skills.setStealthLevel(Integer.parseInt(args[1]));
+                case "combat" -> {
+                    prevLevel = skills.getCombatLevel();
+                    skills.setCombatLevel(newLevel);
+                }
+                case "foraging" -> {
+                    prevLevel = skills.getForagingLevel();
+                    skills.setForagingLevel(newLevel);
+                }
+                case "mining" -> {
+                    prevLevel = skills.getMiningLevel();
+                    skills.setMiningLevel(newLevel);
+                }
+                case "fishing" -> {
+                    prevLevel = skills.getFishingLevel();
+                    skills.setFishingLevel(newLevel);
+                }
+                case "cultivating" -> {
+                    prevLevel = skills.getCultivatingLevel();
+                    skills.setCultivatingLevel(newLevel);
+                }
+                case "crafting" -> {
+                    prevLevel = skills.getCraftingLevel();
+                    skills.setCraftingLevel(newLevel);
+                }
+                case "cooking" -> {
+                    prevLevel = skills.getCookingLevel();
+                    skills.setCookingLevel(newLevel);
+                }
+                case "acrobatics" -> {
+                    prevLevel = skills.getAcrobaticsLevel();
+                    skills.setAcrobaticsLevel(newLevel);
+                }
+                case "stealth" -> {
+                    prevLevel = skills.getStealthLevel();
+                    skills.setStealthLevel(newLevel);
+                }
             }
 
-            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0]));
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0], newLevel - prevLevel));
         }
 
         return true;
