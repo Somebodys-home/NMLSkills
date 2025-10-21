@@ -46,6 +46,17 @@ public class SkillSetManager {
             int cookingLevel = config.getInt(id + ".skills.cookingLevel");
             int acrobaticsLevel = config.getInt(id + ".skills.acrobaticsLevel");
             int stealthLevel = config.getInt(id + ".skills.stealthLevel");
+            int soldierLevel = config.getInt(id + ".skills.soldierLevel");
+            int marauderLevel = config.getInt(id + ".skills.marauderLevel");
+            int assassinLevel = config.getInt(id + ".skills.assassinLevel");
+            int cavalierLevel = config.getInt(id + ".skills.cavalierLevel");
+            int martialArtistLevel = config.getInt(id + ".skills.martialArtistLevel");
+            int shieldHeroLevel = config.getInt(id + ".skills.shieldHeroLevel");
+            int marksmanLevel = config.getInt(id + ".skills.marksmanLevel");
+            int sorcererLevel = config.getInt(id + ".skills.sorcererLevel");
+            int primordialLevel = config.getInt(id + ".skills.primordialLevel");
+            int hallowedLevel = config.getInt(id + ".skills.hallowedLevel");
+            int annulledLevel = config.getInt(id + ".skills.annulledLevel");
 
             double combatExp = config.getDouble(id + ".skills.combatExp");
             double foragingExp = config.getDouble(id + ".skills.foragingExp");
@@ -56,6 +67,17 @@ public class SkillSetManager {
             double cookingExp = config.getDouble(id + ".skills.cookingExp");
             double acrobaticsExp = config.getDouble(id + ".skills.acrobaticsExp");
             double stealthExp = config.getDouble(id + ".skills.stealthExp");
+            double soldierExp = config.getDouble(id + ".skills.soldierExp");
+            double marauderExp = config.getDouble(id + ".skills.marauderExp");
+            double assassinExp = config.getDouble(id + ".skills.assassinExp");
+            double cavalierExp = config.getDouble(id + ".skills.cavalierExp");
+            double martialArtistExp = config.getDouble(id + ".skills.martialArtistExp");
+            double shieldHeroExp = config.getDouble(id + ".skills.shieldHeroExp");
+            double marksmanExp = config.getDouble(id + ".skills.marksmanExp");
+            double sorcererExp = config.getDouble(id + ".skills.sorcererExp");
+            double primordialExp = config.getDouble(id + ".skills.primordialExp");
+            double hallowedExp = config.getDouble(id + ".skills.hallowedExp");
+            double annulledExp = config.getDouble(id + ".skills.annulledExp");
 
             int exp2LvlUpCombat = config.getInt(id + ".skills.exp2LvlUpCombat");
             int exp2LvlUpForaging = config.getInt(id + ".skills.exp2LvlUpForaging");
@@ -66,9 +88,23 @@ public class SkillSetManager {
             int exp2LvlUpCooking = config.getInt(id + ".skills.exp2LvlUpCooking");
             int exp2LvlUpAcrobatics = config.getInt(id + ".skills.exp2LvlUpAcrobatics");
             int exp2LvlUpStealth = config.getInt(id + ".skills.exp2LvlUpStealth");
+            int exp2LvlUpSoldier = config.getInt(id + ".skills.exp2LvlUpSoldier");
+            int exp2LvlUpMarauder = config.getInt(id + ".skills.exp2LvlUpMarauder");
+            int exp2LvlUpAssassin = config.getInt(id + ".skills.exp2LvlUpAssassin");
+            int exp2LvlUpCavalier = config.getInt(id + ".skills.exp2LvlUpCavalier");
+            int exp2LvlUpMartialArtist = config.getInt(id + ".skills.exp2LvlUpMartialArtist");
+            int exp2LvlUpShieldHero = config.getInt(id + ".skills.exp2LvlUpShieldHero");
+            int exp2LvlUpMarksman = config.getInt(id + ".skills.exp2LvlUpMarksman");
+            int exp2LvlUpSorcerer = config.getInt(id + ".skills.exp2LvlUpSorcerer");
+            int exp2LvlUpPrimordial = config.getInt(id + ".skills.exp2LvlUpPrimordial");
+            int exp2LvlUpHallowed = config.getInt(id + ".skills.exp2LvlUpHallowed");
+            int exp2LvlUpAnnulled = config.getInt(id + ".skills.exp2LvlUpAnnulled");
 
             Skills skills = new Skills(combatLevel, foragingLevel, miningLevel, fishingLevel, cultivatingLevel, craftingLevel, cookingLevel, acrobaticsLevel, stealthLevel,
-                                       combatExp, foragingExp, miningExp, fishingExp, cultivatingExp, craftingExp, cookingExp, acrobaticsExp, stealthExp);
+                    soldierLevel, marauderLevel, assassinLevel, cavalierLevel, martialArtistLevel, shieldHeroLevel, marksmanLevel, sorcererLevel, primordialLevel,
+                    hallowedLevel, annulledLevel,
+                    combatExp, foragingExp, miningExp, fishingExp, cultivatingExp, craftingExp, cookingExp, acrobaticsExp, stealthExp,
+                    soldierExp, marauderExp, assassinExp, cavalierExp, martialArtistExp, shieldHeroExp, marksmanExp, sorcererExp, primordialExp, hallowedExp, annulledExp);
 
             SkillSet skillSet = new SkillSet(skills);
             profileMap.put(uuid, skillSet);
@@ -90,6 +126,17 @@ public class SkillSetManager {
             config.set(id + ".skills.cookingLevel", skills.getCookingLevel());
             config.set(id + ".skills.acrobaticsLevel", skills.getAcrobaticsLevel());
             config.set(id + ".skills.stealthLevel", skills.getStealthLevel());
+            config.set(id + ".skills.soldierLevel", skills.getSoldierLevel());
+            config.set(id + ".skills.marauderLevel", skills.getMarauderLevel());
+            config.set(id + ".skills.assassinLevel", skills.getAssassinLevel());
+            config.set(id + ".skills.cavalierLevel", skills.getCavalierLevel());
+            config.set(id + ".skills.martialArtistLevel", skills.getMartialArtistLevel());
+            config.set(id + ".skills.shieldHeroLevel", skills.getShieldHeroLevel());
+            config.set(id + ".skills.marksmanLevel", skills.getMarksmanLevel());
+            config.set(id + ".skills.sorcererLevel", skills.getSorcererLevel());
+            config.set(id + ".skills.primordialLevel", skills.getPrimordialLevel());
+            config.set(id + ".skills.hallowedLevel", skills.getHallowedLevel());
+            config.set(id + ".skills.annulledLevel", skills.getAnnulledLevel());
 
             config.set(id + ".skills.combatExp", skills.getCombatExp());
             config.set(id + ".skills.foragingExp", skills.getForagingExp());
@@ -100,6 +147,17 @@ public class SkillSetManager {
             config.set(id + ".skills.cookingExp", skills.getCookingExp());
             config.set(id + ".skills.acrobaticsExp", skills.getAcrobaticsExp());
             config.set(id + ".skills.stealthExp", skills.getStealthExp());
+            config.set(id + ".skills.soldierExp", skills.getSoldierExp());
+            config.set(id + ".skills.marauderExp", skills.getMarauderExp());
+            config.set(id + ".skills.assassinExp", skills.getAssassinExp());
+            config.set(id + ".skills.cavalierExp", skills.getCavalierExp());
+            config.set(id + ".skills.martialArtistExp", skills.getMartialArtistExp());
+            config.set(id + ".skills.shieldHeroExp", skills.getShieldHeroExp());
+            config.set(id + ".skills.marksmanExp", skills.getMarksmanExp());
+            config.set(id + ".skills.sorcererExp", skills.getSorcererExp());
+            config.set(id + ".skills.primordialExp", skills.getPrimordialExp());
+            config.set(id + ".skills.hallowedExp", skills.getHallowedExp());
+            config.set(id + ".skills.annulledExp", skills.getAnnulledExp());
 
             config.set(id + ".skills.exp2LvlUpCombat", skills.getExp2LvlUpCombat());
             config.set(id + ".skills.exp2LvlUpForaging", skills.getExp2LvlUpForaging());
@@ -110,6 +168,17 @@ public class SkillSetManager {
             config.set(id + ".skills.exp2LvlUpCooking", skills.getExp2LvlUpCooking());
             config.set(id + ".skills.exp2LvlUpAcrobatics", skills.getExp2LvlUpAcrobatics());
             config.set(id + ".skills.exp2LvlUpStealth", skills.getExp2LvlUpStealth());
+            config.set(id + ".skills.exp2LvlUpSoldier", skills.getExp2LvlUpSoldier());
+            config.set(id + ".skills.exp2LvlUpMarauder", skills.getExp2LvlUpMarauder());
+            config.set(id + ".skills.exp2LvlUpAssassin", skills.getExp2LvlUpAssassin());
+            config.set(id + ".skills.exp2LvlUpCavalier", skills.getExp2LvlUpCavalier());
+            config.set(id + ".skills.exp2LvlUpMartialArtist", skills.getMartialArtistExp());
+            config.set(id + ".skills.exp2LvlUpShieldHero", skills.getExp2LvlUpShieldHero());
+            config.set(id + ".skills.exp2LvlUpMarksman", skills.getExp2LvlUpMarksman());
+            config.set(id + ".skills.exp2LvlUpSorcerer", skills.getExp2LvlUpSorcerer());
+            config.set(id + ".skills.exp2LvlUpPrimordial", skills.getExp2LvlUpPrimordial());
+            config.set(id + ".skills.exp2LvlUpHallowed", skills.getExp2LvlUpHallowed());
+            config.set(id + ".skills.exp2LvlUpAnnulled", skills.getExp2LvlUpAnnulled());
         }
     }
 
@@ -127,6 +196,17 @@ public class SkillSetManager {
         config.set(id + ".skills.cookingLevel", skills.getCookingLevel());
         config.set(id + ".skills.acrobaticsLevel", skills.getAcrobaticsLevel());
         config.set(id + ".skills.stealthLevel", skills.getStealthLevel());
+        config.set(id + ".skills.soldierLevel", skills.getSoldierLevel());
+        config.set(id + ".skills.marauderLevel", skills.getMarauderLevel());
+        config.set(id + ".skills.assassinLevel", skills.getAssassinLevel());
+        config.set(id + ".skills.cavalierLevel", skills.getCavalierLevel());
+        config.set(id + ".skills.martialArtistLevel", skills.getMartialArtistLevel());
+        config.set(id + ".skills.shieldHeroLevel", skills.getShieldHeroLevel());
+        config.set(id + ".skills.marksmanLevel", skills.getMarksmanLevel());
+        config.set(id + ".skills.sorcererLevel", skills.getSorcererLevel());
+        config.set(id + ".skills.primordialLevel", skills.getPrimordialLevel());
+        config.set(id + ".skills.hallowedLevel", skills.getHallowedLevel());
+        config.set(id + ".skills.annulledLevel", skills.getAnnulledLevel());
 
         config.set(id + ".skills.combatExp", skills.getCombatExp());
         config.set(id + ".skills.foragingExp", skills.getForagingExp());
@@ -137,6 +217,17 @@ public class SkillSetManager {
         config.set(id + ".skills.cookingExp", skills.getCookingExp());
         config.set(id + ".skills.acrobaticsExp", skills.getAcrobaticsExp());
         config.set(id + ".skills.stealthExp", skills.getStealthExp());
+        config.set(id + ".skills.soldierExp", skills.getSoldierExp());
+        config.set(id + ".skills.marauderExp", skills.getMarauderExp());
+        config.set(id + ".skills.assassinExp", skills.getAssassinExp());
+        config.set(id + ".skills.cavalierExp", skills.getCavalierExp());
+        config.set(id + ".skills.martialArtistExp", skills.getMartialArtistExp());
+        config.set(id + ".skills.shieldHeroExp", skills.getShieldHeroExp());
+        config.set(id + ".skills.marksmanExp", skills.getMarksmanExp());
+        config.set(id + ".skills.sorcererExp", skills.getSorcererExp());
+        config.set(id + ".skills.primordialExp", skills.getPrimordialExp());
+        config.set(id + ".skills.hallowedExp", skills.getHallowedExp());
+        config.set(id + ".skills.annulledExp", skills.getAnnulledExp());
 
         config.set(id + ".skills.exp2LvlUpCombat", skills.getExp2LvlUpCombat());
         config.set(id + ".skills.exp2LvlUpForaging", skills.getExp2LvlUpForaging());
@@ -147,5 +238,16 @@ public class SkillSetManager {
         config.set(id + ".skills.exp2LvlUpCooking", skills.getExp2LvlUpCooking());
         config.set(id + ".skills.exp2LvlUpAcrobatics", skills.getExp2LvlUpAcrobatics());
         config.set(id + ".skills.exp2LvlUpStealth", skills.getExp2LvlUpStealth());
+        config.set(id + ".skills.exp2LvlUpSoldier", skills.getExp2LvlUpSoldier());
+        config.set(id + ".skills.exp2LvlUpMarauder", skills.getExp2LvlUpMarauder());
+        config.set(id + ".skills.exp2LvlUpAssassin", skills.getExp2LvlUpAssassin());
+        config.set(id + ".skills.exp2LvlUpCavalier", skills.getExp2LvlUpCavalier());
+        config.set(id + ".skills.exp2LvlUpMartialArtist", skills.getMartialArtistExp());
+        config.set(id + ".skills.exp2LvlUpShieldHero", skills.getExp2LvlUpShieldHero());
+        config.set(id + ".skills.exp2LvlUpMarksman", skills.getExp2LvlUpMarksman());
+        config.set(id + ".skills.exp2LvlUpSorcerer", skills.getExp2LvlUpSorcerer());
+        config.set(id + ".skills.exp2LvlUpPrimordial", skills.getExp2LvlUpPrimordial());
+        config.set(id + ".skills.exp2LvlUpHallowed", skills.getExp2LvlUpHallowed());
+        config.set(id + ".skills.exp2LvlUpAnnulled", skills.getExp2LvlUpAnnulled());
     }
 }

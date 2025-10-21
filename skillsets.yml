@@ -9,6 +9,17 @@ cf942050-e942-4990-a113-e3df70b289be:
     cookingLevel: 1
     acrobaticsLevel: 1
     stealthLevel: 1
+    soldierLevel: 1
+    marauderLevel: 1
+    assassinLevel: 2
+    cavalierLevel: 1
+    martialArtistLevel: 1
+    shieldHeroLevel: 1
+    marksmanLevel: 1
+    sorcererLevel: 1
+    primordialLevel: 1
+    hallowedLevel: 1
+    annulledLevel: 1
     combatExp: 0.0
     foragingExp: 0.0
     miningExp: 0.0
@@ -18,6 +29,17 @@ cf942050-e942-4990-a113-e3df70b289be:
     cookingExp: 0.0
     acrobaticsExp: 0.0
     stealthExp: 0.0
+    soldierExp: 0.0
+    marauderExp: 0.0
+    assassinExp: 2.0
+    cavalierExp: 0.0
+    martialArtistExp: 0.0
+    shieldHeroExp: 0.0
+    marksmanExp: 0.0
+    sorcererExp: 0.0
+    primordialExp: 0.0
+    hallowedExp: 0.0
+    annulledExp: 0.0
     exp2LvlUpCombat: 100
     exp2LvlUpForaging: 100
     exp2LvlUpMining: 100
@@ -27,3 +49,14 @@ cf942050-e942-4990-a113-e3df70b289be:
     exp2LvlUpCooking: 100
     exp2LvlUpAcrobatics: 100
     exp2LvlUpStealth: 100
+    exp2LvlUpSoldier: 100
+    exp2LvlUpMarauder: 100
+    exp2LvlUpAssassin: 100
+    exp2LvlUpCavalier: 100
+    exp2LvlUpMartialArtist: 0.0
+    exp2LvlUpShieldHero: 100
+    exp2LvlUpMarksman: 100
+    exp2LvlUpSorcerer: 100
+    exp2LvlUpPrimordial: 100
+    exp2LvlUpHallowed: 100
+    exp2LvlUpAnnulled: 100

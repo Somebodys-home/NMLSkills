@@ -10,6 +10,17 @@ public class Skills {
     private int cookingLevel;
     private int acrobaticsLevel;
     private int stealthLevel;
+    private int soldierLevel;
+    private int marauderLevel;
+    private int assassinLevel;
+    private int cavalierLevel;
+    private int martialArtistLevel;
+    private int shieldHeroLevel;
+    private int marksmanLevel;
+    private int sorcererLevel;
+    private int primordialLevel;
+    private int hallowedLevel;
+    private int annulledLevel;
 
     private double combatExp;
     private double foragingExp;
@@ -20,6 +31,17 @@ public class Skills {
     private double cookingExp;
     private double acrobaticsExp;
     private double stealthExp;
+    private double soldierExp;
+    private double marauderExp;
+    private double assassinExp;
+    private double cavalierExp;
+    private double martialArtistExp;
+    private double shieldHeroExp;
+    private double marksmanExp;
+    private double sorcererExp;
+    private double primordialExp;
+    private double hallowedExp;
+    private double annulledExp;
 
     private int exp2LvlUpCombat;
     private int exp2LvlUpForaging;
@@ -30,10 +52,26 @@ public class Skills {
     private int exp2LvlUpCooking;
     private int exp2LvlUpAcrobatics;
     private int exp2LvlUpStealth;
+    private int exp2LvlUpSoldier;
+    private int exp2LvlUpMarauder;
+    private int exp2LvlUpAssassin;
+    private int exp2LvlUpCavalier;
+    private int exp2LvlUpMartialArtist;
+    private int exp2LvlUpShieldHero;
+    private int exp2LvlUpMarksman;
+    private int exp2LvlUpSorcerer;
+    private int exp2LvlUpPrimordial;
+    private int exp2LvlUpHallowed;
+    private int exp2LvlUpAnnulled;
 
-    public Skills(int combatLevel, int foragingLevel, int miningLevel, int fishingLevel, int cultivatingLevel, int craftingLevel, int cookingLevel, int acrobaticsLevel, int stealthLevel,
-                  double combatExp, double foragingExp, double miningExp, double fishingExp, double cultivatingExp, double craftingExp, double cookingExp, double acrobaticsExp,
-                  double stealthExp) {
+    public Skills(int combatLevel, int foragingLevel, int miningLevel, int fishingLevel, int cultivatingLevel, int craftingLevel, int cookingLevel, int acrobaticsLevel,
+                  int stealthLevel,
+                  int soldierLevel, int marauderLevel, int assassinLevel, int cavalierLevel, int martialArtistLevel, int shieldHeroLevel, int marksmanLevel,
+                  int sorcererLevel, int primordialLevel, int hallowedLevel, int annulledLevel,
+                  double combatExp, double foragingExp, double miningExp, double fishingExp, double cultivatingExp, double craftingExp, double cookingExp,
+                  double acrobaticsExp, double stealthExp,
+                  double soldierExp, double marauderExp, double assassinExp, double cavalierExp, double martialArtistExp, double shieldHeroExp, double marksmanExp,
+                  double sorcererExp, double primordialExp, double hallowedExp, double annulledExp) {
 
         this.combatLevel = combatLevel;
         this.foragingLevel = foragingLevel;
@@ -44,6 +82,17 @@ public class Skills {
         this.cookingLevel = cookingLevel;
         this.acrobaticsLevel = acrobaticsLevel;
         this.stealthLevel = stealthLevel;
+        this.soldierLevel = soldierLevel;
+        this.marauderLevel = marauderLevel;
+        this.assassinLevel = assassinLevel;
+        this.cavalierLevel = cavalierLevel;
+        this.martialArtistLevel = martialArtistLevel;
+        this.shieldHeroLevel = shieldHeroLevel;
+        this.marksmanLevel = marksmanLevel;
+        this.sorcererLevel = sorcererLevel;
+        this.primordialLevel = primordialLevel;
+        this.hallowedLevel = hallowedLevel;
+        this.annulledLevel = annulledLevel;
 
         this.combatExp = combatExp;
         this.foragingExp = foragingExp;
@@ -54,6 +103,17 @@ public class Skills {
         this.cookingExp = cookingExp;
         this.acrobaticsExp = acrobaticsExp;
         this.stealthExp = stealthExp;
+        this.soldierExp = soldierExp;
+        this.marauderExp = marauderExp;
+        this.assassinExp = assassinExp;
+        this.cavalierExp = cavalierExp;
+        this.martialArtistExp = martialArtistExp;
+        this.shieldHeroExp = shieldHeroExp;
+        this.marksmanExp = marksmanExp;
+        this.sorcererExp = sorcererExp;
+        this.primordialExp = primordialExp;
+        this.hallowedExp = hallowedExp;
+        this.annulledExp = annulledExp;
 
         // todo: come up with a formula for this eventually
         this.exp2LvlUpCombat = 100;
@@ -65,11 +125,25 @@ public class Skills {
         this.exp2LvlUpCooking = 100;
         this.exp2LvlUpAcrobatics = 100;
         this.exp2LvlUpStealth = 100;
+        this.exp2LvlUpSoldier = 100;
+        this.exp2LvlUpMarauder = 100;
+        this.exp2LvlUpAssassin = 100;
+        this.exp2LvlUpCavalier = 100;
+        this.exp2LvlUpMartialArtist = 100;
+        this.exp2LvlUpShieldHero = 100;
+        this.exp2LvlUpMarksman = 100;
+        this.exp2LvlUpSorcerer = 100;
+        this.exp2LvlUpPrimordial = 100;
+        this.exp2LvlUpHallowed = 100;
+        this.exp2LvlUpAnnulled = 100;
     }
 
     public static Skills generateNewbieSkills() {
         return new Skills(1, 1, 1, 1, 1, 1, 1, 1, 1,
-                        0, 0, 0, 0, 0, 0, 0, 0, 0);
+                        1, 1, 1, 1, 1, 1, 1, 1, 1,
+                        1, 1, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                        0, 0);
     }
 
     public void add2Skill(String skill, double amount) {
@@ -83,6 +157,17 @@ public class Skills {
             case "cookinglvl" -> cookingLevel += (int) amount;
             case "acrobaticslvl" -> acrobaticsLevel += (int) amount;
             case "stealthlvl" -> stealthLevel += (int) amount;
+            case "soldierlvl" -> soldierLevel += (int) amount;
+            case "marauderlvl" -> marauderLevel += (int) amount;
+            case "assassinlvl" -> assassinLevel += (int) amount;
+            case "cavalierlvl" -> cavalierLevel += (int) amount;
+            case "martialartistlvl" -> martialArtistLevel += (int) amount;
+            case "shieldherolvl" -> shieldHeroLevel += (int) amount;
+            case "marksmanlvl" -> marksmanLevel += (int) amount;
+            case "sorcererlvl" -> sorcererLevel += (int) amount;
+            case "primordiallvl" -> primordialLevel += (int) amount;
+            case "hallowedlvl" -> hallowedLevel += (int) amount;
+            case "annulledlvl" -> annulledLevel += (int) amount;
 
             case "combatexp" -> combatExp += amount;
             case "foragingexp" -> foragingExp += amount;
@@ -93,6 +178,17 @@ public class Skills {
             case "cookingexp" -> cookingExp += amount;
             case "acrobaticsexp" -> acrobaticsExp += amount;
             case "stealthexp" -> stealthExp += amount;
+            case "soldierexp" -> soldierExp += amount;
+            case "marauderexp" -> marauderExp += amount;
+            case "assassinexp" -> assassinExp += amount;
+            case "cavalierexp" -> cavalierExp += amount;
+            case "martialartistexp" -> martialArtistExp += amount;
+            case "shieldheroexp" -> shieldHeroExp += amount;
+            case "marksmanexp" -> marksmanExp += amount;
+            case "sorcererexp" -> sorcererExp += amount;
+            case "primordialexp" -> primordialExp += amount;
+            case "hallowedexp" -> hallowedExp += amount;
+            case "annulledexp" -> annulledExp += amount;
         }
     }
 
@@ -107,6 +203,17 @@ public class Skills {
             case "cookinglvl" -> cookingLevel -= (int) amount;
             case "acrobaticslvl" -> acrobaticsLevel -= (int) amount;
             case "stealthlvl" -> stealthLevel -= (int) amount;
+            case "soldierlvl" -> soldierLevel -= (int) amount;
+            case "marauderlvl" -> marauderLevel -= (int) amount;
+            case "assassinlvl" -> assassinLevel -= (int) amount;
+            case "cavalierlvl" -> cavalierLevel -= (int) amount;
+            case "martialartistlvl" -> martialArtistLevel -= (int) amount;
+            case "shieldherolvl" -> shieldHeroLevel -= (int) amount;
+            case "marksmanlvl" -> marksmanLevel -= (int) amount;
+            case "sorcererlvl" -> sorcererLevel -= (int) amount;
+            case "primordiallvl" -> primordialLevel -= (int) amount;
+            case "hallowedlvl" -> hallowedLevel -= (int) amount;
+            case "annulledlvl" -> annulledLevel -= (int) amount;
 
             case "combatexp" -> combatExp -= amount;
             case "foragingexp" -> foragingExp -= amount;
@@ -117,6 +224,17 @@ public class Skills {
             case "cookingexp" -> cookingExp -= amount;
             case "acrobaticsexp" -> acrobaticsExp -= amount;
             case "stealthexp" -> stealthExp -= amount;
+            case "soldierexp" -> soldierExp -= amount;
+            case "marauderexp" -> marauderExp -= amount;
+            case "assassinexp" -> assassinExp -= amount;
+            case "cavalierexp" -> cavalierExp -= amount;
+            case "martialartistexp" -> martialArtistExp -= amount;
+            case "shieldheroexp" -> shieldHeroExp -= amount;
+            case "marksmanexp" -> marksmanExp -= amount;
+            case "sorcererexp" -> sorcererExp -= amount;
+            case "primordialexp" -> primordialExp -= amount;
+            case "hallowedexp" -> hallowedExp -= amount;
+            case "annulledexp" -> annulledExp -= amount;
         }
     }
 
@@ -334,5 +452,269 @@ public class Skills {
 
     public void setExp2LvlUpStealth(int exp2LvlUpStealth) {
         this.exp2LvlUpStealth = exp2LvlUpStealth;
+    }
+
+    public int getSoldierLevel() {
+        return soldierLevel;
+    }
+
+    public void setSoldierLevel(int soldierLevel) {
+        this.soldierLevel = soldierLevel;
+    }
+
+    public int getMarauderLevel() {
+        return marauderLevel;
+    }
+
+    public void setMarauderLevel(int marauderLevel) {
+        this.marauderLevel = marauderLevel;
+    }
+
+    public int getAssassinLevel() {
+        return assassinLevel;
+    }
+
+    public void setAssassinLevel(int assassinLevel) {
+        this.assassinLevel = assassinLevel;
+    }
+
+    public int getCavalierLevel() {
+        return cavalierLevel;
+    }
+
+    public void setCavalierLevel(int cavalierLevel) {
+        this.cavalierLevel = cavalierLevel;
+    }
+
+    public int getMartialArtistLevel() {
+        return martialArtistLevel;
+    }
+
+    public void setMartialArtistLevel(int martialArtistLevel) {
+        this.martialArtistLevel = martialArtistLevel;
+    }
+
+    public int getMarksmanLevel() {
+        return marksmanLevel;
+    }
+
+    public void setMarksmanLevel(int marksmanLevel) {
+        this.marksmanLevel = marksmanLevel;
+    }
+
+    public int getPrimordialLevel() {
+        return primordialLevel;
+    }
+
+    public void setPrimordialLevel(int primordialLevel) {
+        this.primordialLevel = primordialLevel;
+    }
+
+    public int getHallowedLevel() {
+        return hallowedLevel;
+    }
+
+    public void setHallowedLevel(int hallowedLevel) {
+        this.hallowedLevel = hallowedLevel;
+    }
+
+    public int getShieldHeroLevel() {
+        return shieldHeroLevel;
+    }
+
+    public void setShieldHeroLevel(int shieldHeroLevel) {
+        this.shieldHeroLevel = shieldHeroLevel;
+    }
+
+    public int getSorcererLevel() {
+        return sorcererLevel;
+    }
+
+    public void setSorcererLevel(int sorcererLevel) {
+        this.sorcererLevel = sorcererLevel;
+    }
+
+    public int getAnnulledLevel() {
+        return annulledLevel;
+    }
+
+    public void setAnnulledLevel(int annulledLevel) {
+        this.annulledLevel = annulledLevel;
+    }
+
+    public double getSoldierExp() {
+        return soldierExp;
+    }
+
+    public void setSoldierExp(double soldierExp) {
+        this.soldierExp = soldierExp;
+    }
+
+    public double getMarauderExp() {
+        return marauderExp;
+    }
+
+    public void setMarauderExp(double marauderExp) {
+        this.marauderExp = marauderExp;
+    }
+
+    public double getAssassinExp() {
+        return assassinExp;
+    }
+
+    public void setAssassinExp(double assassinExp) {
+        this.assassinExp = assassinExp;
+    }
+
+    public double getCavalierExp() {
+        return cavalierExp;
+    }
+
+    public void setCavalierExp(double cavalierExp) {
+        this.cavalierExp = cavalierExp;
+    }
+
+    public double getMartialArtistExp() {
+        return martialArtistExp;
+    }
+
+    public void setMartialArtistExp(double martialArtistExp) {
+        this.martialArtistExp = martialArtistExp;
+    }
+
+    public double getMarksmanExp() {
+        return marksmanExp;
+    }
+
+    public void setMarksmanExp(double marksmanExp) {
+        this.marksmanExp = marksmanExp;
+    }
+
+    public double getShieldHeroExp() {
+        return shieldHeroExp;
+    }
+
+    public void setShieldHeroExp(double shieldHeroExp) {
+        this.shieldHeroExp = shieldHeroExp;
+    }
+
+    public double getSorcererExp() {
+        return sorcererExp;
+    }
+
+    public void setSorcererExp(double sorcererExp) {
+        this.sorcererExp = sorcererExp;
+    }
+
+    public double getPrimordialExp() {
+        return primordialExp;
+    }
+
+    public void setPrimordialExp(double primordialExp) {
+        this.primordialExp = primordialExp;
+    }
+
+    public double getHallowedExp() {
+        return hallowedExp;
+    }
+
+    public void setHallowedExp(double hallowedExp) {
+        this.hallowedExp = hallowedExp;
+    }
+
+    public double getAnnulledExp() {
+        return annulledExp;
+    }
+
+    public void setAnnulledExp(double annulledExp) {
+        this.annulledExp = annulledExp;
+    }
+
+    public int getExp2LvlUpSoldier() {
+        return exp2LvlUpSoldier;
+    }
+
+    public void setExp2LvlUpSoldier(int exp2LvlUpSoldier) {
+        this.exp2LvlUpSoldier = exp2LvlUpSoldier;
+    }
+
+    public int getExp2LvlUpMarauder() {
+        return exp2LvlUpMarauder;
+    }
+
+    public void setExp2LvlUpMarauder(int exp2LvlUpMarauder) {
+        this.exp2LvlUpMarauder = exp2LvlUpMarauder;
+    }
+
+    public int getExp2LvlUpAssassin() {
+        return exp2LvlUpAssassin;
+    }
+
+    public void setExp2LvlUpAssassin(int exp2LvlUpAssassin) {
+        this.exp2LvlUpAssassin = exp2LvlUpAssassin;
+    }
+
+    public int getExp2LvlUpCavalier() {
+        return exp2LvlUpCavalier;
+    }
+
+    public void setExp2LvlUpCavalier(int exp2LvlUpCavalier) {
+        this.exp2LvlUpCavalier = exp2LvlUpCavalier;
+    }
+
+    public int getExp2LvlUpMartialArtist() {
+        return exp2LvlUpMartialArtist;
+    }
+
+    public void setExp2LvlUpMartialArtist(int exp2LvlUpMartialArtist) {
+        this.exp2LvlUpMartialArtist = exp2LvlUpMartialArtist;
+    }
+
+    public int getExp2LvlUpShieldHero() {
+        return exp2LvlUpShieldHero;
+    }
+
+    public void setExp2LvlUpShieldHero(int exp2LvlUpShieldHero) {
+        this.exp2LvlUpShieldHero = exp2LvlUpShieldHero;
+    }
+
+    public int getExp2LvlUpMarksman() {
+        return exp2LvlUpMarksman;
+    }
+
+    public void setExp2LvlUpMarksman(int exp2LvlUpMarksman) {
+        this.exp2LvlUpMarksman = exp2LvlUpMarksman;
+    }
+
+    public int getExp2LvlUpSorcerer() {
+        return exp2LvlUpSorcerer;
+    }
+
+    public void setExp2LvlUpSorcerer(int exp2LvlUpSorcerer) {
+        this.exp2LvlUpSorcerer = exp2LvlUpSorcerer;
+    }
+
+    public int getExp2LvlUpHallowed() {
+        return exp2LvlUpHallowed;
+    }
+
+    public void setExp2LvlUpHallowed(int exp2LvlUpHallowed) {
+        this.exp2LvlUpHallowed = exp2LvlUpHallowed;
+    }
+
+    public int getExp2LvlUpAnnulled() {
+        return exp2LvlUpAnnulled;
+    }
+
+    public void setExp2LvlUpAnnulled(int exp2LvlUpAnnulled) {
+        this.exp2LvlUpAnnulled = exp2LvlUpAnnulled;
+    }
+
+    public int getExp2LvlUpPrimordial() {
+        return exp2LvlUpPrimordial;
+    }
+
+    public void setExp2LvlUpPrimordial(int exp2LvlUpPrimordial) {
+        this.exp2LvlUpPrimordial = exp2LvlUpPrimordial;
     }
 }

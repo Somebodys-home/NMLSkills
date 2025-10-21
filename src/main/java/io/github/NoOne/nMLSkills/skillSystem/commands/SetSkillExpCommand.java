@@ -67,6 +67,50 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
                     prevExp = skills.getStealthExp();
                     skills.setStealthExp(newExp);
                 }
+                case "soldier" -> {
+                    prevExp = skills.getSoldierExp();
+                    skills.setSoldierExp(newExp);
+                }
+                case "marauder" -> {
+                    prevExp = skills.getMarauderExp();
+                    skills.setMarauderExp(newExp);
+                }
+                case "assassin" -> {
+                    prevExp = skills.getAssassinExp();
+                    skills.setAssassinExp(newExp);
+                }
+                case "cavalier" -> {
+                    prevExp = skills.getCavalierExp();
+                    skills.setCavalierExp(newExp);
+                }
+                case "martialartist" -> {
+                    prevExp = skills.getMartialArtistExp();
+                    skills.setMartialArtistExp(newExp);
+                }
+                case "shieldhero" -> {
+                    prevExp = skills.getShieldHeroExp();
+                    skills.setShieldHeroExp(newExp);
+                }
+                case "marksman" -> {
+                    prevExp = skills.getMarksmanExp();
+                    skills.setMarksmanExp(newExp);
+                }
+                case "sorcerer" -> {
+                    prevExp = skills.getSorcererExp();
+                    skills.setSorcererExp(newExp);
+                }
+                case "primordial" -> {
+                    prevExp = skills.getPrimordialExp();
+                    skills.setPrimordialExp(newExp);
+                }
+                case "hallowed" -> {
+                    prevExp = skills.getHallowedExp();
+                    skills.setHallowedExp(newExp);
+                }
+                case "annulled" -> {
+                    prevExp = skills.getAnnulledExp();
+                    skills.setAnnulledExp(newExp);
+                }
             }
 
             Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0]+"exp", newExp - prevExp));
@@ -78,7 +122,9 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth")).stream()
+            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth",
+                    "soldier", "marauder", "assassin", "cavalier", "martialartist", "shieldhero", "marksman", "sorcerer", "primordial",
+                    "hallowed", "annulled")).stream()
                     .filter(string -> string.toLowerCase().startsWith(strings[0].toLowerCase()))
                     .collect(Collectors.toList());
         }
