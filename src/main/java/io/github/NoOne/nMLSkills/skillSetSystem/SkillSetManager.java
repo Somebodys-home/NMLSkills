@@ -172,7 +172,7 @@ public class SkillSetManager {
             config.set(id + ".skills.exp2LvlUpMarauder", skills.getExp2LvlUpMarauder());
             config.set(id + ".skills.exp2LvlUpAssassin", skills.getExp2LvlUpAssassin());
             config.set(id + ".skills.exp2LvlUpCavalier", skills.getExp2LvlUpCavalier());
-            config.set(id + ".skills.exp2LvlUpMartialArtist", skills.getMartialArtistExp());
+            config.set(id + ".skills.exp2LvlUpMartialArtist", skills.getExp2LvlUpMartialArtist());
             config.set(id + ".skills.exp2LvlUpShieldHero", skills.getExp2LvlUpShieldHero());
             config.set(id + ".skills.exp2LvlUpMarksman", skills.getExp2LvlUpMarksman());
             config.set(id + ".skills.exp2LvlUpSorcerer", skills.getExp2LvlUpSorcerer());
@@ -242,7 +242,7 @@ public class SkillSetManager {
         config.set(id + ".skills.exp2LvlUpMarauder", skills.getExp2LvlUpMarauder());
         config.set(id + ".skills.exp2LvlUpAssassin", skills.getExp2LvlUpAssassin());
         config.set(id + ".skills.exp2LvlUpCavalier", skills.getExp2LvlUpCavalier());
-        config.set(id + ".skills.exp2LvlUpMartialArtist", skills.getMartialArtistExp());
+        config.set(id + ".skills.exp2LvlUpMartialArtist", skills.getExp2LvlUpMartialArtist());
         config.set(id + ".skills.exp2LvlUpShieldHero", skills.getExp2LvlUpShieldHero());
         config.set(id + ".skills.exp2LvlUpMarksman", skills.getExp2LvlUpMarksman());
         config.set(id + ".skills.exp2LvlUpSorcerer", skills.getExp2LvlUpSorcerer());

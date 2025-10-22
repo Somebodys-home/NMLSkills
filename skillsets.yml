@@ -11,7 +11,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     stealthLevel: 1
     soldierLevel: 1
     marauderLevel: 1
-    assassinLevel: 2
+    assassinLevel: 1
     cavalierLevel: 1
     martialArtistLevel: 1
     shieldHeroLevel: 1
@@ -31,7 +31,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     stealthExp: 0.0
     soldierExp: 0.0
     marauderExp: 0.0
-    assassinExp: 2.0
+    assassinExp: 0.0
     cavalierExp: 0.0
     martialArtistExp: 0.0
     shieldHeroExp: 0.0
@@ -53,7 +53,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     exp2LvlUpMarauder: 100
     exp2LvlUpAssassin: 100
     exp2LvlUpCavalier: 100
-    exp2LvlUpMartialArtist: 0.0
+    exp2LvlUpMartialArtist: 100
     exp2LvlUpShieldHero: 100
     exp2LvlUpMarksman: 100
     exp2LvlUpSorcerer: 100

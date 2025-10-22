@@ -1,6 +1,7 @@
 package io.github.NoOne.nMLSkills.skillSystem;
 
 import io.github.NoOne.nMLSkills.NMLSkills;
+import io.github.NoOne.nMLSkills.skillSetSystem.SkillSet;
 import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +17,12 @@ public class SkillListener implements Listener {
     @EventHandler
     public void resetStats(ResetSkillsEvent event) {
         Player player = event.getPlayer();
+        SkillSet skillSet = skillSetManager.getSkillSet(player.getUniqueId());
+
+        skillSet.setSkills(Skills.generateNewbieSkills());
         skillSetManager.saveASkillSetToConfig(player);
+        SkillBars.updateSkillBarLevel(player, "combat");
+        SkillBars.updateSkillBarProgress(player, "combatexp");
     }
 
     @EventHandler
