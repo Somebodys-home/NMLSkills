@@ -4,12 +4,9 @@ import io.github.NoOne.menuSystem.MenuListener;
 import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetConfig;
 import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetListener;
 import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetManager;
-import io.github.NoOne.nMLSkills.skillSystem.commands.ResetSkillsCommand;
+import io.github.NoOne.nMLSkills.skillSystem.commands.*;
 import io.github.NoOne.nMLSkills.skillSystem.SkillBars;
 import io.github.NoOne.nMLSkills.skillSystem.SkillListener;
-import io.github.NoOne.nMLSkills.skillSystem.commands.SetSkillExpCommand;
-import io.github.NoOne.nMLSkills.skillSystem.commands.SetSkillLevelCommand;
-import io.github.NoOne.nMLSkills.skillSystem.commands.SkillsCommand;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class NMLSkills extends JavaPlugin {
@@ -35,6 +32,7 @@ public final class NMLSkills extends JavaPlugin {
         getCommand("skills").setExecutor(new SkillsCommand(this));
         getCommand("setSkillLevel").setExecutor(new SetSkillLevelCommand(this));
         getCommand("setSkillExp").setExecutor(new SetSkillExpCommand(this));
+        getCommand("maxSkills").setExecutor(new MaxSkillsCommand(this));
         getServer().getPluginManager().registerEvents(new SkillSetListener(this), this);
         getServer().getPluginManager().registerEvents(new SkillListener(this), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);

@@ -15,3 +15,6 @@ commands:
   setSkillExp:
     description: Sets a skill's exp
     usage: /<command> <skill> <level>
+  maxSkills:
+    description: Maxes the level of all the player's skills
+    usage: /<command>
