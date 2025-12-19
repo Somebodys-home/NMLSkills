@@ -22,7 +22,7 @@ public class SkillsMenu extends Menu {
     private final ItemStack foragingSkillItem;
     private final ItemStack miningSkillItem;
     private final ItemStack fishingSkillItem;
-    private final ItemStack cultivatingSkillItem;
+    private final ItemStack farmingSkillItem;
     private final ItemStack craftingSkillItem;
     private final ItemStack cookingSkillItem;
     private final ItemStack acrobaticsSkillItem;
@@ -82,16 +82,16 @@ public class SkillsMenu extends Menu {
         fishingMeta.setLore(fishingLore);
         fishingSkillItem.setItemMeta(fishingMeta);
 
-        cultivatingSkillItem = new ItemStack(Material.WHEAT);
-        ItemMeta cultivatingMeta = cultivatingSkillItem.getItemMeta();
-        List<String> cultivatingLore = new ArrayList<>();
-        cultivatingMeta.setDisplayName("§fLv. " + skills.getCultivatingLevel() + " §a§lFarmer");
-        cultivatingLore.add("§7Click to learn more about cultivating!");
-        cultivatingLore.add("");
-        cultivatingLore.add("§7§o\"It ain't much, but it's honest work.\"");
-        cultivatingMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        cultivatingMeta.setLore(cultivatingLore);
-        cultivatingSkillItem.setItemMeta(cultivatingMeta);
+        farmingSkillItem = new ItemStack(Material.WHEAT);
+        ItemMeta farmingMeta = farmingSkillItem.getItemMeta();
+        List<String> farmingLore = new ArrayList<>();
+        farmingMeta.setDisplayName("§fLv. " + skills.getFarmingLevel() + " §a§lFarmer");
+        farmingLore.add("§7Click to learn more about farming!");
+        farmingLore.add("");
+        farmingLore.add("§7§o\"It ain't much, but it's honest work.\"");
+        farmingMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+        farmingMeta.setLore(farmingLore);
+        farmingSkillItem.setItemMeta(farmingMeta);
 
         craftingSkillItem = new ItemStack(Material.CRAFTER);
         ItemMeta craftingMeta = craftingSkillItem.getItemMeta();
@@ -168,7 +168,7 @@ public class SkillsMenu extends Menu {
         inventory.setItem(22, combatSkillItem);
         inventory.setItem(25, acrobaticsSkillItem);
         inventory.setItem(29, fishingSkillItem);
-        inventory.setItem(33, cultivatingSkillItem);
+        inventory.setItem(33, farmingSkillItem);
         inventory.setItem(40, cookingSkillItem);
         inventory.setItem(44, backButton);
     }

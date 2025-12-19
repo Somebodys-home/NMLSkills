@@ -1,30 +1,30 @@
 cf942050-e942-4990-a113-e3df70b289be:
   skills:
     combatLevel: 1
-    foragingLevel: 1
-    miningLevel: 1
+    foragingLevel: 99
+    miningLevel: 99
     fishingLevel: 1
-    cultivatingLevel: 1
-    craftingLevel: 1
-    cookingLevel: 1
-    acrobaticsLevel: 1
-    stealthLevel: 1
-    soldierLevel: 1
-    marauderLevel: 1
-    assassinLevel: 1
-    cavalierLevel: 1
-    martialArtistLevel: 1
-    shieldHeroLevel: 1
-    marksmanLevel: 1
-    sorcererLevel: 1
-    primordialLevel: 1
-    hallowedLevel: 1
-    annulledLevel: 1
+    farmingLevel: 1
+    craftingLevel: 99
+    cookingLevel: 99
+    acrobaticsLevel: 99
+    stealthLevel: 99
+    soldierLevel: 99
+    marauderLevel: 99
+    assassinLevel: 99
+    cavalierLevel: 99
+    martialArtistLevel: 99
+    shieldHeroLevel: 99
+    marksmanLevel: 99
+    sorcererLevel: 99
+    primordialLevel: 99
+    hallowedLevel: 99
+    annulledLevel: 99
     combatExp: 0.0
     foragingExp: 0.0
     miningExp: 0.0
     fishingExp: 0.0
-    cultivatingExp: 0.0
+    farmingExp: 55.0
     craftingExp: 0.0
     cookingExp: 0.0
     acrobaticsExp: 0.0
@@ -44,7 +44,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     exp2LvlUpForaging: 100
     exp2LvlUpMining: 100
     exp2LvlUpFishing: 100
-    exp2LvlUpCultivating: 100
+    exp2LvlUpFarming: 100
     exp2LvlUpCrafting: 100
     exp2LvlUpCooking: 100
     exp2LvlUpAcrobatics: 100

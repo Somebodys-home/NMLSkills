@@ -48,9 +48,9 @@ public class SetSkillLevelCommand implements CommandExecutor, TabCompleter {
                     prevLevel = skills.getFishingLevel();
                     skills.setFishingLevel(newLevel);
                 }
-                case "cultivating" -> {
-                    prevLevel = skills.getCultivatingLevel();
-                    skills.setCultivatingLevel(newLevel);
+                case "farming" -> {
+                    prevLevel = skills.getFarmingLevel();
+                    skills.setFarmingLevel(newLevel);
                 }
                 case "crafting" -> {
                     prevLevel = skills.getCraftingLevel();
@@ -123,7 +123,7 @@ public class SetSkillLevelCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth",
+            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "farming", "crafting", "cooking", "acrobatics", "stealth",
                                             "soldier", "marauder", "assassin", "cavalier", "martialartist", "shieldhero", "marksman", "sorcerer", "primordial",
                                             "hallowed", "annulled")).stream()
                     .filter(string -> string.toLowerCase().startsWith(strings[0].toLowerCase()))

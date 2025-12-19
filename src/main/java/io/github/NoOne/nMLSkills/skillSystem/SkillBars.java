@@ -32,7 +32,7 @@ public class SkillBars {
                     BossBar foragingBar = Bukkit.createBossBar("Lvl. §b" + skills.getForagingLevel() + "§r Foraging" , BarColor.WHITE, BarStyle.SOLID);
                     BossBar miningBar = Bukkit.createBossBar("Lvl. §b" + skills.getMiningLevel() + "§r Mining" , BarColor.WHITE, BarStyle.SOLID);
                     BossBar fishingBar = Bukkit.createBossBar("Lvl. §b" + skills.getFishingLevel() + "§r Fishing" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar cultivatingBar = Bukkit.createBossBar("Lvl. §b" + skills.getCultivatingLevel() + "§r Cultivating" , BarColor.WHITE, BarStyle.SOLID);
+                    BossBar farmingBar = Bukkit.createBossBar("Lvl. §b" + skills.getFarmingLevel() + "§r Farming" , BarColor.WHITE, BarStyle.SOLID);
                     BossBar craftingBar = Bukkit.createBossBar("Lvl. §b" + skills.getCraftingLevel() + "§r Crafting" , BarColor.WHITE, BarStyle.SOLID);
                     BossBar cookingBar = Bukkit.createBossBar("Lvl. §b" + skills.getCookingLevel() + "§r Cooking" , BarColor.WHITE, BarStyle.SOLID);
                     BossBar acrobaticsBar = Bukkit.createBossBar("Lvl. §b" + skills.getAcrobaticsLevel() + "§r Acrobatics" , BarColor.WHITE, BarStyle.SOLID);
@@ -52,7 +52,7 @@ public class SkillBars {
                     foragingBar.setProgress(getSkillBarProgress(player, "foraging"));
                     miningBar.setProgress(getSkillBarProgress(player, "mining"));
                     fishingBar.setProgress(getSkillBarProgress(player, "fishing"));
-                    cultivatingBar.setProgress(getSkillBarProgress(player, "cultivating"));
+                    farmingBar.setProgress(getSkillBarProgress(player, "farming"));
                     craftingBar.setProgress(getSkillBarProgress(player, "crafting"));
                     cookingBar.setProgress(getSkillBarProgress(player, "cooking"));
                     acrobaticsBar.setProgress(getSkillBarProgress(player, "acrobatics"));
@@ -60,7 +60,7 @@ public class SkillBars {
                     foragingBar.setProgress(getSkillBarProgress(player, "soldier"));
                     miningBar.setProgress(getSkillBarProgress(player, "marauder"));
                     fishingBar.setProgress(getSkillBarProgress(player, "assassin"));
-                    cultivatingBar.setProgress(getSkillBarProgress(player, "cavalier"));
+                    farmingBar.setProgress(getSkillBarProgress(player, "cavalier"));
                     craftingBar.setProgress(getSkillBarProgress(player, "martialArtist"));
                     cookingBar.setProgress(getSkillBarProgress(player, "shieldHero"));
                     acrobaticsBar.setProgress(getSkillBarProgress(player, "marksman"));
@@ -68,7 +68,7 @@ public class SkillBars {
                     cookingBar.setProgress(getSkillBarProgress(player, "primordial"));
                     acrobaticsBar.setProgress(getSkillBarProgress(player, "hallowed"));
                     stealthBar.setProgress(getSkillBarProgress(player, "annulled"));
-                    skillBars.put(uuid, new BossBar[]{foragingBar, miningBar, fishingBar, cultivatingBar, craftingBar, cookingBar, acrobaticsBar, stealthBar,
+                    skillBars.put(uuid, new BossBar[]{foragingBar, miningBar, fishingBar, farmingBar, craftingBar, cookingBar, acrobaticsBar, stealthBar,
                             soldierBar, marauderBar, assassinBar, cavalierBar, martialArtistBar, shieldHeroBar, marksmanBar, sorcererBar, primordialBar, hallowedBar, annulledBar});
                 } else {
                     if (player.hasMetadata("foraging bar")) {
@@ -89,7 +89,7 @@ public class SkillBars {
                         skillBars.get(uuid)[2].removePlayer(player);
                     }
 
-                    if (player.hasMetadata("cultivating bar")) {
+                    if (player.hasMetadata("farming bar")) {
                         skillBars.get(uuid)[3].addPlayer(player);
                     } else {
                         skillBars.get(uuid)[3].removePlayer(player);
@@ -195,7 +195,7 @@ public class SkillBars {
             player.removeMetadata("foraging bar", nmlSkills);
             player.removeMetadata("mining bar", nmlSkills);
             player.removeMetadata("fishing bar", nmlSkills);
-            player.removeMetadata("cultivating bar", nmlSkills);
+            player.removeMetadata("farming bar", nmlSkills);
             player.removeMetadata("crafting bar", nmlSkills);
             player.removeMetadata("cooking bar", nmlSkills);
             player.removeMetadata("acrobatics bar", nmlSkills);
@@ -230,8 +230,8 @@ public class SkillBars {
             case "fishing" -> {
                 return skills.getFishingExp() / skills.getExp2LvlUpFishing();
             }
-            case "cultivating" -> {
-                return skills.getCultivatingExp() / skills.getExp2LvlUpCultivating();
+            case "farming" -> {
+                return skills.getFarmingExp() / skills.getExp2LvlUpFarming();
             }
             case "crafting" -> {
                 return skills.getCraftingExp() / skills.getExp2LvlUpCrafting();
@@ -295,16 +295,16 @@ public class SkillBars {
                     }
                 }.runTaskLater(nmlSkills, 60);
             }
-            case "cultivatingexp" -> {
-                BossBar cultivatingBar = skillBars.get(uuid)[3];
+            case "farmingexp" -> {
+                BossBar farmingBar = skillBars.get(uuid)[3];
 
-                cultivatingBar.setProgress(skills.getCultivatingExp() / skills.getExp2LvlUpCultivating());
-                player.setMetadata("cultivating bar", new FixedMetadataValue(nmlSkills, true));
+                farmingBar.setProgress(skills.getFarmingExp() / skills.getExp2LvlUpFarming());
+                player.setMetadata("farming bar", new FixedMetadataValue(nmlSkills, true));
 
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        player.removeMetadata("cultivating bar", nmlSkills);
+                        player.removeMetadata("farming bar", nmlSkills);
                     }
                 }.runTaskLater(nmlSkills, 60);
             }
@@ -538,16 +538,16 @@ public class SkillBars {
                     }
                 }.runTaskLater(nmlSkills, 60);
             }
-            case "cultivating" -> {
-                BossBar cultivatingBar = skillBars.get(uuid)[3];
+            case "farming" -> {
+                BossBar farmingBar = skillBars.get(uuid)[3];
 
-                cultivatingBar.setTitle("Lvl. §b" + skills.getCultivatingLevel() + "§r Cultivating");
-                player.setMetadata("cultivating bar", new FixedMetadataValue(nmlSkills, true));
+                farmingBar.setTitle("Lvl. §b" + skills.getFarmingLevel() + "§r Farming");
+                player.setMetadata("farming bar", new FixedMetadataValue(nmlSkills, true));
 
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        player.removeMetadata("cultivating bar", nmlSkills);
+                        player.removeMetadata("farming bar", nmlSkills);
                     }
                 }.runTaskLater(nmlSkills, 60);
             }

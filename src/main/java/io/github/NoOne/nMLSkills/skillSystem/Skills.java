@@ -5,7 +5,7 @@ public class Skills {
     private int foragingLevel;
     private int miningLevel;
     private int fishingLevel;
-    private int cultivatingLevel;
+    private int farmingLevel;
     private int craftingLevel;
     private int cookingLevel;
     private int acrobaticsLevel;
@@ -26,7 +26,7 @@ public class Skills {
     private double foragingExp;
     private double miningExp;
     private double fishingExp;
-    private double cultivatingExp;
+    private double farmingExp;
     private double craftingExp;
     private double cookingExp;
     private double acrobaticsExp;
@@ -47,7 +47,7 @@ public class Skills {
     private int exp2LvlUpForaging;
     private int exp2LvlUpMining;
     private int exp2LvlUpFishing;
-    private int exp2LvlUpCultivating;
+    private int exp2LvlUpFarming;
     private int exp2LvlUpCrafting;
     private int exp2LvlUpCooking;
     private int exp2LvlUpAcrobatics;
@@ -64,11 +64,11 @@ public class Skills {
     private int exp2LvlUpHallowed;
     private int exp2LvlUpAnnulled;
 
-    public Skills(int combatLevel, int foragingLevel, int miningLevel, int fishingLevel, int cultivatingLevel, int craftingLevel, int cookingLevel, int acrobaticsLevel,
+    public Skills(int combatLevel, int foragingLevel, int miningLevel, int fishingLevel, int farmingLevel, int craftingLevel, int cookingLevel, int acrobaticsLevel,
                   int stealthLevel,
                   int soldierLevel, int marauderLevel, int assassinLevel, int cavalierLevel, int martialArtistLevel, int shieldHeroLevel, int marksmanLevel,
                   int sorcererLevel, int primordialLevel, int hallowedLevel, int annulledLevel,
-                  double combatExp, double foragingExp, double miningExp, double fishingExp, double cultivatingExp, double craftingExp, double cookingExp,
+                  double combatExp, double foragingExp, double miningExp, double fishingExp, double farmingExp, double craftingExp, double cookingExp,
                   double acrobaticsExp, double stealthExp,
                   double soldierExp, double marauderExp, double assassinExp, double cavalierExp, double martialArtistExp, double shieldHeroExp, double marksmanExp,
                   double sorcererExp, double primordialExp, double hallowedExp, double annulledExp) {
@@ -77,7 +77,7 @@ public class Skills {
         this.foragingLevel = foragingLevel;
         this.miningLevel = miningLevel;
         this.fishingLevel = fishingLevel;
-        this.cultivatingLevel = cultivatingLevel;
+        this.farmingLevel = farmingLevel;
         this.craftingLevel = craftingLevel;
         this.cookingLevel = cookingLevel;
         this.acrobaticsLevel = acrobaticsLevel;
@@ -98,7 +98,7 @@ public class Skills {
         this.foragingExp = foragingExp;
         this.miningExp = miningExp;
         this.fishingExp = fishingExp;
-        this.cultivatingExp = cultivatingExp;
+        this.farmingExp = farmingExp;
         this.craftingExp = craftingExp;
         this.cookingExp = cookingExp;
         this.acrobaticsExp = acrobaticsExp;
@@ -120,7 +120,7 @@ public class Skills {
         this.exp2LvlUpForaging = 100;
         this.exp2LvlUpMining = 100;
         this.exp2LvlUpFishing = 100;
-        this.exp2LvlUpCultivating = 100;
+        this.exp2LvlUpFarming = 100;
         this.exp2LvlUpCrafting = 100;
         this.exp2LvlUpCooking = 100;
         this.exp2LvlUpAcrobatics = 100;
@@ -152,7 +152,7 @@ public class Skills {
             case "foraginglvl" -> foragingLevel += (int) amount;
             case "mininglvl" -> miningLevel += (int) amount;
             case "fishinglvl" -> fishingLevel += (int) amount;
-            case "cultivatinglvl" -> cultivatingLevel += (int) amount;
+            case "farminglvl" -> farmingLevel += (int) amount;
             case "craftinglvl" -> craftingLevel += (int) amount;
             case "cookinglvl" -> cookingLevel += (int) amount;
             case "acrobaticslvl" -> acrobaticsLevel += (int) amount;
@@ -173,7 +173,7 @@ public class Skills {
             case "foragingexp" -> foragingExp += amount;
             case "miningexp" -> miningExp += amount;
             case "fishingexp" -> fishingExp += amount;
-            case "cultivatingexp" -> cultivatingExp += amount;
+            case "farmingexp" -> farmingExp += amount;
             case "craftingexp" -> craftingExp += amount;
             case "cookingexp" -> cookingExp += amount;
             case "acrobaticsexp" -> acrobaticsExp += amount;
@@ -198,7 +198,7 @@ public class Skills {
             case "foraginglvl" -> foragingLevel -= (int) amount;
             case "mininglvl" -> miningLevel -= (int) amount;
             case "fishinglvl" -> fishingLevel -= (int) amount;
-            case "cultivatinglvl" -> cultivatingLevel -= (int) amount;
+            case "farminglvl" -> farmingLevel -= (int) amount;
             case "craftinglvl" -> craftingLevel -= (int) amount;
             case "cookinglvl" -> cookingLevel -= (int) amount;
             case "acrobaticslvl" -> acrobaticsLevel -= (int) amount;
@@ -219,7 +219,7 @@ public class Skills {
             case "foragingexp" -> foragingExp -= amount;
             case "miningexp" -> miningExp -= amount;
             case "fishingexp" -> fishingExp -= amount;
-            case "cultivatingexp" -> cultivatingExp -= amount;
+            case "farmingexp" -> farmingExp -= amount;
             case "craftingexp" -> craftingExp -= amount;
             case "cookingexp" -> cookingExp -= amount;
             case "acrobaticsexp" -> acrobaticsExp -= amount;
@@ -270,12 +270,12 @@ public class Skills {
         this.fishingLevel = fishingLevel;
     }
 
-    public int getCultivatingLevel() {
-        return cultivatingLevel;
+    public int getFarmingLevel() {
+        return farmingLevel;
     }
 
-    public void setCultivatingLevel(int cultivatingLevel) {
-        this.cultivatingLevel = cultivatingLevel;
+    public void setFarmingLevel(int farmingLevel) {
+        this.farmingLevel = farmingLevel;
     }
 
     public int getCraftingLevel() {
@@ -342,12 +342,12 @@ public class Skills {
         this.fishingExp = fishingExp;
     }
 
-    public double getCultivatingExp() {
-        return cultivatingExp;
+    public double getFarmingExp() {
+        return farmingExp;
     }
 
-    public void setCultivatingExp(double cultivatingExp) {
-        this.cultivatingExp = cultivatingExp;
+    public void setFarmingExp(double farmingExp) {
+        this.farmingExp = farmingExp;
     }
 
     public double getCraftingExp() {
@@ -414,12 +414,12 @@ public class Skills {
         this.exp2LvlUpFishing = exp2LvlUpFishing;
     }
 
-    public int getExp2LvlUpCultivating() {
-        return exp2LvlUpCultivating;
+    public int getExp2LvlUpFarming() {
+        return exp2LvlUpFarming;
     }
 
-    public void setExp2LvlUpCultivating(int exp2LvlUpCultivating) {
-        this.exp2LvlUpCultivating = exp2LvlUpCultivating;
+    public void setExp2LvlUpFarming(int exp2LvlUpFarming) {
+        this.exp2LvlUpFarming = exp2LvlUpFarming;
     }
 
     public int getExp2LvlUpCrafting() {

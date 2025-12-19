@@ -47,9 +47,9 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
                     prevExp = skills.getFishingExp();
                     skills.setFishingExp(newExp);
                 }
-                case "cultivating" -> {
-                    prevExp = skills.getCultivatingExp();
-                    skills.setCultivatingExp(newExp);
+                case "farming" -> {
+                    prevExp = skills.getFarmingExp();
+                    skills.setFarmingExp(newExp);
                 }
                 case "crafting" -> {
                     prevExp = skills.getCraftingExp();
@@ -122,7 +122,7 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
     @Override
     public @Nullable List<String> onTabComplete(@NotNull CommandSender commandSender, @NotNull Command command, @NotNull String s, @NotNull String[] strings) {
         if (strings.length == 1) {
-            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "cultivating", "crafting", "cooking", "acrobatics", "stealth",
+            return new ArrayList<>(List.of("combat", "foraging", "mining", "fishing", "farming", "crafting", "cooking", "acrobatics", "stealth",
                     "soldier", "marauder", "assassin", "cavalier", "martialartist", "shieldhero", "marksman", "sorcerer", "primordial",
                     "hallowed", "annulled")).stream()
                     .filter(string -> string.toLowerCase().startsWith(strings[0].toLowerCase()))

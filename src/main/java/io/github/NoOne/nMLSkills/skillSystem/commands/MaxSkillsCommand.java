@@ -9,16 +9,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.command.TabCompleter;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 public class MaxSkillsCommand implements CommandExecutor {
     private final SkillSetManager skillSetManager;
@@ -35,7 +30,7 @@ public class MaxSkillsCommand implements CommandExecutor {
                 put("combat", skills.getCombatLevel());
                 put("foraging", skills.getForagingLevel());
                 put("mining", skills.getMiningLevel());
-                put("cultivating", skills.getCultivatingLevel());
+                put("farming", skills.getFarmingLevel());
                 put("crafting", skills.getCraftingLevel());
                 put("cooking", skills.getCookingLevel());
                 put("acrobatics", skills.getAcrobaticsLevel());
@@ -56,7 +51,7 @@ public class MaxSkillsCommand implements CommandExecutor {
             skills.setCombatLevel(99);
             skills.setForagingLevel(99);
             skills.setMiningLevel(99);
-            skills.setCultivatingLevel(99);
+            skills.setFarmingLevel(99);
             skills.setCraftingLevel(99);
             skills.setCookingLevel(99);
             skills.setAcrobaticsLevel(99);
