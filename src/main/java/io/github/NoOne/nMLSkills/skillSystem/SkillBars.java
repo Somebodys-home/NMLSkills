@@ -261,8 +261,9 @@ public class SkillBars {
                 double progress = skills.getForagingExp() / skills.getExp2LvlUpForaging();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setForagingLevel(skills.getForagingLevel() + 1);
+                    skills.setForagingExp(progress * skills.getExp2LvlUpForaging());
                 }
 
                 foragingBar.setProgress(progress);
@@ -280,8 +281,9 @@ public class SkillBars {
                 double progress = skills.getMiningExp() / skills.getExp2LvlUpMining();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setMiningLevel(skills.getMiningLevel() + 1);
+                    skills.setMiningExp(progress * skills.getExp2LvlUpMining());
                 }
 
                 miningBar.setProgress(progress);
@@ -299,8 +301,9 @@ public class SkillBars {
                 double progress = skills.getFishingExp() / skills.getExp2LvlUpFishing();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setFishingLevel(skills.getFishingLevel() + 1);
+                    skills.setFishingExp(progress * skills.getExp2LvlUpFishing());
                 }
 
                 fishingBar.setProgress(progress);
@@ -318,8 +321,9 @@ public class SkillBars {
                 double progress = skills.getFarmingExp() / skills.getExp2LvlUpFarming();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setFarmingLevel(skills.getFarmingLevel() + 1);
+                    skills.setFarmingExp(progress * skills.getExp2LvlUpFarming());
                 }
 
                 farmingBar.setProgress(progress);
@@ -337,8 +341,9 @@ public class SkillBars {
                 double progress = skills.getCraftingExp() / skills.getExp2LvlUpCrafting();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setCraftingLevel(skills.getCraftingLevel() + 1);
+                    skills.setCraftingExp(progress * skills.getExp2LvlUpCrafting());
                 }
 
                 craftingBar.setProgress(progress);
@@ -356,8 +361,9 @@ public class SkillBars {
                 double progress = skills.getCookingExp() / skills.getExp2LvlUpCooking();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setCookingLevel(skills.getCookingLevel() + 1);
+                    skills.setCookingExp(progress * skills.getExp2LvlUpCooking());
                 }
 
                 cookingBar.setProgress(progress);
@@ -375,8 +381,9 @@ public class SkillBars {
                 double progress = skills.getAcrobaticsExp() / skills.getExp2LvlUpAcrobatics();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setAcrobaticsLevel(skills.getAcrobaticsLevel() + 1);
+                    skills.setAcrobaticsExp(progress * skills.getExp2LvlUpAcrobatics());
                 }
 
                 acrobaticsBar.setProgress(progress);
@@ -394,8 +401,9 @@ public class SkillBars {
                 double progress = skills.getStealthExp() / skills.getExp2LvlUpStealth();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setStealthLevel(skills.getStealthLevel() + 1);
+                    skills.setStealthExp(progress * skills.getExp2LvlUpStealth());
                 }
 
                 stealthBar.setProgress(progress);
@@ -413,8 +421,9 @@ public class SkillBars {
                 double progress = skills.getSoldierExp() / skills.getExp2LvlUpSoldier();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setSoldierLevel(skills.getSoldierLevel() + 1);
+                    skills.setSoldierExp(progress * skills.getExp2LvlUpSoldier());
                 }
 
                 soldierBar.setProgress(progress);
@@ -432,8 +441,9 @@ public class SkillBars {
                 double progress = skills.getMarauderExp() / skills.getExp2LvlUpMarauder();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setMarauderLevel(skills.getMarauderLevel() + 1);
+                    skills.setMarauderExp(progress * skills.getExp2LvlUpMarauder());
                 }
 
                 marauderBar.setProgress(progress);
@@ -451,8 +461,9 @@ public class SkillBars {
                 double progress = skills.getAssassinExp() / skills.getExp2LvlUpAssassin();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setAssassinLevel(skills.getAssassinLevel() + 1);
+                    skills.setAssassinExp(progress * skills.getExp2LvlUpAssassin());
                 }
 
                 assassinBar.setProgress(progress);
@@ -470,8 +481,9 @@ public class SkillBars {
                 double progress = skills.getCavalierExp() / skills.getExp2LvlUpCavalier();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setCavalierLevel(skills.getCavalierLevel() + 1);
+                    skills.setCavalierExp(progress * skills.getExp2LvlUpCavalier());
                 }
 
                 cavalierBar.setProgress(progress);
@@ -489,8 +501,9 @@ public class SkillBars {
                 double progress = skills.getMartialArtistExp() / skills.getExp2LvlUpMartialArtist();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setMartialArtistLevel(skills.getMartialArtistLevel() + 1);
+                    skills.setMartialArtistExp(progress * skills.getExp2LvlUpMartialArtist());
                 }
 
                 maBar.setProgress(progress);
@@ -508,8 +521,9 @@ public class SkillBars {
                 double progress = skills.getShieldHeroExp() / skills.getExp2LvlUpShieldHero();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setShieldHeroLevel(skills.getShieldHeroLevel() + 1);
+                    skills.setShieldHeroExp(progress * skills.getExp2LvlUpShieldHero());
                 }
 
                 shBar.setProgress(progress);
@@ -527,8 +541,9 @@ public class SkillBars {
                 double progress = skills.getMarksmanExp() / skills.getExp2LvlUpMarksman();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setMarksmanLevel(skills.getMarksmanLevel() + 1);
+                    skills.setMarksmanExp(progress * skills.getExp2LvlUpMarksman());
                 }
 
                 marksmanBar.setProgress(progress);
@@ -546,8 +561,9 @@ public class SkillBars {
                 double progress = skills.getSorcererExp() / skills.getExp2LvlUpSorcerer();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setSorcererLevel(skills.getSorcererLevel() + 1);
+                    skills.setSorcererExp(progress * skills.getExp2LvlUpSorcerer());
                 }
 
                 sorcererBar.setProgress(progress);
@@ -565,8 +581,9 @@ public class SkillBars {
                 double progress = skills.getHallowedExp() / skills.getExp2LvlUpHallowed();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setHallowedLevel(skills.getHallowedLevel() + 1);
+                    skills.setHallowedExp(progress * skills.getExp2LvlUpHallowed());
                 }
 
                 hallowedBar.setProgress(progress);
@@ -584,8 +601,9 @@ public class SkillBars {
                 double progress = skills.getAnnulledExp() / skills.getExp2LvlUpAnnulled();
 
                 if (progress >= 1) {
-                    progress = 0;
+                    progress -= 1;
                     skills.setAnnulledLevel(skills.getAnnulledLevel() + 1);
+                    skills.setAnnulledExp(progress * skills.getExp2LvlUpAnnulled());
                 }
 
                 annulledBar.setProgress(progress);
