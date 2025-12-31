@@ -264,6 +264,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setForagingLevel(skills.getForagingLevel() + 1);
                     skills.setForagingExp(progress * skills.getExp2LvlUpForaging());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 foragingBar.setProgress(progress);
@@ -284,6 +285,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setMiningLevel(skills.getMiningLevel() + 1);
                     skills.setMiningExp(progress * skills.getExp2LvlUpMining());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 miningBar.setProgress(progress);
@@ -304,6 +306,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setFishingLevel(skills.getFishingLevel() + 1);
                     skills.setFishingExp(progress * skills.getExp2LvlUpFishing());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 fishingBar.setProgress(progress);
@@ -324,6 +327,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setFarmingLevel(skills.getFarmingLevel() + 1);
                     skills.setFarmingExp(progress * skills.getExp2LvlUpFarming());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 farmingBar.setProgress(progress);
@@ -344,6 +348,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setCraftingLevel(skills.getCraftingLevel() + 1);
                     skills.setCraftingExp(progress * skills.getExp2LvlUpCrafting());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 craftingBar.setProgress(progress);
@@ -364,6 +369,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setCookingLevel(skills.getCookingLevel() + 1);
                     skills.setCookingExp(progress * skills.getExp2LvlUpCooking());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 cookingBar.setProgress(progress);
@@ -384,6 +390,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setAcrobaticsLevel(skills.getAcrobaticsLevel() + 1);
                     skills.setAcrobaticsExp(progress * skills.getExp2LvlUpAcrobatics());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 acrobaticsBar.setProgress(progress);
@@ -404,6 +411,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setStealthLevel(skills.getStealthLevel() + 1);
                     skills.setStealthExp(progress * skills.getExp2LvlUpStealth());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 stealthBar.setProgress(progress);
@@ -424,6 +432,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setSoldierLevel(skills.getSoldierLevel() + 1);
                     skills.setSoldierExp(progress * skills.getExp2LvlUpSoldier());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 soldierBar.setProgress(progress);
@@ -444,6 +453,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setMarauderLevel(skills.getMarauderLevel() + 1);
                     skills.setMarauderExp(progress * skills.getExp2LvlUpMarauder());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 marauderBar.setProgress(progress);
@@ -464,6 +474,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setAssassinLevel(skills.getAssassinLevel() + 1);
                     skills.setAssassinExp(progress * skills.getExp2LvlUpAssassin());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 assassinBar.setProgress(progress);
@@ -484,6 +495,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setCavalierLevel(skills.getCavalierLevel() + 1);
                     skills.setCavalierExp(progress * skills.getExp2LvlUpCavalier());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 cavalierBar.setProgress(progress);
@@ -504,6 +516,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setMartialArtistLevel(skills.getMartialArtistLevel() + 1);
                     skills.setMartialArtistExp(progress * skills.getExp2LvlUpMartialArtist());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 maBar.setProgress(progress);
@@ -524,6 +537,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setShieldHeroLevel(skills.getShieldHeroLevel() + 1);
                     skills.setShieldHeroExp(progress * skills.getExp2LvlUpShieldHero());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 shBar.setProgress(progress);
@@ -544,6 +558,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setMarksmanLevel(skills.getMarksmanLevel() + 1);
                     skills.setMarksmanExp(progress * skills.getExp2LvlUpMarksman());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 marksmanBar.setProgress(progress);
@@ -564,6 +579,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setSorcererLevel(skills.getSorcererLevel() + 1);
                     skills.setSorcererExp(progress * skills.getExp2LvlUpSorcerer());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 sorcererBar.setProgress(progress);
@@ -584,6 +600,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setHallowedLevel(skills.getHallowedLevel() + 1);
                     skills.setHallowedExp(progress * skills.getExp2LvlUpHallowed());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 hallowedBar.setProgress(progress);
@@ -604,6 +621,7 @@ public class SkillBars {
                     progress -= 1;
                     skills.setAnnulledLevel(skills.getAnnulledLevel() + 1);
                     skills.setAnnulledExp(progress * skills.getExp2LvlUpAnnulled());
+                    updateSkillBarLevel(player, skill);
                 }
 
                 annulledBar.setProgress(progress);
