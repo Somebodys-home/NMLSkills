@@ -8,12 +8,12 @@ import org.jetbrains.annotations.NotNull;
 public class SkillChangeEvent extends Event {
     private static final HandlerList handlers = new HandlerList();
     private final Player player;
-    private final String stat;
+    private final String skill;
     private final double change;
 
-    public SkillChangeEvent(@NotNull Player player, String stat, double change) {
+    public SkillChangeEvent(@NotNull Player player, String skill, double change) {
         this.player = player;
-        this.stat = stat;
+        this.skill = skill;
         this.change = change;
     }
 
@@ -30,8 +30,8 @@ public class SkillChangeEvent extends Event {
         return player;
     }
 
-    public String getStat() {
-        return stat;
+    public String getSkill() {
+        return skill;
     }
 
     public double getChange() {
