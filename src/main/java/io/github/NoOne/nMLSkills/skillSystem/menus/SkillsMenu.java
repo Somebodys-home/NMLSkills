@@ -37,100 +37,100 @@ public class SkillsMenu extends Menu {
 
         backButton = new ItemStack(Material.BARRIER);
         ItemMeta backButtonItemMeta = backButton.getItemMeta();
-        backButtonItemMeta.setDisplayName("§4§lExit");
+        backButtonItemMeta.setDisplayName("§c§lExit");
         backButton.setItemMeta(backButtonItemMeta);
 
-        combatSkillItem = new ItemStack(Material.IRON_SWORD); /// continue from here, make the rest of the expertise skills
+        combatSkillItem = new ItemStack(Material.IRON_SWORD);
         ItemMeta combatMeta = combatSkillItem.getItemMeta();
-        List<String> combatLore = new ArrayList<>();
         combatMeta.setDisplayName("§fLv. " + skills.getCombatLevel() + " §4§lWarrior");
-        combatLore.add("§7Click to learn more about combat!");
-        combatLore.add("");
-        combatLore.add("§7§oFIGHT TO LIVE, LIVE TO FIGHT!");
-        combatMeta.setLore(combatLore);
+        combatMeta.setLore(List.of(
+                "§7Click to learn more about combat!",
+                "",
+                "§8§oFIGHT TO LIVE, LIVE TO FIGHT!"
+        ));
         combatMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
         combatSkillItem.setItemMeta(combatMeta);
 
         foragingSkillItem = new ItemStack(Material.DARK_OAK_SAPLING);
         ItemMeta foragingMeta = foragingSkillItem.getItemMeta();
-        List<String> foragingLore = new ArrayList<>();
         foragingMeta.setDisplayName("§fLv. " + skills.getForagingLevel() + " §2§lForager");
-        foragingLore.add("§7Click to learn more about foraging!");
-        foragingLore.add("");
-        foragingLore.add("§7§oReject modernity, embrace hunting/gathering");
-        foragingMeta.setLore(foragingLore);
+        foragingMeta.setLore(List.of(
+                "§7Click to learn more about foraging!",
+                "",
+                "§8§oAll natural, baby!"
+        ));
         foragingSkillItem.setItemMeta(foragingMeta);
 
         miningSkillItem = new ItemStack(Material.DEEPSLATE_DIAMOND_ORE);
         ItemMeta miningMeta = miningSkillItem.getItemMeta();
-        List<String> miningLore = new ArrayList<>();
         miningMeta.setDisplayName("§fLv. " + skills.getMiningLevel() + " §3§lMiner");
-        miningLore.add("§7Click to learn more about mining!");
-        miningLore.add("");
-        miningLore.add("§7§oGet back in the mines little bro");
         miningMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        miningMeta.setLore(miningLore);
+        miningMeta.setLore(List.of(
+                "§7Click to learn more about mining!",
+                "",
+                "§8§oGet back in the mines little bro"
+        ));
         miningSkillItem.setItemMeta(miningMeta);
 
         fishingSkillItem = new ItemStack(Material.FISHING_ROD);
         ItemMeta fishingMeta = fishingSkillItem.getItemMeta();
-        List<String> fishingLore = new ArrayList<>();
         fishingMeta.setDisplayName("§fLv. " + skills.getFishingLevel() + " §b§lFisherman");
-        fishingLore.add("§7Click to learn more about fishing!");
-        fishingLore.add("");
-        fishingLore.add("§7§oYou too can become a bass pro!");
-        fishingMeta.setLore(fishingLore);
+        fishingMeta.setLore(List.of(
+                "§7Click to learn more about fishing!",
+                "",
+                "§8§oYou too can become a bass pro!"
+        ));
         fishingSkillItem.setItemMeta(fishingMeta);
 
         farmingSkillItem = new ItemStack(Material.WHEAT);
         ItemMeta farmingMeta = farmingSkillItem.getItemMeta();
-        List<String> farmingLore = new ArrayList<>();
         farmingMeta.setDisplayName("§fLv. " + skills.getFarmingLevel() + " §a§lFarmer");
-        farmingLore.add("§7Click to learn more about farming!");
-        farmingLore.add("");
-        farmingLore.add("§7§o\"It ain't much, but it's honest work.\"");
         farmingMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-        farmingMeta.setLore(farmingLore);
+        farmingMeta.setLore(List.of(
+                "§7Click to learn more about farming!",
+                "",
+                "§8§oIt ain't much, but it's honest work."
+        ));
         farmingSkillItem.setItemMeta(farmingMeta);
 
         craftingSkillItem = new ItemStack(Material.CRAFTER);
         ItemMeta craftingMeta = craftingSkillItem.getItemMeta();
-        List<String> craftingLore = new ArrayList<>();
         craftingMeta.setDisplayName("§fLv. " + skills.getCraftingLevel() + " §6§lCrafter");
-        craftingLore.add("§7Click to learn more about crafting!");
-        craftingLore.add("");
-        craftingLore.add("§7§oMinecraft. That's it, that's the joke.");
-        craftingMeta.setLore(craftingLore);
+        craftingMeta.setLore(List.of(
+                "§7Click to learn more about crafting!",
+                "",
+                "§8§oMinecraft. That's it, that's the joke."
+        ));
         craftingSkillItem.setItemMeta(craftingMeta);
 
         cookingSkillItem = new ItemStack(Material.FURNACE);
         ItemMeta cookingMeta = cookingSkillItem.getItemMeta();
-        List<String> cookingLore = new ArrayList<>();
         cookingMeta.setDisplayName("§fLv. " + skills.getCraftingLevel() + " §9§lChef");
-        cookingLore.add("§7Click to learn more about cooking!");
-        cookingLore.add("");
-        cookingLore.add("§7§oI SAID, LET. HIM. COOK.");
-        cookingMeta.setLore(cookingLore);
+        cookingMeta.setLore(List.of(
+                "§7Click to learn more about cooking!",
+                "",
+                "§8§oLET HIM COOK"
+        ));
         cookingSkillItem.setItemMeta(cookingMeta);
 
         acrobaticsSkillItem = new ItemStack(Material.FEATHER);
         ItemMeta acrobaticsMeta = acrobaticsSkillItem.getItemMeta();
-        List<String> acrobaticsLore = new ArrayList<>();
-        acrobaticsMeta.setDisplayName("§fLv. " + skills.getCraftingLevel() + " §7§lAcrobat");
-        acrobaticsLore.add("§7Click to learn more about acrobatics!");
-        acrobaticsLore.add("");
-        acrobaticsLore.add("§7§oWell it's more like parkour but whatever.");
-        acrobaticsMeta.setLore(acrobaticsLore);
+        acrobaticsMeta.setDisplayName("§fLv. " + skills.getAcrobaticsLevel() + " §7§lAcrobat");
+        acrobaticsMeta.setLore(List.of(
+                "§7Click to learn more about acrobatics!",
+                "",
+                "§8§oWell it's more like parkour but whatever."
+        ));
         acrobaticsSkillItem.setItemMeta(acrobaticsMeta);
 
         stealthSkillItem = new ItemStack(Material.SCULK);
         ItemMeta stealthMeta = stealthSkillItem.getItemMeta();
-        List<String> stealthLore = new ArrayList<>();
-        stealthMeta.setDisplayName("§fLv. " + skills.getCraftingLevel() + " §8§lSkulker");
-        stealthLore.add("§7Click to learn more about stealth!");
-        stealthLore.add("");
-        stealthLore.add("§7§o...It's hot sometimes.");
-        stealthMeta.setLore(stealthLore);
+        stealthMeta.setDisplayName("§fLv. " + skills.getStealthLevel() + " §8§lSkulker");
+        stealthMeta.setLore(List.of(
+                "§7Click to learn more about stealth!",
+                "",
+                "§8§oWho likes being around people anyways?"
+        ));
         stealthSkillItem.setItemMeta(stealthMeta);
     }
 

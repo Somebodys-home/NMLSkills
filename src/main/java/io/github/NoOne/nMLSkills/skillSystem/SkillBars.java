@@ -16,7 +16,8 @@ import java.util.UUID;
 public class SkillBars {
     private static NMLSkills nmlSkills;
     private BukkitTask skillBarsTask;
-    private static HashMap<UUID, BossBar[]> skillBars = new HashMap<>();
+    private static final HashMap<UUID, BossBar[]> skillBars = new HashMap<>();
+    private static final HashMap<UUID, BukkitTask> removeSkillBarTasks = new HashMap<>();
 
     public SkillBars(NMLSkills nmlSkills) {
         this.nmlSkills = nmlSkills;
@@ -29,25 +30,25 @@ public class SkillBars {
 
                 if (!skillBars.containsKey(uuid)) {
                     Skills skills = nmlSkills.getSkillSetManager().getSkillSet(uuid).getSkills();
-                    BossBar foragingBar = Bukkit.createBossBar("Lvl. §b" + skills.getForagingLevel() + "§r Foraging" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar miningBar = Bukkit.createBossBar("Lvl. §b" + skills.getMiningLevel() + "§r Mining" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar fishingBar = Bukkit.createBossBar("Lvl. §b" + skills.getFishingLevel() + "§r Fishing" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar farmingBar = Bukkit.createBossBar("Lvl. §b" + skills.getFarmingLevel() + "§r Farming" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar craftingBar = Bukkit.createBossBar("Lvl. §b" + skills.getCraftingLevel() + "§r Crafting" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar cookingBar = Bukkit.createBossBar("Lvl. §b" + skills.getCookingLevel() + "§r Cooking" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar acrobaticsBar = Bukkit.createBossBar("Lvl. §b" + skills.getAcrobaticsLevel() + "§r Acrobatics" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar stealthBar = Bukkit.createBossBar("Lvl. §b" + skills.getStealthLevel() + "§r Stealth" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar soldierBar = Bukkit.createBossBar("Lvl. §b" + skills.getSoldierLevel() + "§r Soldier" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar marauderBar = Bukkit.createBossBar("Lvl. §b" + skills.getMarauderLevel() + "§r Marauder" , BarColor.WHITE, BarStyle.SOLID);
+                    BossBar foragingBar = Bukkit.createBossBar("Lvl. §b" + skills.getForagingLevel() + "§r Forager" , BarColor.GREEN, BarStyle.SOLID);
+                    BossBar miningBar = Bukkit.createBossBar("Lvl. §b" + skills.getMiningLevel() + "§r Miner" , BarColor.BLUE, BarStyle.SOLID);
+                    BossBar fishingBar = Bukkit.createBossBar("Lvl. §b" + skills.getFishingLevel() + "§r Fisherman" , BarColor.BLUE, BarStyle.SOLID);
+                    BossBar farmingBar = Bukkit.createBossBar("Lvl. §b" + skills.getFarmingLevel() + "§r Farmer" , BarColor.GREEN, BarStyle.SOLID);
+                    BossBar craftingBar = Bukkit.createBossBar("Lvl. §b" + skills.getCraftingLevel() + "§r Crafter" , BarColor.YELLOW, BarStyle.SOLID);
+                    BossBar cookingBar = Bukkit.createBossBar("Lvl. §b" + skills.getCookingLevel() + "§r Chef" , BarColor.BLUE, BarStyle.SOLID);
+                    BossBar acrobaticsBar = Bukkit.createBossBar("Lvl. §b" + skills.getAcrobaticsLevel() + "§r Acrobat" , BarColor.WHITE, BarStyle.SOLID);
+                    BossBar stealthBar = Bukkit.createBossBar("Lvl. §b" + skills.getStealthLevel() + "§r Skulker" , BarColor.WHITE, BarStyle.SOLID);
+                    BossBar soldierBar = Bukkit.createBossBar("Lvl. §b" + skills.getSoldierLevel() + "§r Soldier" , BarColor.RED, BarStyle.SOLID);
+                    BossBar marauderBar = Bukkit.createBossBar("Lvl. §b" + skills.getMarauderLevel() + "§r Marauder" , BarColor.RED, BarStyle.SOLID);
                     BossBar assassinBar = Bukkit.createBossBar("Lvl. §b" + skills.getAssassinLevel() + "§r Assassin" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar cavalierBar = Bukkit.createBossBar("Lvl. §b" + skills.getCavalierLevel() + "§r Cavalier" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar martialArtistBar = Bukkit.createBossBar("Lvl. §b" + skills.getMartialArtistLevel() + "§r Martial Artist" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar shieldHeroBar = Bukkit.createBossBar("Lvl. §b" + skills.getShieldHeroLevel() + "§r Shield Hero" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar marksmanBar = Bukkit.createBossBar("Lvl. §b" + skills.getMarksmanLevel() + "§r Marksman" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar sorcererBar = Bukkit.createBossBar("Lvl. §b" + skills.getSorcererLevel() + "§r Sorcerer" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar primordialBar = Bukkit.createBossBar("Lvl. §b" + skills.getPrimordialLevel() + "§r Primordial" , BarColor.WHITE, BarStyle.SOLID);
+                    BossBar cavalierBar = Bukkit.createBossBar("Lvl. §b" + skills.getCavalierLevel() + "§r Cavalier" , BarColor.BLUE, BarStyle.SOLID);
+                    BossBar martialArtistBar = Bukkit.createBossBar("Lvl. §b" + skills.getMartialArtistLevel() + "§r Martial Artist" , BarColor.RED, BarStyle.SOLID);
+                    BossBar shieldHeroBar = Bukkit.createBossBar("Lvl. §b" + skills.getShieldHeroLevel() + "§r Shield Hero" , BarColor.BLUE, BarStyle.SOLID);
+                    BossBar marksmanBar = Bukkit.createBossBar("Lvl. §b" + skills.getMarksmanLevel() + "§r Marksman" , BarColor.GREEN, BarStyle.SOLID);
+                    BossBar sorcererBar = Bukkit.createBossBar("Lvl. §b" + skills.getSorcererLevel() + "§r Sorcerer" , BarColor.PINK, BarStyle.SOLID);
+                    BossBar primordialBar = Bukkit.createBossBar("Lvl. §b" + skills.getPrimordialLevel() + "§r Primordial" , BarColor.GREEN, BarStyle.SOLID);
                     BossBar hallowedBar = Bukkit.createBossBar("Lvl. §b" + skills.getHallowedLevel() + "§r Hallowed" , BarColor.WHITE, BarStyle.SOLID);
-                    BossBar annulledBar = Bukkit.createBossBar("Lvl. §b" + skills.getAnnulledLevel() + "§r Annulled" , BarColor.WHITE, BarStyle.SOLID);
+                    BossBar annulledBar = Bukkit.createBossBar("Lvl. §b" + skills.getAnnulledLevel() + "§r Annulled" , BarColor.PURPLE, BarStyle.SOLID);
 
                     foragingBar.setProgress(getSkillBarProgress(player, "foraging"));
                     miningBar.setProgress(getSkillBarProgress(player, "mining"));
@@ -57,17 +58,17 @@ public class SkillBars {
                     cookingBar.setProgress(getSkillBarProgress(player, "cooking"));
                     acrobaticsBar.setProgress(getSkillBarProgress(player, "acrobatics"));
                     stealthBar.setProgress(getSkillBarProgress(player, "stealth"));
-                    foragingBar.setProgress(getSkillBarProgress(player, "soldier"));
-                    miningBar.setProgress(getSkillBarProgress(player, "marauder"));
-                    fishingBar.setProgress(getSkillBarProgress(player, "assassin"));
-                    farmingBar.setProgress(getSkillBarProgress(player, "cavalier"));
-                    craftingBar.setProgress(getSkillBarProgress(player, "martialArtist"));
-                    cookingBar.setProgress(getSkillBarProgress(player, "shieldHero"));
-                    acrobaticsBar.setProgress(getSkillBarProgress(player, "marksman"));
-                    stealthBar.setProgress(getSkillBarProgress(player, "sorcerer"));
-                    cookingBar.setProgress(getSkillBarProgress(player, "primordial"));
-                    acrobaticsBar.setProgress(getSkillBarProgress(player, "hallowed"));
-                    stealthBar.setProgress(getSkillBarProgress(player, "annulled"));
+                    soldierBar.setProgress(getSkillBarProgress(player, "soldier"));
+                    marauderBar.setProgress(getSkillBarProgress(player, "marauder"));
+                    assassinBar.setProgress(getSkillBarProgress(player, "assassin"));
+                    cavalierBar.setProgress(getSkillBarProgress(player, "cavalier"));
+                    martialArtistBar.setProgress(getSkillBarProgress(player, "martialArtist"));
+                    shieldHeroBar.setProgress(getSkillBarProgress(player, "shieldHero"));
+                    marksmanBar.setProgress(getSkillBarProgress(player, "marksman"));
+                    sorcererBar.setProgress(getSkillBarProgress(player, "sorcerer"));
+                    primordialBar.setProgress(getSkillBarProgress(player, "primordial"));
+                    hallowedBar.setProgress(getSkillBarProgress(player, "hallowed"));
+                    annulledBar.setProgress(getSkillBarProgress(player, "annulled"));
                     skillBars.put(uuid, new BossBar[]{foragingBar, miningBar, fishingBar, farmingBar, craftingBar, cookingBar, acrobaticsBar, stealthBar,
                             soldierBar, marauderBar, assassinBar, cavalierBar, martialArtistBar, shieldHeroBar, marksmanBar, sorcererBar, primordialBar, hallowedBar, annulledBar});
                 } else {
@@ -143,13 +144,13 @@ public class SkillBars {
                         skillBars.get(uuid)[11].removePlayer(player);
                     }
 
-                    if (player.hasMetadata("martial artist_bar")) {
+                    if (player.hasMetadata("martial_artist_bar")) {
                         skillBars.get(uuid)[12].addPlayer(player);
                     } else {
                         skillBars.get(uuid)[12].removePlayer(player);
                     }
 
-                    if (player.hasMetadata("shield hero_bar")) {
+                    if (player.hasMetadata("shield_hero_bar")) {
                         skillBars.get(uuid)[13].addPlayer(player);
                     } else {
                         skillBars.get(uuid)[13].removePlayer(player);
@@ -204,8 +205,8 @@ public class SkillBars {
             player.removeMetadata("marauder_bar", nmlSkills);
             player.removeMetadata("assassin_bar", nmlSkills);
             player.removeMetadata("cavalier_bar", nmlSkills);
-            player.removeMetadata("martial artist_bar", nmlSkills);
-            player.removeMetadata("shield hero_bar", nmlSkills);
+            player.removeMetadata("martial_artist_bar", nmlSkills);
+            player.removeMetadata("shield_hero_bar", nmlSkills);
             player.removeMetadata("marksman_bar", nmlSkills);
             player.removeMetadata("sorcerer_bar", nmlSkills);
             player.removeMetadata("primordial_bar", nmlSkills);
@@ -268,14 +269,7 @@ public class SkillBars {
                 }
 
                 foragingBar.setProgress(progress);
-                player.setMetadata("foraging_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("foraging_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "foraging_bar");
             }
             case "miningexp" -> {
                 BossBar miningBar = skillBars.get(uuid)[1];
@@ -289,14 +283,7 @@ public class SkillBars {
                 }
 
                 miningBar.setProgress(progress);
-                player.setMetadata("mining_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("mining_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "mining_bar");
             }
             case "fishingexp" -> {
                 BossBar fishingBar = skillBars.get(uuid)[2];
@@ -310,14 +297,7 @@ public class SkillBars {
                 }
 
                 fishingBar.setProgress(progress);
-                player.setMetadata("fishing_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("fishing_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "fishing_bar");
             }
             case "farmingexp" -> {
                 BossBar farmingBar = skillBars.get(uuid)[3];
@@ -331,14 +311,7 @@ public class SkillBars {
                 }
 
                 farmingBar.setProgress(progress);
-                player.setMetadata("farming_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("farming_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "farming_bar");
             }
             case "craftingexp" -> {
                 BossBar craftingBar = skillBars.get(uuid)[4];
@@ -352,14 +325,7 @@ public class SkillBars {
                 }
 
                 craftingBar.setProgress(progress);
-                player.setMetadata("crafting_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("crafting_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "crafting_bar");
             }
             case "cookingexp" -> {
                 BossBar cookingBar = skillBars.get(uuid)[5];
@@ -373,14 +339,7 @@ public class SkillBars {
                 }
 
                 cookingBar.setProgress(progress);
-                player.setMetadata("cooking_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("cooking_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "cooking_bar");
             }
             case "acrobaticsexp" -> {
                 BossBar acrobaticsBar = skillBars.get(uuid)[6];
@@ -394,14 +353,7 @@ public class SkillBars {
                 }
 
                 acrobaticsBar.setProgress(progress);
-                player.setMetadata("acrobatics_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("acrobatics_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "acrobatics_bar");
             }
             case "stealthexp" -> {
                 BossBar stealthBar = skillBars.get(uuid)[7];
@@ -415,14 +367,7 @@ public class SkillBars {
                 }
 
                 stealthBar.setProgress(progress);
-                player.setMetadata("stealth_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("stealth_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "stealth_bar");
             }
             case "soldierexp" -> {
                 BossBar soldierBar = skillBars.get(uuid)[8];
@@ -436,14 +381,7 @@ public class SkillBars {
                 }
 
                 soldierBar.setProgress(progress);
-                player.setMetadata("soldier_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("soldier_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "soldier_bar");
             }
             case "marauderexp" -> {
                 BossBar marauderBar = skillBars.get(uuid)[9];
@@ -457,14 +395,7 @@ public class SkillBars {
                 }
 
                 marauderBar.setProgress(progress);
-                player.setMetadata("marauder_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("marauder_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "marauder_bar");
             }
             case "assassinexp" -> {
                 BossBar assassinBar = skillBars.get(uuid)[10];
@@ -478,14 +409,7 @@ public class SkillBars {
                 }
 
                 assassinBar.setProgress(progress);
-                player.setMetadata("assassin_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("assassin_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "assassin_bar");
             }
             case "cavalierexp" -> {
                 BossBar cavalierBar = skillBars.get(uuid)[11];
@@ -499,14 +423,7 @@ public class SkillBars {
                 }
 
                 cavalierBar.setProgress(progress);
-                player.setMetadata("cavalier_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("cavalier_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "cavalier_bar");
             }
             case "martialartistexp" -> {
                 BossBar maBar = skillBars.get(uuid)[12];
@@ -520,14 +437,7 @@ public class SkillBars {
                 }
 
                 maBar.setProgress(progress);
-                player.setMetadata("martial artist_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("martial artist_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "martial_artist_bar");
             }
             case "shieldheroexp" -> {
                 BossBar shBar = skillBars.get(uuid)[13];
@@ -541,14 +451,7 @@ public class SkillBars {
                 }
 
                 shBar.setProgress(progress);
-                player.setMetadata("shield hero_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("shield hero_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "shield_hero_bar");
             }
             case "marksmanexp" -> {
                 BossBar marksmanBar = skillBars.get(uuid)[14];
@@ -562,14 +465,7 @@ public class SkillBars {
                 }
 
                 marksmanBar.setProgress(progress);
-                player.setMetadata("marksman_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("marksman_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "marksman_bar");
             }
             case "sorcererexp" -> {
                 BossBar sorcererBar = skillBars.get(uuid)[15];
@@ -583,14 +479,7 @@ public class SkillBars {
                 }
 
                 sorcererBar.setProgress(progress);
-                player.setMetadata("sorcerer_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("sorcerer_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "sorcerer_bar");
             }
             case "hallowedexp" -> {
                 BossBar hallowedBar = skillBars.get(uuid)[16];
@@ -604,14 +493,7 @@ public class SkillBars {
                 }
 
                 hallowedBar.setProgress(progress);
-                player.setMetadata("hallowed_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("hallowed_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "hallowed_bar");
             }
             case "annulledexp" -> {
                 BossBar annulledBar = skillBars.get(uuid)[17];
@@ -625,14 +507,7 @@ public class SkillBars {
                 }
 
                 annulledBar.setProgress(progress);
-                player.setMetadata("annulled_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("annulled_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                showSkillBarTask(player, "annulled_bar");
             }
         }
     }
@@ -640,243 +515,149 @@ public class SkillBars {
     public static void updateSkillBarLevel(Player player, String skill) {
         UUID uuid = player.getUniqueId();
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
+        int skillBarsIndex = -1;
+        String metadataString = "";
+        int skillLevel = 0;
+        String title = "";
 
         switch (skill) {
-            case "combat" -> player.setLevel(skills.getCombatLevel());
+            case "combat" -> {
+                player.setLevel(skills.getCombatLevel());
+                return;
+            }
             case "foraging" -> {
-                BossBar foragingBar = skillBars.get(uuid)[0];
-
-                foragingBar.setTitle("Lvl. §b" + skills.getForagingLevel() + "§r Foraging");
-                player.setMetadata("foraging_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("foraging_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 0;
+                metadataString = "foraging_bar";
+                skillLevel = skills.getForagingLevel();
+                title = "Forager";
             }
             case "mining" -> {
-                BossBar miningBar = skillBars.get(uuid)[1];
-
-                miningBar.setTitle("Lvl. §b" + skills.getMiningLevel() + "§r Mining");
-                player.setMetadata("mining_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("mining_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 1;
+                metadataString = "mining_bar";
+                skillLevel = skills.getMiningLevel();
+                title = "Miner";
             }
             case "fishing" -> {
-                BossBar fishingBar = skillBars.get(uuid)[2];
-
-                fishingBar.setTitle("Lvl. §b" + skills.getFishingLevel() + "§r Fishing");
-                player.setMetadata("fishing_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("fishing_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 2;
+                metadataString = "fishing_bar";
+                skillLevel = skills.getFishingLevel();
+                title = "Fisher";
             }
             case "farming" -> {
-                BossBar farmingBar = skillBars.get(uuid)[3];
-
-                farmingBar.setTitle("Lvl. §b" + skills.getFarmingLevel() + "§r Farming");
-                player.setMetadata("farming_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("farming_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 3;
+                metadataString = "farming_bar";
+                skillLevel = skills.getFarmingLevel();
+                title = "Farmer";
             }
             case "crafting" -> {
-                BossBar craftingBar = skillBars.get(uuid)[4];
-
-                craftingBar.setTitle("Lvl. §b" + skills.getCraftingLevel() + "§r Crafting");
-                player.setMetadata("crafting_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("crafting_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 4;
+                metadataString = "crafting_bar";
+                skillLevel = skills.getCraftingLevel();
+                title = "Crafter";
             }
             case "cooking" -> {
-                BossBar cookingBar = skillBars.get(uuid)[5];
-
-                cookingBar.setTitle("Lvl. §b" + skills.getCookingLevel() + "§r Cooking");
-                player.setMetadata("cooking_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("cooking_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 5;
+                metadataString = "cooking_bar";
+                skillLevel = skills.getCookingLevel();
+                title = "Chef";
             }
             case "acrobatics" -> {
-                BossBar acrobaticsBar = skillBars.get(uuid)[6];
-
-                acrobaticsBar.setTitle("Lvl. §b" + skills.getAcrobaticsLevel() + "§r Acrobatics");
-                player.setMetadata("acrobatics_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("acrobatics_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 6;
+                metadataString = "acrobatics_bar";
+                skillLevel = skills.getAcrobaticsLevel();
+                title = "Acrobat";
             }
             case "stealth" -> {
-                BossBar stealthBar = skillBars.get(uuid)[7];
-
-                stealthBar.setTitle("Lvl. §b" + skills.getStealthLevel() + "§r Stealth");
-                player.setMetadata("stealth_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("stealth_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 7;
+                metadataString = "stealth_bar";
+                skillLevel = skills.getStealthLevel();
+                title = "Skulker";
             }
             case "soldier" -> {
-                BossBar soldierBar = skillBars.get(uuid)[8];
-
-                soldierBar.setTitle("Lvl. §b" + skills.getSoldierLevel() + "§r Soldier");
-                player.setMetadata("soldier_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("soldier_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 8;
+                metadataString = "soldier_bar";
+                skillLevel = skills.getSoldierLevel();
             }
             case "marauder" -> {
-                BossBar marauderBar = skillBars.get(uuid)[9];
-
-                marauderBar.setTitle("Lvl. §b" + skills.getMarauderLevel() + "§r Marauder");
-                player.setMetadata("marauder_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("marauder_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 9;
+                metadataString = "marauder_bar";
+                skillLevel = skills.getMarauderLevel();
             }
             case "assassin" -> {
-                BossBar assassinBar = skillBars.get(uuid)[10];
-
-                assassinBar.setTitle("Lvl. §b" + skills.getAssassinLevel() + "§r Assassin");
-                player.setMetadata("assassin_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("assassin_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 10;
+                metadataString = "assassin_bar";
+                skillLevel = skills.getAssassinLevel();
             }
             case "cavalier" -> {
-                BossBar cavalierBar = skillBars.get(uuid)[11];
-
-                cavalierBar.setTitle("Lvl. §b" + skills.getCavalierLevel() + "§r Cavalier");
-                player.setMetadata("cavalier_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("cavalier_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 11;
+                metadataString = "cavalier_bar";
+                skillLevel = skills.getCavalierLevel();
             }
             case "martialartist" -> {
-                BossBar maBar = skillBars.get(uuid)[12];
-
-                maBar.setTitle("Lvl. §b" + skills.getMartialArtistLevel() + "§r Martial Artist");
-                player.setMetadata("martial artist_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("martial artist_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 12;
+                metadataString =  "martial_artist_bar";
+                skillLevel = skills.getMartialArtistLevel();
             }
             case "shieldhero" -> {
-                BossBar shBar = skillBars.get(uuid)[13];
-
-                shBar.setTitle("Lvl. §b" + skills.getShieldHeroLevel() + "§r Shield Hero");
-                player.setMetadata("shield hero_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("shield hero_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 13;
+                metadataString = "shield_hero_bar";
+                skillLevel = skills.getShieldHeroLevel();
             }
             case "marksman" -> {
-                BossBar marksmanBar = skillBars.get(uuid)[14];
-
-                marksmanBar.setTitle("Lvl. §b" + skills.getMarksmanLevel() + "§r Marksman");
-                player.setMetadata("marksman_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("marksman_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 14;
+                metadataString = "marksman_bar";
+                skillLevel = skills.getMarksmanLevel();
             }
             case "sorcerer" -> {
-                BossBar sorcererBar = skillBars.get(uuid)[15];
-
-                sorcererBar.setTitle("Lvl. §b" + skills.getSorcererLevel() + "§r Sorcerer");
-                player.setMetadata("sorcerer_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("sorcerer_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 15;
+                metadataString = "sorcerer_bar";
+                skillLevel = skills.getSorcererLevel();
+            }
+            case "primordial" -> {
+                skillBarsIndex = 16;
+                metadataString = "primordial_bar";
+                skillLevel = skills.getPrimordialLevel();
             }
             case "hallowed" -> {
-                BossBar hallowedBar = skillBars.get(uuid)[16];
-
-                hallowedBar.setTitle("Lvl. §b" + skills.getHallowedLevel() + "§r Hallowed");
-                player.setMetadata("hallowed_bar", new FixedMetadataValue(nmlSkills, true));
-
-                new BukkitRunnable() {
-                    @Override
-                    public void run() {
-                        player.removeMetadata("hallowed_bar", nmlSkills);
-                    }
-                }.runTaskLater(nmlSkills, 60);
+                skillBarsIndex = 17;
+                metadataString = "hallowed_bar";
+                skillLevel = skills.getHallowedLevel();
             }
             case "annulled" -> {
-                BossBar annulledBar = skillBars.get(uuid)[17];
+                skillBarsIndex = 18;
+                metadataString = "annulled_bar";
+                skillLevel = skills.getAnnulledLevel();
+            }
+        }
 
-                annulledBar.setTitle("Lvl. §b" + skills.getAnnulledLevel() + "§r Annulled");
-                player.setMetadata("annulled_bar", new FixedMetadataValue(nmlSkills, true));
+        if (title.isEmpty()) {
+            title = skill.substring(0,1).toUpperCase() + skill.substring(1);
+        }
 
+        BossBar bossBar = skillBars.get(uuid)[skillBarsIndex];
+
+
+        bossBar.setTitle("Lvl. §b" + skillLevel + " §r" + title);
+        showSkillBarTask(player, metadataString);
+    }
+
+    private static void showSkillBarTask(Player player, String metadataString) {
+        UUID uuid = player.getUniqueId();
+
+        player.setMetadata(metadataString, new FixedMetadataValue(nmlSkills, true));
+
+        if (removeSkillBarTasks.containsKey(uuid)) {
+            removeSkillBarTasks.get(uuid).cancel();
+            removeSkillBarTasks.remove(uuid);
+        }
+
+        removeSkillBarTasks.put(uuid,
                 new BukkitRunnable() {
                     @Override
                     public void run() {
-                        player.removeMetadata("annulled_bar", nmlSkills);
+                        player.removeMetadata(metadataString, nmlSkills);
                     }
-                }.runTaskLater(nmlSkills, 60);
-            }
-        }
+                }.runTaskLater(nmlSkills, 60)
+        );
     }
 }
