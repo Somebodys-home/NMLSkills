@@ -26,14 +26,28 @@ public class SkillListener implements Listener {
     }
 
     @EventHandler
-    public void updateSkillBar(SkillChangeEvent event) {
-        switch (event.getSkill()) {
+    public void onSkillChange(SkillChangeEvent event) {
+        Player player = event.getPlayer();
+        String skill = event.getSkill();
+        int time = event.getTime();
+
+        skillSetManager.getSkillSet(player.getUniqueId()).getSkills().add2Skill(skill, event.getChange());
+
+        switch (skill) {
             case "combat", "foraging", "mining", "fishing", "farming", "crafting", "cooking", "acrobatics", "stealth", "soldier", "marauder", "assassin", "cavalier",
                  "martialartist", "shieldhero", "marksman", "sorcerer", "primordial", "hallowed", "annulled" ->
-                    SkillBars.updateSkillBarLevel(event.getPlayer(), event.getSkill());
+
+                    SkillBars.updateSkillBarLevel(player, skill);
             case "combatexp", "foragingexp", "miningexp", "fishingexp", "farmingexp", "craftingexp", "cookingexp", "acrobaticsexp", "stealthexp", "soldierexp",
-                 "marauderexp", "assassinexp", "cavalierexp", "martialartistexp", "shieldheroexp", "marksmanexp", "sorcererexp", "primordialexp", "hallowedexp", "annulledexp" ->
-                    SkillBars.updateSkillBarProgress(event.getPlayer(), event.getSkill());
+                 "marauderexp", "assassinexp", "cavalierexp", "martialartistexp", "shieldheroexp", "marksmanexp", "sorcererexp", "primordialexp", "hallowedexp",
+                 "annulledexp" -> {
+
+                if (time > 0) {
+                    SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), time);
+                } else {
+                    SkillBars.updateSkillBarProgress(player, skill);
+                }
+            }
         }
     }
 }

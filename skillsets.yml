@@ -4,7 +4,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     foragingLevel: 99
     miningLevel: 99
     fishingLevel: 1
-    farmingLevel: 21
+    farmingLevel: 23
     craftingLevel: 99
     cookingLevel: 99
     acrobaticsLevel: 99
@@ -24,10 +24,10 @@ cf942050-e942-4990-a113-e3df70b289be:
     foragingExp: 0.0
     miningExp: 0.0
     fishingExp: 0.0
-    farmingExp: 68.0
+    farmingExp: 25.0
     craftingExp: 0.0
     cookingExp: 0.0
-    acrobaticsExp: 0.0
+    acrobaticsExp: 52.0
     stealthExp: 0.0
     soldierExp: 0.0
     marauderExp: 0.0

@@ -10,11 +10,20 @@ public class SkillChangeEvent extends Event {
     private final Player player;
     private final String skill;
     private final double change;
+    private final int time; // in seconds
+
+    public SkillChangeEvent(@NotNull Player player, String skill, double change, int time) {
+        this.player = player;
+        this.skill = skill;
+        this.change = change;
+        this.time = time;
+    }
 
     public SkillChangeEvent(@NotNull Player player, String skill, double change) {
         this.player = player;
         this.skill = skill;
         this.change = change;
+        time = 0;
     }
 
     @Override
@@ -36,5 +45,9 @@ public class SkillChangeEvent extends Event {
 
     public double getChange() {
         return change;
+    }
+
+    public int getTime() {
+        return time;
     }
 }
