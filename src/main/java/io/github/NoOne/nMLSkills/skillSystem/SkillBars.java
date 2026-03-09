@@ -260,12 +260,10 @@ public class SkillBars {
             barProgress -= 1;
             skills.add2Skill(skill + "exp", -skills.getExpToLvlUpSkill(skill));
             // bar would be shown to the player in the method that updates the skill bar level
-            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill + "lvl", 1));
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill, 1));
         }
 
-        if (shouldUpdateBar) {
-            updateSkillBarLevel(player, skill);
-        } else {
+        if (!shouldUpdateBar) {
             showSkillBarTask(player, skill);
         }
 
