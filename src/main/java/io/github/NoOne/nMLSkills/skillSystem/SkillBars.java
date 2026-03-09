@@ -219,11 +219,8 @@ public class SkillBars {
     }
 
     public static void updateSkillBarLevel(Player player, String skill) {
-        UUID uuid = player.getUniqueId();
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
-        int skillBarsIndex = -1;
-        String metadataString = "";
-        int skillLevel = 0;
+        BossBar skillBar = getSkillBar(player, skill);
         String title = "";
 
         switch (skill) {
@@ -231,381 +228,48 @@ public class SkillBars {
                 player.setLevel(skills.getCombatLevel());
                 return;
             }
-            case "foraging" -> {
-                skillBarsIndex = 0;
-                metadataString = "foraging_bar";
-                skillLevel = skills.getForagingLevel();
-                title = "Forager";
-            }
-            case "mining" -> {
-                skillBarsIndex = 1;
-                metadataString = "mining_bar";
-                skillLevel = skills.getMiningLevel();
-                title = "Miner";
-            }
-            case "fishing" -> {
-                skillBarsIndex = 2;
-                metadataString = "fishing_bar";
-                skillLevel = skills.getFishingLevel();
-                title = "Fisher";
-            }
-            case "farming" -> {
-                skillBarsIndex = 3;
-                metadataString = "farming_bar";
-                skillLevel = skills.getFarmingLevel();
-                title = "Farmer";
-            }
-            case "crafting" -> {
-                skillBarsIndex = 4;
-                metadataString = "crafting_bar";
-                skillLevel = skills.getCraftingLevel();
-                title = "Crafter";
-            }
-            case "cooking" -> {
-                skillBarsIndex = 5;
-                metadataString = "cooking_bar";
-                skillLevel = skills.getCookingLevel();
-                title = "Chef";
-            }
-            case "acrobatics" -> {
-                skillBarsIndex = 6;
-                metadataString = "acrobatics_bar";
-                skillLevel = skills.getAcrobaticsLevel();
-                title = "Acrobat";
-            }
-            case "stealth" -> {
-                skillBarsIndex = 7;
-                metadataString = "stealth_bar";
-                skillLevel = skills.getStealthLevel();
-                title = "Skulker";
-            }
-            case "soldier" -> {
-                skillBarsIndex = 8;
-                metadataString = "soldier_bar";
-                skillLevel = skills.getSoldierLevel();
-            }
-            case "marauder" -> {
-                skillBarsIndex = 9;
-                metadataString = "marauder_bar";
-                skillLevel = skills.getMarauderLevel();
-            }
-            case "assassin" -> {
-                skillBarsIndex = 10;
-                metadataString = "assassin_bar";
-                skillLevel = skills.getAssassinLevel();
-            }
-            case "cavalier" -> {
-                skillBarsIndex = 11;
-                metadataString = "cavalier_bar";
-                skillLevel = skills.getCavalierLevel();
-            }
-            case "martialartist" -> {
-                skillBarsIndex = 12;
-                metadataString =  "martial_artist_bar";
-                skillLevel = skills.getMartialArtistLevel();
-            }
-            case "shieldhero" -> {
-                skillBarsIndex = 13;
-                metadataString = "shield_hero_bar";
-                skillLevel = skills.getShieldHeroLevel();
-            }
-            case "marksman" -> {
-                skillBarsIndex = 14;
-                metadataString = "marksman_bar";
-                skillLevel = skills.getMarksmanLevel();
-            }
-            case "sorcerer" -> {
-                skillBarsIndex = 15;
-                metadataString = "sorcerer_bar";
-                skillLevel = skills.getSorcererLevel();
-            }
-            case "primordial" -> {
-                skillBarsIndex = 16;
-                metadataString = "primordial_bar";
-                skillLevel = skills.getPrimordialLevel();
-            }
-            case "hallowed" -> {
-                skillBarsIndex = 17;
-                metadataString = "hallowed_bar";
-                skillLevel = skills.getHallowedLevel();
-            }
-            case "annulled" -> {
-                skillBarsIndex = 18;
-                metadataString = "annulled_bar";
-                skillLevel = skills.getAnnulledLevel();
-            }
+            case "foraging" -> title = "Forager";
+            case "mining" -> title = "Miner";
+            case "fishing" -> title = "Fisher";
+            case "farming" -> title = "Farmer";
+            case "crafting" -> title = "Crafter";
+            case "cooking" -> title = "Chef";
+            case "acrobatics" -> title = "Acrobat";
+            case "stealth" -> title = "Skulker";
         }
 
         if (title.isEmpty()) {
             title = skill.substring(0,1).toUpperCase() + skill.substring(1);
         }
 
-        BossBar bossBar = skillBars.get(uuid)[skillBarsIndex];
-
-
-        bossBar.setTitle("Lvl. §b" + skillLevel + " §r" + title);
-        showSkillBarTask(player, metadataString);
+        skillBar.setTitle("Lvl. §b" + skills.getSkillLevel(skill) + " §r" + title);
+        showSkillBarTask(player, skill);
     }
 
     public static void updateSkillBarProgress(Player player, String skill) {
+        skill = skill.replace("exp", "");
+
         UUID uuid = player.getUniqueId();
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(uuid).getSkills();
+        BossBar skillBar = getSkillBar(player, skill);
+        double barProgress = skills.getSkillExp(skill) / skills.getExpToLvlUpSkill(skill);
+        boolean shouldUpdateBar = false;
 
-        switch (skill) {
-            case "combatexp" -> player.setExp((float) (skills.getCombatExp() / skills.getExp2LvlUpCombat()));
-            case "foragingexp" -> {
-                BossBar foragingBar = skillBars.get(uuid)[0];
-                double progress = skills.getForagingExp() / skills.getExp2LvlUpForaging();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setForagingLevel(skills.getForagingLevel() + 1);
-                    skills.setForagingExp(progress * skills.getExp2LvlUpForaging());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                foragingBar.setProgress(progress);
-                showSkillBarTask(player, "foraging_bar");
-            }
-            case "miningexp" -> {
-                BossBar miningBar = skillBars.get(uuid)[1];
-                double progress = skills.getMiningExp() / skills.getExp2LvlUpMining();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setMiningLevel(skills.getMiningLevel() + 1);
-                    skills.setMiningExp(progress * skills.getExp2LvlUpMining());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                miningBar.setProgress(progress);
-                showSkillBarTask(player, "mining_bar");
-            }
-            case "fishingexp" -> {
-                BossBar fishingBar = skillBars.get(uuid)[2];
-                double progress = skills.getFishingExp() / skills.getExp2LvlUpFishing();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setFishingLevel(skills.getFishingLevel() + 1);
-                    skills.setFishingExp(progress * skills.getExp2LvlUpFishing());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                fishingBar.setProgress(progress);
-                showSkillBarTask(player, "fishing_bar");
-            }
-            case "farmingexp" -> {
-                BossBar farmingBar = skillBars.get(uuid)[3];
-                double progress = skills.getFarmingExp() / skills.getExp2LvlUpFarming();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setFarmingLevel(skills.getFarmingLevel() + 1);
-                    skills.setFarmingExp(progress * skills.getExp2LvlUpFarming());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                farmingBar.setProgress(progress);
-                showSkillBarTask(player, "farming_bar");
-            }
-            case "craftingexp" -> {
-                BossBar craftingBar = skillBars.get(uuid)[4];
-                double progress = skills.getCraftingExp() / skills.getExp2LvlUpCrafting();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setCraftingLevel(skills.getCraftingLevel() + 1);
-                    skills.setCraftingExp(progress * skills.getExp2LvlUpCrafting());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                craftingBar.setProgress(progress);
-                showSkillBarTask(player, "crafting_bar");
-            }
-            case "cookingexp" -> {
-                BossBar cookingBar = skillBars.get(uuid)[5];
-                double progress = skills.getCookingExp() / skills.getExp2LvlUpCooking();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setCookingLevel(skills.getCookingLevel() + 1);
-                    skills.setCookingExp(progress * skills.getExp2LvlUpCooking());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                cookingBar.setProgress(progress);
-                showSkillBarTask(player, "cooking_bar");
-            }
-            case "acrobaticsexp" -> {
-                BossBar acrobaticsBar = skillBars.get(uuid)[6];
-                double progress = skills.getAcrobaticsExp() / skills.getExp2LvlUpAcrobatics();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setAcrobaticsLevel(skills.getAcrobaticsLevel() + 1);
-                    skills.setAcrobaticsExp(progress * skills.getExp2LvlUpAcrobatics());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                acrobaticsBar.setProgress(progress);
-                showSkillBarTask(player, "acrobatics_bar");
-            }
-            case "stealthexp" -> {
-                BossBar stealthBar = skillBars.get(uuid)[7];
-                double progress = skills.getStealthExp() / skills.getExp2LvlUpStealth();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setStealthLevel(skills.getStealthLevel() + 1);
-                    skills.setStealthExp(progress * skills.getExp2LvlUpStealth());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                stealthBar.setProgress(progress);
-                showSkillBarTask(player, "stealth_bar");
-            }
-            case "soldierexp" -> {
-                BossBar soldierBar = skillBars.get(uuid)[8];
-                double progress = skills.getSoldierExp() / skills.getExp2LvlUpSoldier();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setSoldierLevel(skills.getSoldierLevel() + 1);
-                    skills.setSoldierExp(progress * skills.getExp2LvlUpSoldier());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                soldierBar.setProgress(progress);
-                showSkillBarTask(player, "soldier_bar");
-            }
-            case "marauderexp" -> {
-                BossBar marauderBar = skillBars.get(uuid)[9];
-                double progress = skills.getMarauderExp() / skills.getExp2LvlUpMarauder();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setMarauderLevel(skills.getMarauderLevel() + 1);
-                    skills.setMarauderExp(progress * skills.getExp2LvlUpMarauder());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                marauderBar.setProgress(progress);
-                showSkillBarTask(player, "marauder_bar");
-            }
-            case "assassinexp" -> {
-                BossBar assassinBar = skillBars.get(uuid)[10];
-                double progress = skills.getAssassinExp() / skills.getExp2LvlUpAssassin();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setAssassinLevel(skills.getAssassinLevel() + 1);
-                    skills.setAssassinExp(progress * skills.getExp2LvlUpAssassin());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                assassinBar.setProgress(progress);
-                showSkillBarTask(player, "assassin_bar");
-            }
-            case "cavalierexp" -> {
-                BossBar cavalierBar = skillBars.get(uuid)[11];
-                double progress = skills.getCavalierExp() / skills.getExp2LvlUpCavalier();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setCavalierLevel(skills.getCavalierLevel() + 1);
-                    skills.setCavalierExp(progress * skills.getExp2LvlUpCavalier());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                cavalierBar.setProgress(progress);
-                showSkillBarTask(player, "cavalier_bar");
-            }
-            case "martialartistexp" -> {
-                BossBar maBar = skillBars.get(uuid)[12];
-                double progress = skills.getMartialArtistExp() / skills.getExp2LvlUpMartialArtist();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setMartialArtistLevel(skills.getMartialArtistLevel() + 1);
-                    skills.setMartialArtistExp(progress * skills.getExp2LvlUpMartialArtist());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                maBar.setProgress(progress);
-                showSkillBarTask(player, "martial_artist_bar");
-            }
-            case "shieldheroexp" -> {
-                BossBar shBar = skillBars.get(uuid)[13];
-                double progress = skills.getShieldHeroExp() / skills.getExp2LvlUpShieldHero();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setShieldHeroLevel(skills.getShieldHeroLevel() + 1);
-                    skills.setShieldHeroExp(progress * skills.getExp2LvlUpShieldHero());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                shBar.setProgress(progress);
-                showSkillBarTask(player, "shield_hero_bar");
-            }
-            case "marksmanexp" -> {
-                BossBar marksmanBar = skillBars.get(uuid)[14];
-                double progress = skills.getMarksmanExp() / skills.getExp2LvlUpMarksman();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setMarksmanLevel(skills.getMarksmanLevel() + 1);
-                    skills.setMarksmanExp(progress * skills.getExp2LvlUpMarksman());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                marksmanBar.setProgress(progress);
-                showSkillBarTask(player, "marksman_bar");
-            }
-            case "sorcererexp" -> {
-                BossBar sorcererBar = skillBars.get(uuid)[15];
-                double progress = skills.getSorcererExp() / skills.getExp2LvlUpSorcerer();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setSorcererLevel(skills.getSorcererLevel() + 1);
-                    skills.setSorcererExp(progress * skills.getExp2LvlUpSorcerer());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                sorcererBar.setProgress(progress);
-                showSkillBarTask(player, "sorcerer_bar");
-            }
-            case "hallowedexp" -> {
-                BossBar hallowedBar = skillBars.get(uuid)[16];
-                double progress = skills.getHallowedExp() / skills.getExp2LvlUpHallowed();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setHallowedLevel(skills.getHallowedLevel() + 1);
-                    skills.setHallowedExp(progress * skills.getExp2LvlUpHallowed());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                hallowedBar.setProgress(progress);
-                showSkillBarTask(player, "hallowed_bar");
-            }
-            case "annulledexp" -> {
-                BossBar annulledBar = skillBars.get(uuid)[17];
-                double progress = skills.getAnnulledExp() / skills.getExp2LvlUpAnnulled();
-
-                if (progress >= 1) {
-                    progress -= 1;
-                    skills.setAnnulledLevel(skills.getAnnulledLevel() + 1);
-                    skills.setAnnulledExp(progress * skills.getExp2LvlUpAnnulled());
-                    updateSkillBarLevel(player, skill);
-                }
-
-                annulledBar.setProgress(progress);
-                showSkillBarTask(player, "annulled_bar");
-            }
+        while (barProgress >= 1) { // for when to level up from exp
+            shouldUpdateBar = true;
+            barProgress -= 1;
+            skills.add2Skill(skill + "exp", -skills.getExpToLvlUpSkill(skill));
+            // bar would be shown to the player in the method that updates the skill bar level
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill + "lvl", 1));
         }
+
+        if (shouldUpdateBar) {
+            updateSkillBarLevel(player, skill);
+        } else {
+            showSkillBarTask(player, skill);
+        }
+
+        skillBar.setProgress(barProgress);
     }
 
     public static void updateSkillBarProgressOverTime(Player player, String skill, double change, int time) {
@@ -882,8 +546,9 @@ public class SkillBars {
         }
     }
 
-    private static void showSkillBarTask(Player player, String metadataString) {
+    private static void showSkillBarTask(Player player, String skill) {
         UUID uuid = player.getUniqueId();
+        String metadataString = getSkillBarMetadataString(skill);
 
         player.setMetadata(metadataString, new FixedMetadataValue(nmlSkills, true));
 
@@ -905,33 +570,57 @@ public class SkillBars {
     public static double getSkillBarProgress(Player player, String skill) {
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
-        switch (skill) {
-            case "foraging" -> {
-                return skills.getForagingExp() / skills.getExp2LvlUpForaging();
-            }
-            case "mining" -> {
-                return skills.getMiningExp() / skills.getExp2LvlUpMining();
-            }
-            case "fishing" -> {
-                return skills.getFishingExp() / skills.getExp2LvlUpFishing();
-            }
-            case "farming" -> {
-                return skills.getFarmingExp() / skills.getExp2LvlUpFarming();
-            }
-            case "crafting" -> {
-                return skills.getCraftingExp() / skills.getExp2LvlUpCrafting();
-            }
-            case "cooking" -> {
-                return skills.getCookingExp() / skills.getExp2LvlUpCooking();
-            }
-            case "acrobatics" -> {
-                return skills.getAcrobaticsExp() / skills.getExp2LvlUpAcrobatics();
-            }
-            case "stealth" -> {
-                return skills.getStealthExp() / skills.getExp2LvlUpStealth();
-            }
-        }
+        return switch (skill) {
+            case "foraging" -> skills.getForagingExp() / skills.getExp2LvlUpForaging();
+            case "mining" -> skills.getMiningExp() / skills.getExp2LvlUpMining();
+            case "fishing" -> skills.getFishingExp() / skills.getExp2LvlUpFishing();
+            case "farming" -> skills.getFarmingExp() / skills.getExp2LvlUpFarming();
+            case "crafting" -> skills.getCraftingExp() / skills.getExp2LvlUpCrafting();
+            case "cooking" -> skills.getCookingExp() / skills.getExp2LvlUpCooking();
+            case "acrobatics" -> skills.getAcrobaticsExp() / skills.getExp2LvlUpAcrobatics();
+            case "stealth" -> skills.getStealthExp() / skills.getExp2LvlUpStealth();
+            default -> 0;
+        };
+    }
 
-        return 0;
+    public static String getSkillBarMetadataString(String skill) {
+        return switch (skill) {
+            case "foraging" -> "foraging_bar";
+            case "mining" -> "mining_bar";
+            case "fishing" -> "fishing_bar";
+            case "farming" -> "farming_bar";
+            case "crafting" -> "crafting_bar";
+            case "cooking" -> "cooking_bar";
+            case "acrobatics" -> "acrobatics_bar";
+            case "stealth" -> "stealth_bar";
+            default -> "";
+        };
+    }
+
+    private static BossBar getSkillBar(Player player, String skill) {
+        UUID uuid = player.getUniqueId();
+
+        return switch (skill) {
+            case "foraging" -> skillBars.get(uuid)[0];
+            case "mining" -> skillBars.get(uuid)[1];
+            case "fishing" -> skillBars.get(uuid)[2];
+            case "farming" -> skillBars.get(uuid)[3];
+            case "crafting" -> skillBars.get(uuid)[4];
+            case "cooking" -> skillBars.get(uuid)[5];
+            case "acrobatics" -> skillBars.get(uuid)[6];
+            case "stealth" -> skillBars.get(uuid)[7];
+            case "soldier" -> skillBars.get(uuid)[8];
+            case "marauder" -> skillBars.get(uuid)[9];
+            case "assassin" -> skillBars.get(uuid)[10];
+            case "cavalier" -> skillBars.get(uuid)[11];
+            case "martialartist" -> skillBars.get(uuid)[12];
+            case "shieldhero" -> skillBars.get(uuid)[13];
+            case "marksman" -> skillBars.get(uuid)[14];
+            case "sorcerer" -> skillBars.get(uuid)[15];
+            case "primordial" -> skillBars.get(uuid)[16];
+            case "hallowed" -> skillBars.get(uuid)[17];
+            case "annulled" -> skillBars.get(uuid)[18];
+            default -> null;
+        };
     }
 }

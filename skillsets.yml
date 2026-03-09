@@ -1,7 +1,7 @@
 cf942050-e942-4990-a113-e3df70b289be:
   skills:
     combatLevel: 1
-    foragingLevel: 99
+    foragingLevel: 1
     miningLevel: 99
     fishingLevel: 1
     farmingLevel: 23
@@ -21,13 +21,13 @@ cf942050-e942-4990-a113-e3df70b289be:
     hallowedLevel: 99
     annulledLevel: 99
     combatExp: 0.0
-    foragingExp: 0.0
+    foragingExp: 50.0
     miningExp: 0.0
     fishingExp: 0.0
     farmingExp: 25.0
     craftingExp: 0.0
     cookingExp: 0.0
-    acrobaticsExp: 52.0
+    acrobaticsExp: 0.0
     stealthExp: 0.0
     soldierExp: 0.0
     marauderExp: 0.0

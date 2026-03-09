@@ -56,4 +56,8 @@ public final class NMLSkills extends JavaPlugin {
     public SkillSetConfig getSkillProfileConfig() {
         return skillSetConfig;
     }
+
+    public SkillBars getSkillBars() {
+        return skillBars;
+    }
 }

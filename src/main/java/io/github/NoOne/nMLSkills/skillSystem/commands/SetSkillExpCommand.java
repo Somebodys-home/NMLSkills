@@ -27,93 +27,34 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
             Skills skills = skillSetManager.getSkillSet(player.getUniqueId()).getSkills();
+            String skill = args[0];
             double prevExp = 0;
             double newExp = Double.parseDouble(args[1]);
 
-            switch (args[0]) {
-                case "combat" -> {
-                    prevExp = skills.getCombatExp();
-                    skills.setCombatExp(newExp);
-                }
-                case "foraging" -> {
-                    prevExp = skills.getForagingExp();
-                    skills.setForagingExp(newExp);
-                }
-                case "mining" -> {
-                    prevExp = skills.getMiningExp();
-                    skills.setMiningExp(newExp);
-                }
-                case "fishing" -> {
-                    prevExp = skills.getFishingExp();
-                    skills.setFishingExp(newExp);
-                }
-                case "farming" -> {
-                    prevExp = skills.getFarmingExp();
-                    skills.setFarmingExp(newExp);
-                }
-                case "crafting" -> {
-                    prevExp = skills.getCraftingExp();
-                    skills.setCraftingExp(newExp);
-                }
-                case "cooking" -> {
-                    prevExp = skills.getCookingExp();
-                    skills.setCookingExp(newExp);
-                }
-                case "acrobatics" -> {
-                    prevExp = skills.getAcrobaticsExp();
-                    skills.setAcrobaticsExp(newExp);
-                }
-                case "stealth" -> {
-                    prevExp = skills.getStealthExp();
-                    skills.setStealthExp(newExp);
-                }
-                case "soldier" -> {
-                    prevExp = skills.getSoldierExp();
-                    skills.setSoldierExp(newExp);
-                }
-                case "marauder" -> {
-                    prevExp = skills.getMarauderExp();
-                    skills.setMarauderExp(newExp);
-                }
-                case "assassin" -> {
-                    prevExp = skills.getAssassinExp();
-                    skills.setAssassinExp(newExp);
-                }
-                case "cavalier" -> {
-                    prevExp = skills.getCavalierExp();
-                    skills.setCavalierExp(newExp);
-                }
-                case "martialartist" -> {
-                    prevExp = skills.getMartialArtistExp();
-                    skills.setMartialArtistExp(newExp);
-                }
-                case "shieldhero" -> {
-                    prevExp = skills.getShieldHeroExp();
-                    skills.setShieldHeroExp(newExp);
-                }
-                case "marksman" -> {
-                    prevExp = skills.getMarksmanExp();
-                    skills.setMarksmanExp(newExp);
-                }
-                case "sorcerer" -> {
-                    prevExp = skills.getSorcererExp();
-                    skills.setSorcererExp(newExp);
-                }
-                case "primordial" -> {
-                    prevExp = skills.getPrimordialExp();
-                    skills.setPrimordialExp(newExp);
-                }
-                case "hallowed" -> {
-                    prevExp = skills.getHallowedExp();
-                    skills.setHallowedExp(newExp);
-                }
-                case "annulled" -> {
-                    prevExp = skills.getAnnulledExp();
-                    skills.setAnnulledExp(newExp);
-                }
+            switch (skill) {
+                case "combat" -> prevExp = skills.getCombatExp();
+                case "foraging" -> prevExp = skills.getForagingExp();
+                case "mining" -> prevExp = skills.getMiningExp();
+                case "fishing" -> prevExp = skills.getFishingExp();
+                case "farming" -> prevExp = skills.getFarmingExp();
+                case "crafting" -> prevExp = skills.getCraftingExp();
+                case "cooking" -> prevExp = skills.getCookingExp();
+                case "acrobatics" -> prevExp = skills.getAcrobaticsExp();
+                case "stealth" -> prevExp = skills.getStealthExp();
+                case "soldier" -> prevExp = skills.getSoldierExp();
+                case "marauder" -> prevExp = skills.getMarauderExp();
+                case "assassin" -> prevExp = skills.getAssassinExp();
+                case "cavalier" -> prevExp = skills.getCavalierExp();
+                case "martialartist" -> prevExp = skills.getMartialArtistExp();
+                case "shieldhero" -> prevExp = skills.getShieldHeroExp();
+                case "marksman" -> prevExp = skills.getMarksmanExp();
+                case "sorcerer" -> prevExp = skills.getSorcererExp();
+                case "primordial" -> prevExp = skills.getPrimordialExp();
+                case "hallowed" -> prevExp = skills.getHallowedExp();
+                case "annulled" -> prevExp = skills.getAnnulledExp();
             }
 
-            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0]+"exp", newExp - prevExp));
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill + "exp", newExp - prevExp));
         }
 
         return true;
