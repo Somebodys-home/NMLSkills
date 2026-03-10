@@ -5,6 +5,7 @@ import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetManager;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 
 public class SkillListener implements Listener {
     private SkillSetManager skillSetManager;
@@ -30,12 +31,24 @@ public class SkillListener implements Listener {
                  "marauderexp", "assassinexp", "cavalierexp", "martialartistexp", "shieldheroexp", "marksmanexp", "sorcererexp", "primordialexp", "hallowedexp",
                  "annulledexp" -> {
 
-                if (time > 0) {
-                    SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), time);
-                } else {
-                    SkillBars.updateSkillBarProgress(player, skill);
-                }
+                // todo: come back to this later
+//                if (time > 0) {
+//                    SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), time);
+//                } else {
+//                    SkillBars.updateSkillBarProgress(player, skill);
+//                }
+
+                SkillBars.updateSkillBarProgress(player, skill);
             }
+        }
+    }
+
+    @EventHandler
+    public void onPlayerJoin(PlayerJoinEvent event) {
+        Player player = event.getPlayer();
+
+        if (!SkillBars.getSkillBars().containsKey(player.getUniqueId())) {
+            SkillBars.createSkillBars(player);
         }
     }
 }

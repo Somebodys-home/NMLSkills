@@ -18,9 +18,7 @@ public final class NMLSkills extends JavaPlugin {
     @Override
     public void onEnable() {
         instance = this;
-
         skillBars = new SkillBars(this);
-        skillBars.start();
 
         skillSetConfig = new SkillSetConfig(this, "skillsets");
         skillSetConfig.loadConfig();
@@ -40,7 +38,7 @@ public final class NMLSkills extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        skillBars.stop();
+        skillBars.clearData();
         skillSetManager.saveSkillsToConfig(); // DO NOT CHANGE THE ORDER OF THIS, THAT SHIT EXPLODES
         skillSetConfig.saveConfig();
     }
