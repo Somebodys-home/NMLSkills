@@ -129,8 +129,6 @@ public class SkillBars {
     public static void updateSkillBarProgressOverTime(Player player, String skill, double expChange, int ticks) {
         skill = skill.replace("exp", "");
 
-
-
         UUID uuid = player.getUniqueId();
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(uuid).getSkills();
         BossBar skillBar = getSkillBar(player, skill);
@@ -140,7 +138,7 @@ public class SkillBars {
         String finalSkill = skill;
         new BukkitRunnable() {
             int timer = 0;
-            final double progressPerTick = barProgress / finalBarProgress;
+            final double progressPerTick = (finalBarProgress - barProgress) / ticks;
 
             @Override
             public void run() {
@@ -161,6 +159,8 @@ public class SkillBars {
                     Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, finalSkill, levelChange));
                 }
 
+                skillBar.setProgress(newProgress);
+
                 if (timer == ticks) {
                     cancel();
                 }
@@ -170,7 +170,34 @@ public class SkillBars {
         addShowSkillBarTask(player, skill);
     }
 
-    public static double getSkillBarProgress(Player player, String skill) {
+    public static BossBar getSkillBar(Player player, String skill) {
+        UUID uuid = player.getUniqueId();
+
+        return switch (skill) {
+            case "foraging" -> skillBars.get(uuid)[0];
+            case "mining" -> skillBars.get(uuid)[1];
+            case "fishing" -> skillBars.get(uuid)[2];
+            case "farming" -> skillBars.get(uuid)[3];
+            case "crafting" -> skillBars.get(uuid)[4];
+            case "cooking" -> skillBars.get(uuid)[5];
+            case "acrobatics" -> skillBars.get(uuid)[6];
+            case "stealth" -> skillBars.get(uuid)[7];
+            case "soldier" -> skillBars.get(uuid)[8];
+            case "marauder" -> skillBars.get(uuid)[9];
+            case "assassin" -> skillBars.get(uuid)[10];
+            case "cavalier" -> skillBars.get(uuid)[11];
+            case "martialartist" -> skillBars.get(uuid)[12];
+            case "shieldhero" -> skillBars.get(uuid)[13];
+            case "marksman" -> skillBars.get(uuid)[14];
+            case "sorcerer" -> skillBars.get(uuid)[15];
+            case "primordial" -> skillBars.get(uuid)[16];
+            case "hallowed" -> skillBars.get(uuid)[17];
+            case "annulled" -> skillBars.get(uuid)[18];
+            default -> null;
+        };
+    }
+
+    private static double getSkillBarProgress(Player player, String skill) {
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
         return switch (skill) {
@@ -205,33 +232,6 @@ public class SkillBars {
                 existingTasks.remove(skill);
             }
         }.runTaskLater(nmlSkills, 60L));
-    }
-
-    private static BossBar getSkillBar(Player player, String skill) {
-        UUID uuid = player.getUniqueId();
-
-        return switch (skill) {
-            case "foraging" -> skillBars.get(uuid)[0];
-            case "mining" -> skillBars.get(uuid)[1];
-            case "fishing" -> skillBars.get(uuid)[2];
-            case "farming" -> skillBars.get(uuid)[3];
-            case "crafting" -> skillBars.get(uuid)[4];
-            case "cooking" -> skillBars.get(uuid)[5];
-            case "acrobatics" -> skillBars.get(uuid)[6];
-            case "stealth" -> skillBars.get(uuid)[7];
-            case "soldier" -> skillBars.get(uuid)[8];
-            case "marauder" -> skillBars.get(uuid)[9];
-            case "assassin" -> skillBars.get(uuid)[10];
-            case "cavalier" -> skillBars.get(uuid)[11];
-            case "martialartist" -> skillBars.get(uuid)[12];
-            case "shieldhero" -> skillBars.get(uuid)[13];
-            case "marksman" -> skillBars.get(uuid)[14];
-            case "sorcerer" -> skillBars.get(uuid)[15];
-            case "primordial" -> skillBars.get(uuid)[16];
-            case "hallowed" -> skillBars.get(uuid)[17];
-            case "annulled" -> skillBars.get(uuid)[18];
-            default -> null;
-        };
     }
 
     public static HashMap<UUID, BossBar[]> getSkillBars() {
