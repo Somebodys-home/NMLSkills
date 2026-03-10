@@ -126,6 +126,50 @@ public class SkillBars {
         }
     }
 
+    public static void updateSkillBarProgressOverTime(Player player, String skill, double expChange, int ticks) {
+        skill = skill.replace("exp", "");
+
+
+
+        UUID uuid = player.getUniqueId();
+        Skills skills = nmlSkills.getSkillSetManager().getSkillSet(uuid).getSkills();
+        BossBar skillBar = getSkillBar(player, skill);
+        double barProgress = skills.getSkillExp(skill) / skills.getExpToLvlUpSkill(skill);
+        double finalBarProgress = (skills.getSkillExp(skill) + expChange) / skills.getExpToLvlUpSkill(skill);
+
+        String finalSkill = skill;
+        new BukkitRunnable() {
+            int timer = 0;
+            final double progressPerTick = barProgress / finalBarProgress;
+
+            @Override
+            public void run() {
+                timer++;
+
+                double newProgress = skillBar.getProgress() + progressPerTick;
+                boolean levelUp = false;
+                int levelChange = 0;
+
+                while (newProgress >= 1) { // for when to level up from exp
+                    levelUp = true;
+                    newProgress -= 1;
+                    levelChange++;
+                    skills.add2Skill(finalSkill + "exp", -skills.getExpToLvlUpSkill(finalSkill));
+                }
+
+                if (levelUp) { // bar would be shown to the player in the method that updates the skill bar level
+                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, finalSkill, levelChange));
+                }
+
+                if (timer == ticks) {
+                    cancel();
+                }
+            }
+        }.runTaskTimer(nmlSkills, 0L, 1L);
+
+        addShowSkillBarTask(player, skill);
+    }
+
     public static double getSkillBarProgress(Player player, String skill) {
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
 
@@ -147,25 +191,20 @@ public class SkillBars {
         HashMap<String, BukkitTask> existingTasks = showSkillBarTasks.computeIfAbsent(uuid, k -> new HashMap<>());
 
         // logic for whether skill bar is already shown to the player
-        if (!existingTasks.containsKey(skill)) { // if it isn't
+        if (!existingTasks.containsKey(skill)) { // if it isn't, show it
             getSkillBar(player, skill).addPlayer(player);
-            existingTasks.put(skill, new BukkitRunnable() {
-                @Override
-                public void run() {
-                    getSkillBar(player, skill).removePlayer(player);
-                    existingTasks.remove(skill);
-                }
-            }.runTaskLater(nmlSkills, 60L));
-        } else { // if it is
+        } else { // if it is, cancel the task and clear the data
             existingTasks.remove(skill).cancel();
-            existingTasks.put(skill, new BukkitRunnable() {
-                @Override
-                public void run() {
-                    getSkillBar(player, skill).removePlayer(player);
-                    existingTasks.remove(skill);
-                }
-            }.runTaskLater(nmlSkills, 60L));
         }
+
+        // adding showing bar task
+        existingTasks.put(skill, new BukkitRunnable() {
+            @Override
+            public void run() {
+                getSkillBar(player, skill).removePlayer(player);
+                existingTasks.remove(skill);
+            }
+        }.runTaskLater(nmlSkills, 60L));
     }
 
     private static BossBar getSkillBar(Player player, String skill) {

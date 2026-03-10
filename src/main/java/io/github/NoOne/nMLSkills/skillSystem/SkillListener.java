@@ -18,7 +18,7 @@ public class SkillListener implements Listener {
     public void onSkillChange(SkillChangeEvent event) {
         Player player = event.getPlayer();
         String skill = event.getSkill();
-        int time = event.getTime();
+        int ticks = event.getTicks();
 
         skillSetManager.getSkillSet(player.getUniqueId()).getSkills().add2Skill(skill, event.getChange());
 
@@ -32,13 +32,11 @@ public class SkillListener implements Listener {
                  "annulledexp" -> {
 
                 // todo: come back to this later
-//                if (time > 0) {
-//                    SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), time);
-//                } else {
-//                    SkillBars.updateSkillBarProgress(player, skill);
-//                }
-
-                SkillBars.updateSkillBarProgress(player, skill);
+                if (ticks > 0 && !skill.equals("combatexp")) {
+                    SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), ticks);
+                } else {
+                    SkillBars.updateSkillBarProgress(player, skill);
+                }
             }
         }
     }
