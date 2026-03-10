@@ -1,7 +1,6 @@
 package io.github.NoOne.nMLSkills.skillSetSystem;
 
 import io.github.NoOne.nMLSkills.NMLSkills;
-import io.github.NoOne.nMLSkills.skillSystem.ResetSkillsEvent;
 import io.github.NoOne.nMLSkills.skillSystem.Skills;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
@@ -24,8 +23,6 @@ public class SkillSetManager {
         SkillSet skillSet = new SkillSet(Skills.generateNewbieSkills());
 
         profileMap.put(player.getUniqueId(), skillSet);
-        Bukkit.getPluginManager().callEvent(new ResetSkillsEvent(player));
-
         return skillSet;
     }
 

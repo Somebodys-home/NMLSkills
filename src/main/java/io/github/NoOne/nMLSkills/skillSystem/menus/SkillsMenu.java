@@ -99,7 +99,7 @@ public class SkillsMenu extends Menu {
         craftingMeta.setLore(List.of(
                 "§7Click to learn more about crafting!",
                 "",
-                "§8§oMinecraft. That's it, that's the joke."
+                "§8§oMinecraft. That's it. That's the joke."
         ));
         craftingSkillItem.setItemMeta(craftingMeta);
 

@@ -13,7 +13,7 @@ import org.bukkit.scheduler.BukkitTask;
 import java.util.HashMap;
 import java.util.UUID;
 
-public class SkillBars {
+public class SkillBars { // todo: fix showing multiple skill bars at once
     private static NMLSkills nmlSkills;
     private BukkitTask skillBarsTask;
     private static final HashMap<UUID, BossBar[]> skillBars = new HashMap<>();
@@ -220,7 +220,6 @@ public class SkillBars {
 
     public static void updateSkillBarLevel(Player player, String skill) {
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
-        BossBar skillBar = getSkillBar(player, skill);
         String title = "";
 
         switch (skill) {
@@ -238,11 +237,11 @@ public class SkillBars {
             case "stealth" -> title = "Skulker";
         }
 
-        if (title.isEmpty()) {
+        if (title.isEmpty()) { // for the expertises
             title = skill.substring(0,1).toUpperCase() + skill.substring(1);
         }
 
-        skillBar.setTitle("Lvl. §b" + skills.getSkillLevel(skill) + " §r" + title);
+        getSkillBar(player, skill).setTitle("Lvl. §b" + skills.getSkillLevel(skill) + " §r" + title);
         showSkillBarTask(player, skill);
     }
 
@@ -251,23 +250,27 @@ public class SkillBars {
 
         UUID uuid = player.getUniqueId();
         Skills skills = nmlSkills.getSkillSetManager().getSkillSet(uuid).getSkills();
-        BossBar skillBar = getSkillBar(player, skill);
         double barProgress = skills.getSkillExp(skill) / skills.getExpToLvlUpSkill(skill);
-        boolean shouldUpdateBar = false;
+        boolean levelUp = false;
+        int levelChange = 0;
 
         while (barProgress >= 1) { // for when to level up from exp
-            shouldUpdateBar = true;
+            levelUp = true;
             barProgress -= 1;
+            levelChange++;
             skills.add2Skill(skill + "exp", -skills.getExpToLvlUpSkill(skill));
-            // bar would be shown to the player in the method that updates the skill bar level
-            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill, 1));
         }
 
-        if (!shouldUpdateBar) {
+        if (levelUp) { // bar would be shown to the player in the method that updates the skill bar level
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill, levelChange));
+        }
+
+        if (skill.equals("combat")) {
+            player.setExp((float) barProgress);
+        } else {
+            getSkillBar(player, skill).setProgress(barProgress);
             showSkillBarTask(player, skill);
         }
-
-        skillBar.setProgress(barProgress);
     }
 
     public static void updateSkillBarProgressOverTime(Player player, String skill, double change, int time) {

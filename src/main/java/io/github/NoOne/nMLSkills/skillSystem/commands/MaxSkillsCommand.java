@@ -48,26 +48,6 @@ public class MaxSkillsCommand implements CommandExecutor {
                 put("annulled", skills.getAnnulledLevel());
             }};
 
-            skills.setCombatLevel(99);
-            skills.setForagingLevel(99);
-            skills.setMiningLevel(99);
-            skills.setFarmingLevel(99);
-            skills.setCraftingLevel(99);
-            skills.setCookingLevel(99);
-            skills.setAcrobaticsLevel(99);
-            skills.setStealthLevel(99);
-            skills.setSoldierLevel(99);
-            skills.setMarauderLevel(99);
-            skills.setAssassinLevel(99);
-            skills.setCavalierLevel(99);
-            skills.setMartialArtistLevel(99);
-            skills.setShieldHeroLevel(99);
-            skills.setMarksmanLevel(99);
-            skills.setSorcererLevel(99);
-            skills.setPrimordialLevel(99);
-            skills.setHallowedLevel(99);
-            skills.setAnnulledLevel(99);
-
             for (Map.Entry<String, Integer> entry : prevSkillLevels.entrySet()) {
                 Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, entry.getKey(), 99 - entry.getValue()));
             }

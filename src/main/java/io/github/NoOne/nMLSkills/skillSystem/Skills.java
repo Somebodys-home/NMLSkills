@@ -148,27 +148,26 @@ public class Skills {
 
     public void add2Skill(String skill, double amount) {
         switch (skill.toLowerCase()) {
-            case "combatlvl" -> combatLevel += (int) amount;
-            case "foraginglvl" -> foragingLevel += (int) amount;
-            case "mininglvl" -> miningLevel += (int) amount;
-            case "fishinglvl" -> fishingLevel += (int) amount;
-            case "farminglvl" -> farmingLevel += (int) amount;
-            case "craftinglvl" -> craftingLevel += (int) amount;
-            case "cookinglvl" -> cookingLevel += (int) amount;
-            case "acrobaticslvl" -> acrobaticsLevel += (int) amount;
-            case "stealthlvl" -> stealthLevel += (int) amount;
-            case "soldierlvl" -> soldierLevel += (int) amount;
-            case "marauderlvl" -> marauderLevel += (int) amount;
-            case "assassinlvl" -> assassinLevel += (int) amount;
-            case "cavalierlvl" -> cavalierLevel += (int) amount;
-            case "martialartistlvl" -> martialArtistLevel += (int) amount;
-            case "shieldherolvl" -> shieldHeroLevel += (int) amount;
-            case "marksmanlvl" -> marksmanLevel += (int) amount;
-            case "sorcererlvl" -> sorcererLevel += (int) amount;
-            case "primordiallvl" -> primordialLevel += (int) amount;
-            case "hallowedlvl" -> hallowedLevel += (int) amount;
-            case "annulledlvl" -> annulledLevel += (int) amount;
-
+            case "combat" -> combatLevel += (int) amount;
+            case "foraging" -> foragingLevel += (int) amount;
+            case "mining" -> miningLevel += (int) amount;
+            case "fishing" -> fishingLevel += (int) amount;
+            case "farming" -> farmingLevel += (int) amount;
+            case "crafting" -> craftingLevel += (int) amount;
+            case "cooking" -> cookingLevel += (int) amount;
+            case "acrobatics" -> acrobaticsLevel += (int) amount;
+            case "stealth" -> stealthLevel += (int) amount;
+            case "soldier" -> soldierLevel += (int) amount;
+            case "marauder" -> marauderLevel += (int) amount;
+            case "assassin" -> assassinLevel += (int) amount;
+            case "cavalier" -> cavalierLevel += (int) amount;
+            case "martialartist" -> martialArtistLevel += (int) amount;
+            case "shieldhero" -> shieldHeroLevel += (int) amount;
+            case "marksman" -> marksmanLevel += (int) amount;
+            case "sorcerer" -> sorcererLevel += (int) amount;
+            case "primordial" -> primordialLevel += (int) amount;
+            case "hallowed" -> hallowedLevel += (int) amount;
+            case "annulled" -> annulledLevel += (int) amount;
             case "combatexp" -> combatExp += amount;
             case "foragingexp" -> foragingExp += amount;
             case "miningexp" -> miningExp += amount;
@@ -268,56 +267,6 @@ public class Skills {
             case "annulled" -> exp2LvlUpAnnulled;
             default -> 0;
         };
-    }
-
-    public void setSkillLevel(String skill, double amount) {
-        switch (skill.toLowerCase()) {
-            case "combat" -> combatLevel = (int) amount;
-            case "foraging" -> foragingLevel = (int) amount;
-            case "mining" -> miningLevel = (int) amount;
-            case "fishing" -> fishingLevel = (int) amount;
-            case "farming" -> farmingLevel = (int) amount;
-            case "crafting" -> craftingLevel = (int) amount;
-            case "cooking" -> cookingLevel = (int) amount;
-            case "acrobatics" -> acrobaticsLevel = (int) amount;
-            case "stealth" -> stealthLevel = (int) amount;
-            case "soldier" -> soldierLevel = (int) amount;
-            case "marauder" -> marauderLevel = (int) amount;
-            case "assassin" -> assassinLevel = (int) amount;
-            case "cavalier" -> cavalierLevel = (int) amount;
-            case "martialartist" -> martialArtistLevel = (int) amount;
-            case "shieldhero" -> shieldHeroLevel = (int) amount;
-            case "marksman" -> marksmanLevel = (int) amount;
-            case "sorcerer" -> sorcererLevel = (int) amount;
-            case "primordial" -> primordialLevel = (int) amount;
-            case "hallowed" -> hallowedLevel = (int) amount;
-            case "annulled" -> annulledLevel = (int) amount;
-        }
-    }
-
-    public void setSkillExp(String skill, double amount) {
-        switch (skill.toLowerCase()) {
-            case "combat" -> combatExp = amount;
-            case "foraging" -> foragingExp = amount;
-            case "mining" -> miningExp = amount;
-            case "fishing" -> fishingExp = amount;
-            case "farming" -> farmingExp = amount;
-            case "crafting" -> craftingExp = amount;
-            case "cooking" -> cookingExp = amount;
-            case "acrobatics" -> acrobaticsExp = amount;
-            case "stealth" -> stealthExp = amount;
-            case "soldier" -> soldierExp = amount;
-            case "marauder" -> marauderExp = amount;
-            case "assassin" -> assassinExp = amount;
-            case "cavalier" -> cavalierExp = amount;
-            case "martialartist" -> martialArtistExp = amount;
-            case "shieldhero" -> shieldHeroExp = amount;
-            case "marksman" -> marksmanExp = amount;
-            case "sorcerer" -> sorcererExp = amount;
-            case "primordial" -> primordialExp = amount;
-            case "hallowed" -> hallowedExp = amount;
-            case "annulled" -> annulledExp = amount;
-        }
     }
 
     public int getCombatLevel() {

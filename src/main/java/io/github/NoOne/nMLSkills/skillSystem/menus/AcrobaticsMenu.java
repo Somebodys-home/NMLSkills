@@ -12,7 +12,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-public class AcrobaticsMenu extends Menu {
+public class AcrobaticsMenu extends Menu { // todo: add info about combos
     private NMLSkills nmlSkills;
     private final Player player;
     private final int acrobaticsLevel;
@@ -43,8 +43,7 @@ public class AcrobaticsMenu extends Menu {
         ItemMeta maneuversBookItemMeta = maneuversBook.getItemMeta();
         maneuversBookItemMeta.setDisplayName("§f§nAcrobatics levels unlock maneuvers!");
         maneuversBookItemMeta.setLore(List.of(
-                "§7- Maneuvers are actions you can do to move around better",
-                "§7- Do a set of inputs quickly to do a maneuver",
+                "§7- Maneuvers are actions to move around faster",
                 "§7- Maneuvers use §6energy ⚡"
         ));
         maneuversBook.setItemMeta(maneuversBookItemMeta);

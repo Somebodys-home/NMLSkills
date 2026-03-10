@@ -28,93 +28,34 @@ public class SetSkillLevelCommand implements CommandExecutor, TabCompleter {
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, @NotNull String[] args) {
         if (sender instanceof Player player) {
             Skills skills = skillSetManager.getSkillSet(player.getUniqueId()).getSkills();
+            String skill = args[0];
             int prevLevel = 0;
             int newLevel = Integer.parseInt(args[1]);
 
-            switch (args[0]) {
-                case "combat" -> {
-                    prevLevel = skills.getCombatLevel();
-                    skills.setCombatLevel(newLevel);
-                }
-                case "foraging" -> {
-                    prevLevel = skills.getForagingLevel();
-                    skills.setForagingLevel(newLevel);
-                }
-                case "mining" -> {
-                    prevLevel = skills.getMiningLevel();
-                    skills.setMiningLevel(newLevel);
-                }
-                case "fishing" -> {
-                    prevLevel = skills.getFishingLevel();
-                    skills.setFishingLevel(newLevel);
-                }
-                case "farming" -> {
-                    prevLevel = skills.getFarmingLevel();
-                    skills.setFarmingLevel(newLevel);
-                }
-                case "crafting" -> {
-                    prevLevel = skills.getCraftingLevel();
-                    skills.setCraftingLevel(newLevel);
-                }
-                case "cooking" -> {
-                    prevLevel = skills.getCookingLevel();
-                    skills.setCookingLevel(newLevel);
-                }
-                case "acrobatics" -> {
-                    prevLevel = skills.getAcrobaticsLevel();
-                    skills.setAcrobaticsLevel(newLevel);
-                }
-                case "stealth" -> {
-                    prevLevel = skills.getStealthLevel();
-                    skills.setStealthLevel(newLevel);
-                }
-                case "soldier" -> {
-                    prevLevel = skills.getSoldierLevel();
-                    skills.setSoldierLevel(newLevel);
-                }
-                case "marauder" -> {
-                    prevLevel = skills.getMarauderLevel();
-                    skills.setMarauderLevel(newLevel);
-                }
-                case "assassin" -> {
-                    prevLevel = skills.getAssassinLevel();
-                    skills.setAssassinLevel(newLevel);
-                }
-                case "cavalier" -> {
-                    prevLevel = skills.getCavalierLevel();
-                    skills.setCavalierLevel(newLevel);
-                }
-                case "martialartist" -> {
-                    prevLevel = skills.getMartialArtistLevel();
-                    skills.setMartialArtistLevel(newLevel);
-                }
-                case "shieldhero" -> {
-                    prevLevel = skills.getShieldHeroLevel();
-                    skills.setShieldHeroLevel(newLevel);
-                }
-                case "marksman" -> {
-                    prevLevel = skills.getMarksmanLevel();
-                    skills.setMarksmanLevel(newLevel);
-                }
-                case "sorcerer" -> {
-                    prevLevel = skills.getSorcererLevel();
-                    skills.setSorcererLevel(newLevel);
-                }
-                case "primordial" -> {
-                    prevLevel = skills.getPrimordialLevel();
-                    skills.setPrimordialLevel(newLevel);
-                }
-                case "hallowed" -> {
-                    prevLevel = skills.getHallowedLevel();
-                    skills.setHallowedLevel(newLevel);
-                }
-                case "annulled" -> {
-                    prevLevel = skills.getAnnulledLevel();
-                    skills.setAnnulledLevel(newLevel);
-                }
+            switch (skill) {
+                case "combat" -> prevLevel = skills.getCombatLevel();
+                case "foraging" -> prevLevel = skills.getForagingLevel();
+                case "mining" -> prevLevel = skills.getMiningLevel();
+                case "fishing" -> prevLevel = skills.getFishingLevel();
+                case "farming" -> prevLevel = skills.getFarmingLevel();
+                case "crafting" -> prevLevel = skills.getCraftingLevel();
+                case "cooking" -> prevLevel = skills.getCookingLevel();
+                case "acrobatics" -> prevLevel = skills.getAcrobaticsLevel();
+                case "stealth" -> prevLevel = skills.getStealthLevel();
+                case "soldier" -> prevLevel = skills.getSoldierLevel();
+                case "marauder" -> prevLevel = skills.getMarauderLevel();
+                case "assassin" -> prevLevel = skills.getAssassinLevel();
+                case "cavalier" -> prevLevel = skills.getCavalierLevel();
+                case "martialartist" -> prevLevel = skills.getMartialArtistLevel();
+                case "shieldhero" -> prevLevel = skills.getShieldHeroLevel();
+                case "marksman" -> prevLevel = skills.getMarksmanLevel();
+                case "sorcerer" -> prevLevel = skills.getSorcererLevel();
+                case "primordial" -> prevLevel = skills.getPrimordialLevel();
+                case "hallowed" -> prevLevel = skills.getHallowedLevel();
+                case "annulled" -> prevLevel = skills.getAnnulledLevel();
             }
 
-            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, args[0], newLevel - prevLevel));
+            Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill, newLevel - prevLevel));
         }
 
         return true;
