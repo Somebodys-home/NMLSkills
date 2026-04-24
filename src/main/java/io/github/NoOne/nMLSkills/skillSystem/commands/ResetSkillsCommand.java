@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ResetSkillsCommand implements CommandExecutor {
-    private final SkillSetManager skillSetManager;
+    private SkillSetManager skillSetManager;
 
     public ResetSkillsCommand(NMLSkills nmlSkills) {
         this.skillSetManager = nmlSkills.getSkillSetManager();

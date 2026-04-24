@@ -2,14 +2,14 @@ package io.github.NoOne.nMLSkills.skillSystem.commands;
 
 import io.github.NoOne.menuSystem.MenuSystem;
 import io.github.NoOne.nMLSkills.NMLSkills;
-import io.github.NoOne.nMLSkills.skillSystem.menus.SkillsMenu;
+import io.github.NoOne.nMLSkills.skillSystem.skillMenus.SkillsMenu;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 public class SkillsCommand implements CommandExecutor {
-    private final NMLSkills nmlSkills;
+    private NMLSkills nmlSkills;
 
     public SkillsCommand(NMLSkills nmlSkills) {
         this.nmlSkills = nmlSkills;

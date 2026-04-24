@@ -14,8 +14,8 @@ import java.util.UUID;
 
 public class SkillBars {
     private static NMLSkills nmlSkills;
-    private static final HashMap<UUID, BossBar[]> skillBars = new HashMap<>();
-    private static final HashMap<UUID, HashMap<String, BukkitTask>> showSkillBarTasks = new HashMap<>();
+    private static HashMap<UUID, BossBar[]> skillBars = new HashMap<>();
+    private static HashMap<UUID, HashMap<String, BukkitTask>> showSkillBarTasks = new HashMap<>();
 
     public SkillBars(NMLSkills nmlSkills) {
         this.nmlSkills = nmlSkills;
@@ -138,7 +138,7 @@ public class SkillBars {
         String finalSkill = skill;
         new BukkitRunnable() {
             int timer = 0;
-            final double progressPerTick = (finalBarProgress - barProgress) / ticks;
+            double progressPerTick = (finalBarProgress - barProgress) / ticks;
 
             @Override
             public void run() {

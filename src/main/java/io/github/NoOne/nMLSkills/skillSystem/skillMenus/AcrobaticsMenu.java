@@ -1,8 +1,9 @@
-package io.github.NoOne.nMLSkills.skillSystem.menus;
+package io.github.NoOne.nMLSkills.skillSystem.skillMenus;
 
 import io.github.NoOne.menuSystem.Menu;
 import io.github.NoOne.menuSystem.MenuSystem;
 import io.github.NoOne.menuSystem.PlayerMenuUtility;
+import io.github.NoOne.nMLItems.ItemCreator;
 import io.github.NoOne.nMLSkills.NMLSkills;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
@@ -12,12 +13,10 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
-public class AcrobaticsMenu extends Menu { // todo: add info about combos
+public class AcrobaticsMenu extends Menu {
     private NMLSkills nmlSkills;
-    private final Player player;
-    private final int acrobaticsLevel;
-    private final ItemStack maneuversBook;
-    private final ItemStack backButton;
+    private Player player;
+    private ItemStack maneuversBook;
     private ItemStack roll;
     private ItemStack rollInformation;
     private ItemStack rollInformation2;
@@ -33,26 +32,22 @@ public class AcrobaticsMenu extends Menu { // todo: add info about combos
 
         this.nmlSkills = nmlSkills;
         player = playerMenuUtility.getOwner();
-        acrobaticsLevel = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills().getAcrobaticsLevel();
+        int acrobaticsLevel = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills().getAcrobaticsLevel();
+
         setRollItems();
         setLongJumpItems(acrobaticsLevel);
         setRailGrindItems(acrobaticsLevel);
         setWallRunItems(acrobaticsLevel);
 
-        maneuversBook = new ItemStack(Material.BOOK);
-        ItemMeta maneuversBookItemMeta = maneuversBook.getItemMeta();
-        maneuversBookItemMeta.setDisplayName("§f§nAcrobatics levels unlock maneuvers!");
-        maneuversBookItemMeta.setLore(List.of(
-                "§7- Maneuvers are actions to move around faster",
-                "§7- Maneuvers use §6energy ⚡"
-        ));
-        maneuversBook.setItemMeta(maneuversBookItemMeta);
-
-        backButton = new ItemStack(Material.BARRIER);
-        ItemMeta backButtonItemMeta = backButton.getItemMeta();
-        backButtonItemMeta.setDisplayName("§c§lGo Back");
-        backButton.setItemMeta(backButtonItemMeta);
-
+        maneuversBook = ItemCreator.createItem(
+                Material.BOOK,
+                "§f§nAcrobatics levels unlock maneuvers!",
+                List.of(
+                        "§7- Maneuvers are actions to move around faster",
+                        "§7- Maneuvers use §6energy ⚡",
+                        "§7- Maneuvers scale to your §fspeed ✦"
+                )
+        );
     }
 
     @Override
@@ -91,20 +86,20 @@ public class AcrobaticsMenu extends Menu { // todo: add info about combos
         inventory.setItem(32, railGrindInformation);
         inventory.setItem(25, wallRun);
         inventory.setItem(34, wallRunInformation);
-        inventory.setItem(53, backButton);
+        inventory.setItem(53, ItemCreator.createBackoutButton());
     }
 
     private void setRollItems() {
-        roll = new ItemStack(Material.WHITE_CONCRETE);
-        ItemMeta rollItemMeta = roll.getItemMeta();
-        rollItemMeta.setDisplayName("§f§lRoll");
-        rollItemMeta.setLore(List.of(
-                "§8§oAcrobatics Lv. 1 §r§a✔",
-                "",
-                "§7§o§nCost§r§7§o: §65⚡",
-                "§7§o§nInput§r§7§o: Shift (x2)"
-        ));
-        roll.setItemMeta(rollItemMeta);
+        roll = ItemCreator.createItem(
+                Material.WHITE_CONCRETE,
+                "§f§lRoll",
+                List.of(
+                        "§8§oAcrobatics Lv. 1 §r§a✔",
+                        "",
+                        "§7§o§nCost§r§7§o: §65⚡",
+                        "§7§o§nInput§r§7§o: Shift (x2)"
+                )
+        );
 
         rollInformation = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
         ItemMeta rollInformationItemMeta = rollInformation.getItemMeta();
@@ -147,7 +142,7 @@ public class AcrobaticsMenu extends Menu { // todo: add info about combos
         } else {
             longJump = new ItemStack(Material.RED_CONCRETE);
             ItemMeta longJumpItemMeta = longJump.getItemMeta();
-            longJumpItemMeta.setDisplayName("§4§l§mLong Jump");
+            longJumpItemMeta.setDisplayName("§4§l§kLong Jump");
             longJumpItemMeta.setLore(List.of(
                     "§8§oAcrobatics Lv. 10 §r§c✖"
             ));
@@ -185,7 +180,7 @@ public class AcrobaticsMenu extends Menu { // todo: add info about combos
         } else {
             railGrind = new ItemStack(Material.RED_CONCRETE);
             ItemMeta railGrindItemMeta = railGrind.getItemMeta();
-            railGrindItemMeta.setDisplayName("§4§l§mRail Grind");
+            railGrindItemMeta.setDisplayName("§4§l§kRail Grind");
             railGrindItemMeta.setLore(List.of(
                     "§8§oAcrobatics Lv. 20 §r§c✖"
             ));
@@ -225,7 +220,7 @@ public class AcrobaticsMenu extends Menu { // todo: add info about combos
         } else {
             wallRun = new ItemStack(Material.RED_CONCRETE);
             ItemMeta wallRunItemMeta = wallRun.getItemMeta();
-            wallRunItemMeta.setDisplayName("§4§l§mWall Run");
+            wallRunItemMeta.setDisplayName("§4§l§kWall Run");
             wallRunItemMeta.setLore(List.of(
                     "§8§oAcrobatics Lv. 30 §r§c✖"
             ));

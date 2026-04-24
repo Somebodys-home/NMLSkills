@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
-    private final SkillSetManager skillSetManager;
+    private SkillSetManager skillSetManager;
 
     public SetSkillExpCommand(NMLSkills nmlSkills) {
         this.skillSetManager = nmlSkills.getSkillSetManager();

@@ -6,11 +6,11 @@ import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
 
 public class SkillChangeEvent extends Event {
-    private static final HandlerList handlers = new HandlerList();
-    private final Player player;
-    private final String skill;
-    private final double change;
-    private final int ticks;
+    private static HandlerList handlers = new HandlerList();
+    private Player player;
+    private String skill;
+    private double change;
+    private int ticks;
 
     public SkillChangeEvent(@NotNull Player player, String skill, double change, int ticks) {
         this.player = player;

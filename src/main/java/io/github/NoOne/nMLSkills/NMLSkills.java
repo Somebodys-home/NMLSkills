@@ -9,7 +9,7 @@ import io.github.NoOne.nMLSkills.skillSystem.SkillBars;
 import io.github.NoOne.nMLSkills.skillSystem.SkillListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class NMLSkills extends JavaPlugin {
+public class NMLSkills extends JavaPlugin {
     private NMLSkills instance;
     private SkillSetManager skillSetManager;
     private SkillSetConfig skillSetConfig;

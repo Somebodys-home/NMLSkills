@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MaxSkillsCommand implements CommandExecutor {
-    private final SkillSetManager skillSetManager;
+    private SkillSetManager skillSetManager;
 
     public MaxSkillsCommand(NMLSkills nmlSkills) {
         this.skillSetManager = nmlSkills.getSkillSetManager();
