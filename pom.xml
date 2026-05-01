@@ -90,6 +90,7 @@
             <groupId>com.github.Somebodys-home</groupId>
             <artifactId>NMLItems</artifactId>
             <version>ed82ecca53</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 </project>
