@@ -135,7 +135,7 @@ public class SkillsMenu extends Menu {
                         "",
                         "§fClick to learn about acrobatics!",
                         "",
-                        "§8§oWell it's like parkour but whatever."
+                        "§8§oWell it's more like parkour but whatever."
                 )
         );
 

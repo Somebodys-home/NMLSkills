@@ -33,21 +33,19 @@ public class AcrobaticsMenu extends Menu {
         this.nmlSkills = nmlSkills;
         player = playerMenuUtility.getOwner();
         int acrobaticsLevel = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills().getAcrobaticsLevel();
-
-        setRollItems();
-        setLongJumpItems(acrobaticsLevel);
-        setRailGrindItems(acrobaticsLevel);
-        setWallRunItems(acrobaticsLevel);
-
         maneuversBook = ItemCreator.createItem(
                 Material.BOOK,
                 "§f§nAcrobatics levels unlock maneuvers!",
                 List.of(
                         "§7- Maneuvers are actions to move around faster",
-                        "§7- Maneuvers use §6energy ⚡",
-                        "§7- Maneuvers scale to your §fspeed ✦"
+                        "§7- Maneuvers use §6energy ⚡"
                 )
         );
+
+        setRollItems();
+        setLongJumpItems(acrobaticsLevel);
+        setRailGrindItems(acrobaticsLevel);
+        setWallRunItems(acrobaticsLevel);
     }
 
     @Override
@@ -101,135 +99,141 @@ public class AcrobaticsMenu extends Menu {
                 )
         );
 
-        rollInformation = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
-        ItemMeta rollInformationItemMeta = rollInformation.getItemMeta();
-        rollInformationItemMeta.setDisplayName("§f§lOn the ground:");
-        rollInformationItemMeta.setLore(List.of(
-                "§7- Roll in the direction you're moving in",
-                "§7- Puts all abilities on cooldown for 1.5s"
-        ));
-        rollInformation.setItemMeta(rollInformationItemMeta);
+        rollInformation = ItemCreator.createItem(
+                Material.LIGHT_GRAY_CONCRETE,
+                "§f§lOn the ground:",
+                List.of(
+                        "§7- Roll in the direction you're moving in",
+                        "§7- Puts all abilities on cooldown for 1.5s"
+                )
+        );
 
-        rollInformation2 = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
-        ItemMeta rollInformation2ItemMeta = rollInformation2.getItemMeta();
-        rollInformation2ItemMeta.setDisplayName("§f§lIn the air:");
-        rollInformation2ItemMeta.setLore(List.of(
-                "§7- Brace yourself for when you fall",
-                "§7- If you were to take fall damage, halve it and roll",
-                "§7- Puts all abilities on cooldown for 1.5s",
-                "§7- Does not use energy"
-        ));
-        rollInformation2.setItemMeta(rollInformation2ItemMeta);
+        rollInformation2 = ItemCreator.createItem(
+                Material.LIGHT_GRAY_CONCRETE,
+                "§f§lIn the air:",
+                List.of(
+                        "§7- Brace yourself for when you fall",
+                        "§7- If you were to take fall damage, halve it and roll",
+                        "§7- Puts all abilities on cooldown for 1.5s",
+                        "§7- Does not use energy"
+                )
+        );
     }
 
     private void setLongJumpItems(int acrobaticsLevel) {
         if (acrobaticsLevel >= 10) {
-            longJump = new ItemStack(Material.WHITE_CONCRETE);
-            ItemMeta longJumpItemMeta = longJump.getItemMeta();
-            longJumpItemMeta.setDisplayName("§f§lLong Jump");
-            longJumpItemMeta.setLore(List.of(
-                    "§8§oAcrobatics Lv. 10 §r§a✔",
-                    "",
-                    "§7§o§nCost§r§7§o: §615⚡",
-                    "§7§o§nInput§r§7§o: Run + Shift + Jump"
-            ));
-            longJump.setItemMeta(longJumpItemMeta);
+            longJump = ItemCreator.createItem(
+                    Material.WHITE_CONCRETE,
+                    "§f§lLong Jump",
+                    List.of(
+                            "§8§oAcrobatics Lv. 10 §r§a✔",
+                            "",
+                            "§7§o§nCost§r§7§o: §615⚡",
+                            "§7§o§nInput§r§7§o: Run + Shift + Jump"
+                    )
+            );
 
-            longJumpInformation = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
-            ItemMeta longJumpInformationItemMeta = longJumpInformation.getItemMeta();
-            longJumpInformationItemMeta.setDisplayName("§7- Ok so imagine a jump but more like...that way.");
-            longJumpInformation.setItemMeta(longJumpInformationItemMeta);
+            longJumpInformation = ItemCreator.createItem(
+                    Material.LIGHT_GRAY_CONCRETE,
+                    "§7- Ok so imagine a jump but more like...that way.",
+                    List.of(
+                            "§7- Distance scales to your §fspeed ✦"
+                    )
+            );
         } else {
-            longJump = new ItemStack(Material.RED_CONCRETE);
-            ItemMeta longJumpItemMeta = longJump.getItemMeta();
-            longJumpItemMeta.setDisplayName("§4§l§kLong Jump");
-            longJumpItemMeta.setLore(List.of(
-                    "§8§oAcrobatics Lv. 10 §r§c✖"
-            ));
-            longJump.setItemMeta(longJumpItemMeta);
+            longJump = ItemCreator.createItem(
+                    Material.WHITE_CONCRETE,
+                    "§4§l§kLong Jump",
+                    List.of(
+                            "§8§oAcrobatics Lv. 10 §r§c✖"
+                    )
+            );
 
-            longJumpInformation = new ItemStack(Material.RED_CONCRETE);
-            ItemMeta longJumpInformationItemMeta = longJumpInformation.getItemMeta();
-            longJumpInformationItemMeta.setDisplayName("§c§oYou have not learned this maneuver yet!");
-            longJumpInformation.setItemMeta(longJumpInformationItemMeta);
+            longJumpInformation = ItemCreator.createItem(
+                    Material.LIGHT_GRAY_CONCRETE,
+                    "§c§oYou have not learned this maneuver yet!",
+                    List.of()
+            );
         }
     }
 
     private void setRailGrindItems(int acrobaticsLevel) {
         if (acrobaticsLevel >= 20) {
-            railGrind = new ItemStack(Material.WHITE_CONCRETE);
-            ItemMeta railGrindItemMeta = railGrind.getItemMeta();
-            railGrindItemMeta.setDisplayName("§f§lRail Grind");
-            railGrindItemMeta.setLore(List.of(
-                    "§8§oAcrobatics Lv. 20 §r§a✔",
-                    "",
-                    "§7§o§nInput§r§7§o: Long Jump"
-            ));
-            railGrind.setItemMeta(railGrindItemMeta);
+            railGrind = ItemCreator.createItem(
+                    Material.WHITE_CONCRETE,
+                    "§f§lRail Grind",
+                    List.of(
+                            "§8§oAcrobatics Lv. 20 §r§a✔",
+                            "",
+                            "§7§o§nInput§r§7§o: Long Jump"
+                    )
+            );
 
-            railGrindInformation = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
-            ItemMeta railGrindInformationItemMeta = railGrindInformation.getItemMeta();
-            railGrindInformationItemMeta.setDisplayName("§f§lLand on a rail after a long jump");
-            railGrindInformationItemMeta.setLore(List.of(
-                    "§7- \"Rail\" = any fence or bar",
-                    "§7- Grind on connecting rails",
-                    "§7- Shift to stop / jump to §nrail jump",
-                    "§7- A rail jump counts as a long jump"
-            ));
-            railGrindInformation.setItemMeta(railGrindInformationItemMeta);
+            railGrindInformation = ItemCreator.createItem(
+                    Material.LIGHT_GRAY_CONCRETE,
+                    "§f§lLand on a rail after a long jump",
+                    List.of(
+                            "§7- \"Rail\" = any fence or bar",
+                            "§7- Grind on connecting rails",
+                            "§7- Shift to stop / jump to §nrail jump",
+                            "§7- A rail jump counts as a long jump"
+                    )
+            );
         } else {
-            railGrind = new ItemStack(Material.RED_CONCRETE);
-            ItemMeta railGrindItemMeta = railGrind.getItemMeta();
-            railGrindItemMeta.setDisplayName("§4§l§kRail Grind");
-            railGrindItemMeta.setLore(List.of(
-                    "§8§oAcrobatics Lv. 20 §r§c✖"
-            ));
-            railGrind.setItemMeta(railGrindItemMeta);
+            railGrind = ItemCreator.createItem(
+                    Material.RED_CONCRETE,
+                    "§4§l§kRail Grind",
+                    List.of(
+                            "§8§oAcrobatics Lv. 20 §r§c✖"
+                    )
+            );
 
-            railGrindInformation = new ItemStack(Material.RED_CONCRETE);
-            ItemMeta railGrindInformationItemMeta = railGrindInformation.getItemMeta();
-            railGrindInformationItemMeta.setDisplayName("§c§oYou have not learned this maneuver yet!");
-            railGrindInformation.setItemMeta(railGrindInformationItemMeta);
+            railGrindInformation = ItemCreator.createItem(
+                    Material.RED_CONCRETE,
+                    "§c§oYou have not learned this maneuver yet!",
+                    List.of()
+            );
         }
     }
 
     private void setWallRunItems(int acrobaticsLevel) {
         if (acrobaticsLevel >= 30) {
-            wallRun = new ItemStack(Material.WHITE_CONCRETE);
-            ItemMeta wallRunItemMeta = wallRun.getItemMeta();
-            wallRunItemMeta.setDisplayName("§f§lWall Run");
-            wallRunItemMeta.setLore(List.of(
-                    "§8§oAcrobatics Lv. 30 §r§a✔",
-                    "",
-                    "§7§o§nCost§r§7§o: §65⚡§r§7§o/s",
-                    "§7§o§nInput§r§7§o: Long Jump"
-            ));
-            wallRun.setItemMeta(wallRunItemMeta);
+            wallRun = ItemCreator.createItem(
+                    Material.WHITE_CONCRETE,
+                    "§f§lWall Run",
+                    List.of(
+                            "§8§oAcrobatics Lv. 30 §r§a✔",
+                            "",
+                            "§7§o§nCost§r§7§o: §65⚡§r§7§o/s",
+                            "§7§o§nInput§r§7§o: Long Jump"
+                    )
+            );
 
-            wallRunInformation = new ItemStack(Material.LIGHT_GRAY_CONCRETE);
-            ItemMeta wallRunInformationItemMeta = wallRunInformation.getItemMeta();
-            wallRunInformationItemMeta.setDisplayName("§f§lTouch a wall after a long jump");
-            wallRunInformationItemMeta.setLore(List.of(
-                    "§7- \"Wall\" = ≥2 blocks high surface",
-                    "§7- Run along the wall at the speed you hit it at",
-                    "§7- Reach the lip of the wall to pull yourself up",
-                    "§7- Shift to stop / jump to §nwall jump",
-                    "§7- A wall jump counts as a long jump"
-            ));
-            wallRunInformation.setItemMeta(wallRunInformationItemMeta);
+            wallRunInformation = ItemCreator.createItem(
+                    Material.LIGHT_GRAY_CONCRETE,
+                    "§f§lTouch a wall after a long jump",
+                    List.of(
+                            "§7- \"Wall\" = ≥2 blocks high surface",
+                            "§7- Run along the wall at the speed you hit it at",
+                            "§7- Reach the lip of the wall to pull yourself up",
+                            "§7- Shift to stop / jump to §nwall jump",
+                            "§7- A wall jump counts as a long jump"
+                    )
+            );
         } else {
-            wallRun = new ItemStack(Material.RED_CONCRETE);
-            ItemMeta wallRunItemMeta = wallRun.getItemMeta();
-            wallRunItemMeta.setDisplayName("§4§l§kWall Run");
-            wallRunItemMeta.setLore(List.of(
-                    "§8§oAcrobatics Lv. 30 §r§c✖"
-            ));
-            wallRun.setItemMeta(wallRunItemMeta);
+            wallRun = ItemCreator.createItem(
+                    Material.RED_CONCRETE,
+                    "§4§l§kWall Run",
+                    List.of(
+                            "§8§oAcrobatics Lv. 30 §r§c✖"
+                    )
+            );
 
-            wallRunInformation = new ItemStack(Material.RED_CONCRETE);
-            ItemMeta wallRunInformationItemMeta = wallRunInformation.getItemMeta();
-            wallRunInformationItemMeta.setDisplayName("§c§oYou have not learned this maneuver yet!");
-            wallRunInformation.setItemMeta(wallRunInformationItemMeta);
+            wallRunInformation = ItemCreator.createItem(
+                    Material.RED_CONCRETE,
+                    "§c§oYou have not learned this maneuver yet!",
+                    List.of()
+            );
         }
     }
 }
