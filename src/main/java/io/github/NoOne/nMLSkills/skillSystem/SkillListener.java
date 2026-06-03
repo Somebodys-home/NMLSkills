@@ -1,10 +1,13 @@
 package io.github.NoOne.nMLSkills.skillSystem;
 
+import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import io.github.NoOne.nMLSkills.NMLSkills;
 import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetManager;
+import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class SkillListener implements Listener {
@@ -47,6 +50,18 @@ public class SkillListener implements Listener {
 
         if (!SkillBars.getSkillBars().containsKey(player.getUniqueId())) {
             SkillBars.createSkillBars(player);
+        }
+    }
+
+    @EventHandler
+    public void dontPickupExperience(PlayerPickupExperienceEvent event) {
+        event.setCancelled(true);
+    }
+
+    @EventHandler
+    public void dontSpawnExperience(EntitySpawnEvent event) {
+        if (event.getEntity() instanceof ExperienceOrb) {
+            event.setCancelled(true);
         }
     }
 }
