@@ -1,14 +1,14 @@
 cf942050-e942-4990-a113-e3df70b289be:
   skills:
     combatLevel: 1
-    foragingLevel: 99
-    miningLevel: 99
+    foragingLevel: 1
+    miningLevel: 1
     fishingLevel: 1
-    farmingLevel: 99
-    craftingLevel: 99
-    cookingLevel: 99
-    acrobaticsLevel: 99
-    stealthLevel: 99
+    farmingLevel: 1
+    craftingLevel: 1
+    cookingLevel: 1
+    acrobaticsLevel: 1
+    stealthLevel: 1
     soldierLevel: 99
     marauderLevel: 99
     assassinLevel: 99

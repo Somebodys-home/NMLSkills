@@ -10,15 +10,13 @@ import io.github.NoOne.nMLSkills.skillSystem.SkillListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class NMLSkills extends JavaPlugin {
-    private NMLSkills instance;
+    private static NMLSkills instance;
     private SkillSetManager skillSetManager;
     private SkillSetConfig skillSetConfig;
-    private SkillBars skillBars;
 
     @Override
     public void onEnable() {
         instance = this;
-        skillBars = new SkillBars(this);
 
         skillSetConfig = new SkillSetConfig(this, "skillsets");
         skillSetConfig.loadConfig();
@@ -31,6 +29,7 @@ public class NMLSkills extends JavaPlugin {
         getCommand("setSkillLevel").setExecutor(new SetSkillLevelCommand(this));
         getCommand("setSkillExp").setExecutor(new SetSkillExpCommand(this));
         getCommand("maxSkills").setExecutor(new MaxSkillsCommand(this));
+        getCommand("maxExpertiseSkills").setExecutor(new MaxExpertiseSkillsCommand(this));
         getServer().getPluginManager().registerEvents(new SkillSetListener(this), this);
         getServer().getPluginManager().registerEvents(new SkillListener(this), this);
         getServer().getPluginManager().registerEvents(new MenuListener(), this);
@@ -38,12 +37,11 @@ public class NMLSkills extends JavaPlugin {
 
     @Override
     public void onDisable() {
-        skillBars.clearData();
         skillSetManager.saveSkillsToConfig(); // DO NOT CHANGE THE ORDER OF THIS, THAT SHIT EXPLODES
         skillSetConfig.saveConfig();
     }
 
-    public NMLSkills getInstance() {
+    public static NMLSkills getInstance() {
         return instance;
     }
 
@@ -53,9 +51,5 @@ public class NMLSkills extends JavaPlugin {
 
     public SkillSetConfig getSkillProfileConfig() {
         return skillSetConfig;
-    }
-
-    public SkillBars getSkillBars() {
-        return skillBars;
     }
 }

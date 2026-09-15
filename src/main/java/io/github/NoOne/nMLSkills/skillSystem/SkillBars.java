@@ -13,17 +13,9 @@ import java.util.HashMap;
 import java.util.UUID;
 
 public class SkillBars {
-    private static NMLSkills nmlSkills;
+    private static NMLSkills nmlSkills = NMLSkills.getInstance();
     private static HashMap<UUID, BossBar[]> skillBars = new HashMap<>();
     private static HashMap<UUID, HashMap<String, BukkitTask>> showSkillBarTasks = new HashMap<>();
-
-    public SkillBars(NMLSkills nmlSkills) {
-        this.nmlSkills = nmlSkills;
-    }
-
-    public void clearData() {
-        skillBars.clear();
-    }
 
     public static void createSkillBars(Player player) {
         UUID uuid = player.getUniqueId();

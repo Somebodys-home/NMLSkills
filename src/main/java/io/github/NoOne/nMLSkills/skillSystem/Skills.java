@@ -1,5 +1,10 @@
 package io.github.NoOne.nMLSkills.skillSystem;
 
+import org.bukkit.entity.Player;
+
+import java.util.HashMap;
+import java.util.List;
+
 public class Skills {
     private int combatLevel;
     private int foragingLevel;
@@ -189,6 +194,17 @@ public class Skills {
             case "hallowedexp" -> hallowedExp += amount;
             case "annulledexp" -> annulledExp += amount;
         }
+    }
+
+    public HashMap<String, Integer> getExpertiseSkills() {
+        List<String> expertiseSkills = List.of("soldier", "marauder", "assassin", "cavalier", "martialartist", "shieldhero", "marksman",
+                "sorcerer", "primordial", "hallowed", "annulled");
+
+        return new HashMap<>(){{
+            for(String skill : expertiseSkills) {
+                put(skill, getSkillLevel(skill));
+            }
+        }};
     }
 
     public int getSkillLevel(String skill) {

@@ -18,3 +18,6 @@ commands:
   maxSkills:
     description: Maxes the level of all the player's skills
     usage: /<command>
+  maxExpertiseSkills:
+    description: Maxes the level of all the player's expertise skills
+    usage: /<command>
