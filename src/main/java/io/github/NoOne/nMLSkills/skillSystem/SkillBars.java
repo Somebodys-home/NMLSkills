@@ -165,7 +165,7 @@ public class SkillBars {
     public static BossBar getSkillBar(Player player, String skill) {
         UUID uuid = player.getUniqueId();
 
-        return switch (skill) {
+        return switch (skill.toLowerCase().replace(" ", "")) {
             case "foraging" -> skillBars.get(uuid)[0];
             case "mining" -> skillBars.get(uuid)[1];
             case "fishing" -> skillBars.get(uuid)[2];

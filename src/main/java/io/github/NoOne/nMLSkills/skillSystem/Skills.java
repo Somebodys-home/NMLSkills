@@ -152,7 +152,7 @@ public class Skills {
     }
 
     public void add2Skill(String skill, double amount) {
-        switch (skill.toLowerCase()) {
+        switch (skill.toLowerCase().replace(" ", "")) {
             case "combat" -> combatLevel += (int) amount;
             case "foraging" -> foragingLevel += (int) amount;
             case "mining" -> miningLevel += (int) amount;
@@ -208,7 +208,7 @@ public class Skills {
     }
 
     public int getSkillLevel(String skill) {
-        return switch (skill.toLowerCase()) {
+        return switch (skill.toLowerCase().replace(" ", "")) {
             case "combat" -> combatLevel;
             case "foraging" -> foragingLevel;
             case "mining" -> miningLevel;
@@ -234,7 +234,7 @@ public class Skills {
     }
 
     public double getSkillExp(String skill) {
-        return switch (skill.toLowerCase()) {
+        return switch (skill.toLowerCase().replace(" ", "")) {
             case "combat" -> combatExp;
             case "foraging" -> foragingExp;
             case "mining" -> miningExp;
@@ -260,7 +260,7 @@ public class Skills {
     }
 
     public int getExpToLvlUpSkill(String skill) {
-        return switch (skill.toLowerCase()) {
+        return switch (skill.toLowerCase().replace(" ", "")) {
             case "combat" -> exp2LvlUpCombat;
             case "foraging" -> exp2LvlUpForaging;
             case "mining" -> exp2LvlUpMining;

@@ -3,6 +3,7 @@ package io.github.NoOne.nMLSkills.skillSystem;
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import io.github.NoOne.nMLSkills.NMLSkills;
 import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetManager;
+import org.bukkit.boss.BossBar;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -34,7 +35,6 @@ public class SkillListener implements Listener {
                  "marauderexp", "assassinexp", "cavalierexp", "martialartistexp", "shieldheroexp", "marksmanexp", "sorcererexp", "primordialexp", "hallowedexp",
                  "annulledexp" -> {
 
-                // todo: come back to this later
                 if (ticks > 0 && !skill.equals("combatexp")) {
                     SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), ticks);
                 } else {

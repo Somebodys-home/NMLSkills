@@ -29,17 +29,17 @@ cf942050-e942-4990-a113-e3df70b289be:
     cookingExp: 0.0
     acrobaticsExp: 0.0
     stealthExp: 0.0
-    soldierExp: 0.0
+    soldierExp: 75.0
     marauderExp: 0.0
     assassinExp: 0.0
-    cavalierExp: 0.0
-    martialArtistExp: 0.0
-    shieldHeroExp: 0.0
+    cavalierExp: 5.0
+    martialArtistExp: 5.0
+    shieldHeroExp: 10.0
     marksmanExp: 0.0
     sorcererExp: 0.0
-    primordialExp: 0.0
+    primordialExp: 3.75
     hallowedExp: 0.0
-    annulledExp: 0.0
+    annulledExp: 1.25
     exp2LvlUpCombat: 100
     exp2LvlUpForaging: 100
     exp2LvlUpMining: 100
