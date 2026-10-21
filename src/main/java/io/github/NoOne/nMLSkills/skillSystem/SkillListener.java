@@ -25,7 +25,7 @@ public class SkillListener implements Listener {
 
         skillSetManager.getSkillSet(player.getUniqueId()).getSkills().add2Skill(skill, event.getChange());
 
-        switch (skill.toLowerCase()) {
+        switch (skill.toLowerCase().replace(" ", "")) {
             case "combat", "foraging", "mining", "fishing", "farming", "crafting", "cooking", "acrobatics", "stealth", "soldier", "marauder", "assassin", "cavalier",
                  "martialartist", "shieldhero", "marksman", "sorcerer", "primordial", "hallowed", "annulled" ->
 
