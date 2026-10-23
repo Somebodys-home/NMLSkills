@@ -1,7 +1,9 @@
 name: NMLSkills
-version: '1.0'
+version: '${version}'
+
 main: io.github.NoOne.nMLSkills.NMLSkills
-api-version: '1.21'
+api-version: '26.3'
+load: POSTWORLD
 commands:
   skills:
     description: Opens your skills menu

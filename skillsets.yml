@@ -1,6 +1,6 @@
 cf942050-e942-4990-a113-e3df70b289be:
   skills:
-    combatLevel: 1
+    combatLevel: 50
     foragingLevel: 1
     miningLevel: 1
     fishingLevel: 1
@@ -14,10 +14,10 @@ cf942050-e942-4990-a113-e3df70b289be:
     assassinLevel: 99
     cavalierLevel: 99
     martialArtistLevel: 99
-    shieldHeroLevel: 99
+    shieldHeroLevel: 1
     marksmanLevel: 99
     sorcererLevel: 99
-    primordialLevel: 99
+    primordialLevel: 103
     hallowedLevel: 99
     annulledLevel: 99
     combatExp: 0.0
@@ -32,14 +32,14 @@ cf942050-e942-4990-a113-e3df70b289be:
     soldierExp: 75.0
     marauderExp: 0.0
     assassinExp: 0.0
-    cavalierExp: 5.0
+    cavalierExp: 15.0
     martialArtistExp: 5.0
-    shieldHeroExp: 10.0
+    shieldHeroExp: 40.0
     marksmanExp: 0.0
     sorcererExp: 0.0
-    primordialExp: 3.75
+    primordialExp: 11.25
     hallowedExp: 0.0
-    annulledExp: 1.25
+    annulledExp: 3.75
     exp2LvlUpCombat: 100
     exp2LvlUpForaging: 100
     exp2LvlUpMining: 100
