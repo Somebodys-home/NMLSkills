@@ -1,11 +1,10 @@
 package io.github.NoOne.nMLSkills.skillSystem.skillMenus;
 
 import io.github.NoOne.menuSystem.Menu;
-import io.github.NoOne.menuSystem.PlayerMenuUtility;
 import io.github.NoOne.nMLItems.ItemCreator;
 import io.github.NoOne.nMLSkills.NMLSkills;
+import io.github.NoOne.nMLSkills.skillSystem.Skill;
 import io.github.NoOne.nMLSkills.skillSystem.Skills;
-import io.github.NoOne.nMLSkills.skillSystem.skillMenus.farming.FarmingMenu;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
@@ -16,141 +15,13 @@ import java.util.List;
 
 public class SkillsMenu extends Menu {
     private NMLSkills nmlSkills;
-    private Player player;
-    private ItemStack combatSkillItem;
-    private ItemStack foragingSkillItem;
-    private ItemStack miningSkillItem;
-    private ItemStack fishingSkillItem;
-    private ItemStack farmingSkillItem;
-    private ItemStack craftingSkillItem;
-    private ItemStack cookingSkillItem;
-    private ItemStack acrobaticsSkillItem;
-    private ItemStack stealthSkillItem;
+    private Skills skills;
 
-    public SkillsMenu(PlayerMenuUtility playerMenuUtility, NMLSkills nmlSkills) {
-        super(playerMenuUtility);
+    public SkillsMenu(Player player, NMLSkills nmlSkills) {
+        super(player);
 
         this.nmlSkills = nmlSkills;
-        player = playerMenuUtility.getOwner();
-        Skills skills = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills();
-
-        double combatPercent = skills.getCombatExp() / skills.getExp2LvlUpCombat() * 100.0;
-        combatSkillItem = ItemCreator.createItem(
-                Material.IRON_SWORD,
-                "§fLv. " + skills.getCombatLevel() + " §4§lWarrior",
-                List.of(
-                        "§8" + skills.getCombatExp() + " / " + skills.getExp2LvlUpCombat() + " exp (" + combatPercent + "%)",
-                        "",
-                        "§fClick to learn about combat!",
-                        "",
-                        "§8§oFIGHT TO LIVE, LIVE TO FIGHT!"
-                )
-        );
-        combatSkillItem.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
-
-        double foragingPercent = skills.getForagingExp() / skills.getExp2LvlUpForaging() * 100.0;
-        foragingSkillItem = ItemCreator.createItem(
-                Material.DARK_OAK_SAPLING,
-                "§fLv. " + skills.getForagingLevel() + " §2§lForager",
-                List.of(
-                        "§8" + skills.getForagingExp() + " / " + skills.getExp2LvlUpForaging() + " exp (" + foragingPercent + "%)",
-                        "",
-                        "§fClick to learn about foraging!",
-                        "",
-                        "§8§oAll natural, baby!"
-                )
-        );
-
-        double miningPercent = skills.getMiningExp() / skills.getExp2LvlUpMining() * 100.0;
-        miningSkillItem = ItemCreator.createItem(
-                Material.DEEPSLATE_DIAMOND_ORE,
-                "§fLv. " + skills.getMiningLevel() + " §3§lMiner",
-                List.of(
-                        "§8" + skills.getMiningExp() + " / " + skills.getExp2LvlUpMining() + " exp (" + miningPercent + "%)",
-                        "",
-                        "§fClick to learn about mining!",
-                        "",
-                        "§8§oGet back in the mines little bro"
-                )
-        );
-
-        double fishingPercent = skills.getFishingExp() / skills.getExp2LvlUpFishing() * 100.0;
-        fishingSkillItem = ItemCreator.createItem(
-                Material.FISHING_ROD,
-                "§fLv. " + skills.getFishingLevel() + " §b§lFisherman",
-                List.of(
-                        "§8" + skills.getFishingExp() + " / " + skills.getExp2LvlUpFishing() + " exp (" + fishingPercent + "%)",
-                        "",
-                        "§fClick to learn about fishing!",
-                        "",
-                        "§8§oYou too can become a bass pro!"
-                )
-        );
-
-        double farmingPercent = skills.getFarmingExp() / skills.getExp2LvlUpFarming() * 100.0;
-        farmingSkillItem = ItemCreator.createItem(
-                Material.WHEAT,
-                "§fLv. " + skills.getFarmingLevel() + " §a§lFarmer",
-                List.of(
-                        "§8" + skills.getFarmingExp() + " / " + skills.getExp2LvlUpFarming() + " exp (" + farmingPercent + "%)",
-                        "",
-                        "§fClick to learn about farming!",
-                        "",
-                        "§8§oIt ain't much, but it's honest work."
-                )
-        );
-
-        double craftingPercent = skills.getCraftingExp() / skills.getExp2LvlUpCrafting() * 100.0;
-        craftingSkillItem = ItemCreator.createItem(
-                Material.CRAFTER,
-                "§fLv. " + skills.getCraftingLevel() + " §6§lCrafter",
-                List.of(
-                        "§8" + skills.getCraftingExp() + " / " + skills.getExp2LvlUpCrafting() + " exp (" + craftingPercent + "%)",
-                        "",
-                        "§fClick to learn about crafting!",
-                        "",
-                        "§8§oMinecraft. That's it. That's the joke."
-                )
-        );
-
-        double cookingPercent = skills.getCookingExp() / skills.getExp2LvlUpCooking() * 100.0;
-        cookingSkillItem = ItemCreator.createItem(
-                Material.FURNACE,
-                "§fLv. " + skills.getCookingLevel() + " §9§lChef",
-                List.of(
-                        "§8" + skills.getCookingExp() + " / " + skills.getExp2LvlUpCooking() + " exp (" + cookingPercent + "%)",
-                        "",
-                        "§fClick to learn about cooking!",
-                        "",
-                        "§8§oLET HIM COOK"
-                )
-        );
-
-        double acrobaticsPercent = skills.getAcrobaticsExp() / skills.getExp2LvlUpAcrobatics() * 100.0;
-        acrobaticsSkillItem = ItemCreator.createItem(
-                Material.FEATHER,
-                "§fLv. " + skills.getAcrobaticsLevel() + " §7§lAcrobat",
-                List.of(
-                        "§8" + skills.getAcrobaticsExp() + " / " + skills.getExp2LvlUpAcrobatics() + " exp (" + acrobaticsPercent + "%)",
-                        "",
-                        "§fClick to learn about acrobatics!",
-                        "",
-                        "§8§oWell it's more like parkour but whatever."
-                )
-        );
-
-        double stealthPercent = skills.getStealthExp() / skills.getExp2LvlUpStealth() * 100.0;
-        stealthSkillItem = ItemCreator.createItem(
-                Material.SCULK,
-                "§fLv. " + skills.getStealthLevel() + " §8§lSkulker",
-                List.of(
-                        "§8" + skills.getStealthExp() + " / " + skills.getExp2LvlUpStealth() + " exp (" + stealthPercent + "%)",
-                        "",
-                        "§fClick to learn about stealth!",
-                        "",
-                        "§8§oWho likes being around people anyways?"
-                )
-        );
+        skills = nmlSkills.getSaveSkillsManager().getSkills(player.getUniqueId());
     }
 
     @Override
@@ -168,8 +39,8 @@ public class SkillsMenu extends Menu {
         event.setCancelled(true);
 
         switch (event.getSlot()) {
-            case 25 -> new AcrobaticsMenu(playerMenuUtility, nmlSkills).open();
-            case 33 -> new FarmingMenu(playerMenuUtility, nmlSkills).open();
+            case 25 -> new AcrobaticsMenu(player, nmlSkills).open();
+            case 33 -> new FarmingMenu(player, nmlSkills).open();
             case 44 -> player.closeInventory();
         }
     }
@@ -181,6 +52,125 @@ public class SkillsMenu extends Menu {
 
     @Override
     public void setMenuItems() {
+        double combatPercent = skills.calculateExpPercent(Skill.COMBAT) * 100.0;
+        double foragingPercent = skills.calculateExpPercent(Skill.FORAGING) * 100.0;
+        double miningPercent = skills.calculateExpPercent(Skill.MINING) * 100.0;
+        double fishingPercent = skills.calculateExpPercent(Skill.FISHING) * 100.0;
+        double farmingPercent = skills.calculateExpPercent(Skill.FARMING) * 100.0;
+        double craftingPercent = skills.calculateExpPercent(Skill.CRAFTING) * 100.0;
+        double cookingPercent = skills.calculateExpPercent(Skill.COOKING) * 100.0;
+        double acrobaticsPercent = skills.calculateExpPercent(Skill.ACROBATICS) * 100.0;
+        double stealthPercent = skills.calculateExpPercent(Skill.STEALTH) * 100.0;
+
+        ItemStack combatSkillItem = ItemCreator.createItem(
+                Material.IRON_SWORD,
+                "§fLv. " + skills.getSkillLevel(Skill.COMBAT) + " §4§l" + Skill.COMBAT.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.COMBAT) + " / " + skills.calculateExpToLvlUpSkill(Skill.COMBAT) + " exp (" + combatPercent + "%)",
+                        "",
+                        "§fClick to learn about combat!",
+                        "",
+                        "§8§oFIGHT TO LIVE, LIVE TO FIGHT!"
+                )
+        );
+        combatSkillItem.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
+
+        ItemStack foragingSkillItem = ItemCreator.createItem(
+                Material.DARK_OAK_SAPLING,
+                "§fLv. " + skills.getSkillLevel(Skill.FORAGING) + " §2§l" + Skill.FORAGING.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.FORAGING) + " / " + skills.calculateExpToLvlUpSkill(Skill.FORAGING) + " exp (" + foragingPercent + "%)",
+                        "",
+                        "§fClick to learn about foraging!",
+                        "",
+                        "§8§oAll natural, baby!"
+                )
+        );
+
+        ItemStack miningSkillItem = ItemCreator.createItem(
+                Material.DEEPSLATE_DIAMOND_ORE,
+                "§fLv. " + skills.getSkillLevel(Skill.MINING) + " §3§l" + Skill.MINING.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.MINING) + " / " + skills.calculateExpToLvlUpSkill(Skill.MINING) + " exp (" + miningPercent + "%)",
+                        "",
+                        "§fClick to learn about mining!",
+                        "",
+                        "§8§oGet back in the mines little bro"
+                )
+        );
+
+        ItemStack fishingSkillItem = ItemCreator.createItem(
+                Material.FISHING_ROD,
+                "§fLv. " + skills.getSkillLevel(Skill.FISHING) + " §b§l" + Skill.FISHING.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.FISHING) + " / " + skills.calculateExpToLvlUpSkill(Skill.FISHING) + " exp (" + fishingPercent + "%)",
+                        "",
+                        "§fClick to learn about fishing!",
+                        "",
+                        "§8§oYou too can become a bass pro!"
+                )
+        );
+
+        ItemStack farmingSkillItem = ItemCreator.createItem(
+                Material.WHEAT,
+                "§fLv. " + skills.getSkillLevel(Skill.FARMING) + " §a§l" + Skill.FARMING.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.FARMING) + " / " + skills.calculateExpToLvlUpSkill(Skill.FARMING) + " exp (" + farmingPercent + "%)",
+                        "",
+                        "§fClick to learn about farming!",
+                        "",
+                        "§8§oIt ain't much, but it's honest work."
+                )
+        );
+
+        ItemStack craftingSkillItem = ItemCreator.createItem(
+                Material.CRAFTER,
+                "§fLv. " + skills.getSkillLevel(Skill.CRAFTING) + " §6§l" + Skill.CRAFTING.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.CRAFTING) + " / " + skills.calculateExpToLvlUpSkill(Skill.CRAFTING) + " exp (" + craftingPercent + "%)",
+                        "",
+                        "§fClick to learn about crafting!",
+                        "",
+                        "§8§oMinecraft. That's it. That's the joke."
+                )
+        );
+
+        ItemStack cookingSkillItem = ItemCreator.createItem(
+                Material.FURNACE,
+                "§fLv. " + skills.getSkillLevel(Skill.COOKING) + " §9§l" + Skill.COOKING.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.COOKING) + " / " + skills.calculateExpToLvlUpSkill(Skill.COOKING) + " exp (" + cookingPercent + "%)",
+                        "",
+                        "§fClick to learn about cooking!",
+                        "",
+                        "§8§oLET HIM COOK"
+                )
+        );
+
+        ItemStack acrobaticsSkillItem = ItemCreator.createItem(
+                Material.FEATHER,
+                "§fLv. " + skills.getSkillLevel(Skill.ACROBATICS) + " §7§l" + Skill.ACROBATICS.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.ACROBATICS) + " / " + skills.calculateExpToLvlUpSkill(Skill.ACROBATICS) + " exp (" + acrobaticsPercent + "%)",
+                        "",
+                        "§fClick to learn about acrobatics!",
+                        "",
+                        "§8§oWell it's more like parkour but whatever."
+                )
+        );
+
+        ItemStack stealthSkillItem = ItemCreator.createItem(
+                Material.SCULK,
+                "§fLv. " + skills.getSkillLevel(Skill.STEALTH) + " §8§l" + Skill.STEALTH.toTitle(),
+                List.of(
+                        "§8" + skills.getSkillExp(Skill.STEALTH) + " / " + skills.calculateExpToLvlUpSkill(Skill.STEALTH) + " exp (" + stealthPercent + "%)",
+                        "",
+                        "§fClick to learn about stealth!",
+                        "",
+                        "§8§oWho likes being around people anyways?"
+                )
+        );
+
         inventory.setItem(4, craftingSkillItem);
         inventory.setItem(11, foragingSkillItem);
         inventory.setItem(15, miningSkillItem);

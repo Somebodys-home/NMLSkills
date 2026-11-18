@@ -1,6 +1,5 @@
-package io.github.NoOne.nMLSkills.skillSystem.commands;
+package io.github.NoOne.nMLSkills.commands;
 
-import io.github.NoOne.menuSystem.MenuSystem;
 import io.github.NoOne.nMLSkills.NMLSkills;
 import io.github.NoOne.nMLSkills.skillSystem.skillMenus.SkillsMenu;
 import org.bukkit.command.Command;
@@ -18,7 +17,7 @@ public class SkillsCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender commandSender, Command command, String s, String[] strings) {
         if (commandSender instanceof Player player) {
-            new SkillsMenu(MenuSystem.getPlayerMenuUtility(player), nmlSkills).open();
+            new SkillsMenu(player, nmlSkills).open();
         }
 
         return true;

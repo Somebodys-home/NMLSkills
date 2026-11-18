@@ -4,43 +4,51 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
 import org.bukkit.event.HandlerList;
 import org.jetbrains.annotations.NotNull;
+import org.jspecify.annotations.NonNull;
 
 public class SkillChangeEvent extends Event {
     private static HandlerList handlers = new HandlerList();
     private Player player;
-    private String skill;
+    private Skill skill;
     private double change;
+    private boolean expChange; // true/false if were changing the exp of the skill or the level
     private int ticks;
 
-    public SkillChangeEvent(@NotNull Player player, String skill, double change, int ticks) {
+    public SkillChangeEvent(@NotNull Player player, Skill skill, boolean expChange, double change, int ticks) {
         this.player = player;
         this.skill = skill;
         this.change = change;
+        this.expChange = expChange;
         this.ticks = ticks;
     }
 
-    public SkillChangeEvent(@NotNull Player player, String skill, double change) {
+    public SkillChangeEvent(@NotNull Player player, Skill skill, boolean expChange, double change) {
         this.player = player;
         this.skill = skill;
+        this.expChange = expChange;
         this.change = change;
         ticks = 0;
     }
 
     @Override
-    public HandlerList getHandlers() {
+    public @NonNull HandlerList getHandlers() {
         return handlers;
     }
 
     public static HandlerList getHandlerList() {
         return handlers;
-    } // deleting this breaks things, apparently
+    }
 
     public Player getPlayer() {
         return player;
     }
 
-    public String getSkill() {
+    public Skill getSkill() {
         return skill;
+    }
+
+    public boolean isExpChange() {
+        return expChange;
     }
 
     public double getChange() {

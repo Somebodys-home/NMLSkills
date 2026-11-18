@@ -2,8 +2,7 @@ package io.github.NoOne.nMLSkills.skillSystem;
 
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import io.github.NoOne.nMLSkills.NMLSkills;
-import io.github.NoOne.nMLSkills.skillSetSystem.SkillSetManager;
-import org.bukkit.boss.BossBar;
+import io.github.NoOne.nMLSkills.saveSkillsSystem.SaveSkillsManager;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -12,35 +11,30 @@ import org.bukkit.event.entity.EntitySpawnEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 
 public class SkillListener implements Listener {
-    private SkillSetManager skillSetManager;
+    private SaveSkillsManager saveSkillsManager;
 
     public SkillListener(NMLSkills nmlSkills) {
-        skillSetManager = nmlSkills.getSkillSetManager();
+        saveSkillsManager = nmlSkills.getSaveSkillsManager();
     }
 
     @EventHandler
     public void onSkillChange(SkillChangeEvent event) {
         Player player = event.getPlayer();
-        String skill = event.getSkill();
+        Skill skill = event.getSkill();
+        Skills skills = saveSkillsManager.getSkills(player.getUniqueId());
         int ticks = event.getTicks();
 
-        skillSetManager.getSkillSet(player.getUniqueId()).getSkills().add2Skill(skill, event.getChange());
+        if (event.isExpChange()) {
+            skills.addToSkillExp(skill, event.getChange());
 
-        switch (skill.toLowerCase().replace(" ", "")) {
-            case "combat", "foraging", "mining", "fishing", "farming", "crafting", "cooking", "acrobatics", "stealth", "soldier", "marauder", "assassin", "cavalier",
-                 "martialartist", "shieldhero", "marksman", "sorcerer", "primordial", "hallowed", "annulled" ->
-
-                    SkillBars.updateSkillBarLevel(player, skill);
-            case "combatexp", "foragingexp", "miningexp", "fishingexp", "farmingexp", "craftingexp", "cookingexp", "acrobaticsexp", "stealthexp", "soldierexp",
-                 "marauderexp", "assassinexp", "cavalierexp", "martialartistexp", "shieldheroexp", "marksmanexp", "sorcererexp", "primordialexp", "hallowedexp",
-                 "annulledexp" -> {
-
-                if (ticks > 0 && !skill.equals("combatexp")) {
-                    SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), ticks);
-                } else {
-                    SkillBars.updateSkillBarProgress(player, skill);
-                }
+            if (ticks > 0 && skill != Skill.COMBAT) {
+                //SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), ticks);
+            } else {
+                SkillBars.updateSkillBarProgress(player, skill);
             }
+        } else {
+            SkillBars.updateSkillBarLevel(player, skill);
+            skills.addToSkillLevel(skill, (int) event.getChange());
         }
     }
 
@@ -48,9 +42,8 @@ public class SkillListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        if (!SkillBars.getSkillBars().containsKey(player.getUniqueId())) {
-            SkillBars.createSkillBars(player);
-        }
+        if (!saveSkillsManager.hasSavedSkills(player)) saveSkillsManager.createNewbieSkills(player);
+        if (!SkillBars.getSkillBars().containsKey(player.getUniqueId())) SkillBars.createSkillBars(player);
     }
 
     @EventHandler

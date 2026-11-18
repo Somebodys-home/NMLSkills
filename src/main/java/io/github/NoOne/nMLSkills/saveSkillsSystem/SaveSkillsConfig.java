@@ -1,4 +1,4 @@
-package io.github.NoOne.nMLSkills.skillSetSystem;
+package io.github.NoOne.nMLSkills.saveSkillsSystem;
 
 import io.github.NoOne.nMLSkills.NMLSkills;
 import org.bukkit.configuration.InvalidConfigurationException;
@@ -7,13 +7,13 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import java.io.File;
 import java.io.IOException;
 
-public class SkillSetConfig {
+public class SaveSkillsConfig {
     private NMLSkills nmlSkills;
     private File file;
     private String fileName;
     private FileConfiguration config = new YamlConfiguration();
 
-    public SkillSetConfig(NMLSkills nmlSkills, String filename) {
+    public SaveSkillsConfig(NMLSkills nmlSkills, String filename) {
         this.nmlSkills = nmlSkills;
         this.fileName = filename;
         file = new File(nmlSkills.getDataFolder(), filename + ".yml");

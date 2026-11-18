@@ -1,22 +1,18 @@
 package io.github.NoOne.nMLSkills.skillSystem.skillMenus;
 
 import io.github.NoOne.menuSystem.Menu;
-import io.github.NoOne.menuSystem.MenuSystem;
-import io.github.NoOne.menuSystem.PlayerMenuUtility;
 import io.github.NoOne.nMLItems.ItemCreator;
 import io.github.NoOne.nMLSkills.NMLSkills;
+import io.github.NoOne.nMLSkills.skillSystem.Skill;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
 public class AcrobaticsMenu extends Menu {
     private NMLSkills nmlSkills;
-    private Player player;
-    private ItemStack maneuversBook;
     private ItemStack roll;
     private ItemStack rollInformation;
     private ItemStack rollInformation2;
@@ -27,20 +23,11 @@ public class AcrobaticsMenu extends Menu {
     private ItemStack wallRun;
     private ItemStack wallRunInformation;
 
-    public AcrobaticsMenu(PlayerMenuUtility playerMenuUtility, NMLSkills nmlSkills) {
-        super(playerMenuUtility);
+    public AcrobaticsMenu(Player player, NMLSkills nmlSkills) {
+        super(player);
 
         this.nmlSkills = nmlSkills;
-        player = playerMenuUtility.getOwner();
-        int acrobaticsLevel = nmlSkills.getSkillSetManager().getSkillSet(player.getUniqueId()).getSkills().getAcrobaticsLevel();
-        maneuversBook = ItemCreator.createItem(
-                Material.BOOK,
-                "§f§nAcrobatics levels unlock maneuvers!",
-                List.of(
-                        "§7- Maneuvers are actions to move around faster",
-                        "§7- Maneuvers use §6energy ⚡"
-                )
-        );
+        int acrobaticsLevel = nmlSkills.getSaveSkillsManager().getSkills(player.getUniqueId()).getSkillLevel(Skill.ACROBATICS);
 
         setRollItems();
         setLongJumpItems(acrobaticsLevel);
@@ -63,7 +50,7 @@ public class AcrobaticsMenu extends Menu {
         event.setCancelled(true);
 
         switch (event.getSlot()) {
-            case 53 -> new SkillsMenu(MenuSystem.getPlayerMenuUtility(player), nmlSkills).open();
+            case 53 -> new SkillsMenu(player, nmlSkills).open();
         }
     }
 
@@ -74,7 +61,14 @@ public class AcrobaticsMenu extends Menu {
 
     @Override
     public void setMenuItems() {
-        inventory.setItem(4, maneuversBook);
+        inventory.setItem(4, ItemCreator.createItem(
+                Material.BOOK,
+                "§f§nAcrobatics levels unlock maneuvers!",
+                List.of(
+                        "§7- Maneuvers are actions to move around faster",
+                        "§7- Maneuvers use §6energy ⚡"
+                )
+        ));
         inventory.setItem(19, roll);
         inventory.setItem(28, rollInformation);
         inventory.setItem(37, rollInformation2);
