@@ -29,12 +29,12 @@ public class SetSkillExpCommand implements CommandExecutor, TabCompleter {
         if (sender instanceof Player player) {
             Skills skills = saveSkillsManager.getSkills(player.getUniqueId());
             Skill skill = Skill.fromString(args[0]);
-            double newExp = Double.parseDouble(args[1]);
+            int newExp = Integer.parseInt(args[1]);
 
             if (newExp >= skills.calculateExpToLvlUpSkill(skill)) {
                 player.sendMessage("§cNew exp value cannot be greater than or equal to exp needed to level up skill.");
             } else {
-                double prevExp = skills.getSkillExp(skill);
+                int prevExp = skills.getSkillExp(skill);
                 Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill, true, newExp - prevExp));
             }
         }

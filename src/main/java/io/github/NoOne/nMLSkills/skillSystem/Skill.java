@@ -16,8 +16,8 @@ public enum Skill {
 
     // expertise skills
     SOLDIER,
-    MARAUDER,
     ASSASSIN,
+    MARAUDER,
     CAVALIER,
     MARTIAL_ARTIST,
     SHIELD_HERO,
@@ -40,8 +40,8 @@ public enum Skill {
             case ACROBATICS -> "acrobatics";
             case STEALTH -> "stealth";
             case SOLDIER -> "soldier";
-            case MARAUDER -> "marauder";
             case ASSASSIN -> "assassin";
+            case MARAUDER -> "marauder";
             case CAVALIER -> "cavalier";
             case MARTIAL_ARTIST -> "martialArtist";
             case SHIELD_HERO -> "shieldHero";
@@ -66,8 +66,8 @@ public enum Skill {
             case ACROBATICS -> "Acrobat";
             case STEALTH -> "Skulker";
             case SOLDIER -> "Soldier";
-            case MARAUDER -> "Marauder";
             case ASSASSIN -> "Assassin";
+            case MARAUDER -> "Marauder";
             case CAVALIER -> "Cavalier";
             case MARTIAL_ARTIST -> "Martial Artist";
             case SHIELD_HERO -> "Shield Hero";
@@ -91,8 +91,8 @@ public enum Skill {
             case "acrobatics" -> ACROBATICS;
             case "stealth" -> STEALTH;
             case "soldier" -> SOLDIER;
-            case "marauder" -> MARAUDER;
             case "assassin" -> ASSASSIN;
+            case "marauder" -> MARAUDER;
             case "cavalier" -> CAVALIER;
             case "martialartist" -> MARTIAL_ARTIST;
             case "shieldhero" -> SHIELD_HERO;
@@ -106,6 +106,6 @@ public enum Skill {
     }
 
     public static List<Skill> getExpertiseSkills() {
-        return List.of(SOLDIER, MARAUDER, ASSASSIN, CAVALIER, MARTIAL_ARTIST, SHIELD_HERO, MARKSMAN, SORCERER, PRIMORDIAL, HALLOWED, ANNULLED);
+        return List.of(SOLDIER, ASSASSIN, MARAUDER, CAVALIER, MARTIAL_ARTIST, SHIELD_HERO, MARKSMAN, SORCERER, PRIMORDIAL, HALLOWED, ANNULLED);
     }
 }

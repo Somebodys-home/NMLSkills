@@ -20,23 +20,23 @@ cf942050-e942-4990-a113-e3df70b289be:
     primordial: 1
     hallowed: 1
     annulled: 1
-    combatExp: 0.0
-    foragingExp: 0.0
-    miningExp: 0.0
-    fishingExp: 0.0
-    farmingExp: 0.0
-    craftingExp: 0.0
-    cookingExp: 0.0
-    acrobaticsExp: 0.0
-    stealthExp: 0.0
-    soldierExp: 0.0
-    marauderExp: 0.0
-    assassinExp: 0.0
-    cavalierExp: 0.0
-    martialArtistExp: 0.0
-    shieldHeroExp: 0.0
-    marksmanExp: 0.0
-    sorcererExp: 0.0
-    primordialExp: 0.0
-    hallowedExp: 0.0
-    annulledExp: 0.0
+    combatExp: 0
+    foragingExp: 0
+    miningExp: 0
+    fishingExp: 0
+    farmingExp: 0
+    craftingExp: 0
+    cookingExp: 0
+    acrobaticsExp: 0
+    stealthExp: 0
+    soldierExp: 0
+    marauderExp: 0
+    assassinExp: 0
+    cavalierExp: 0
+    martialArtistExp: 0
+    shieldHeroExp: 0
+    marksmanExp: 0
+    sorcererExp: 0
+    primordialExp: 0
+    hallowedExp: 0
+    annulledExp: 0

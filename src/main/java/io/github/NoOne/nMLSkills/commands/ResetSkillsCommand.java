@@ -30,7 +30,7 @@ public class ResetSkillsCommand implements CommandExecutor {
                 Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, entry.getKey(), false, -(entry.getValue() - 1)));
             }
 
-            for (Map.Entry<Skill, Double> entry : skills.getSkillExps().entrySet()) {
+            for (Map.Entry<Skill, Integer> entry : skills.getSkillExps().entrySet()) {
                 Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, entry.getKey(), true, -(entry.getValue())));
             }
 

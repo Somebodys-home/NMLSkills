@@ -6,16 +6,16 @@ import java.util.Map;
 
 public class Skills {
     private LinkedHashMap<Skill, Integer> skillLevels;
-    private LinkedHashMap<Skill, Double> skillExps;
+    private LinkedHashMap<Skill, Integer> skillExps;
 
     public Skills(int combatLevel, int foragingLevel, int miningLevel, int fishingLevel, int farmingLevel, int craftingLevel, int cookingLevel, int acrobaticsLevel,
                   int stealthLevel,
                   int soldierLevel, int marauderLevel, int assassinLevel, int cavalierLevel, int martialArtistLevel, int shieldHeroLevel, int marksmanLevel,
                   int sorcererLevel, int primordialLevel, int hallowedLevel, int annulledLevel,
-                  double combatExp, double foragingExp, double miningExp, double fishingExp, double farmingExp, double craftingExp, double cookingExp,
-                  double acrobaticsExp, double stealthExp,
-                  double soldierExp, double marauderExp, double assassinExp, double cavalierExp, double martialArtistExp, double shieldHeroExp, double marksmanExp,
-                  double sorcererExp, double primordialExp, double hallowedExp, double annulledExp) {
+                  int combatExp, int foragingExp, int miningExp, int fishingExp, int farmingExp, int craftingExp, int cookingExp,
+                  int acrobaticsExp, int stealthExp,
+                  int soldierExp, int marauderExp, int assassinExp, int cavalierExp, int martialArtistExp, int shieldHeroExp, int marksmanExp,
+                  int sorcererExp, int primordialExp, int hallowedExp, int annulledExp) {
 
         skillLevels = new LinkedHashMap<>(){{
             put(Skill.COMBAT, combatLevel);
@@ -64,7 +64,7 @@ public class Skills {
         }};
     }
 
-    public Skills(LinkedHashMap<Skill, Integer> skillLevels, LinkedHashMap<Skill, Double> skillExps) {
+    public Skills(LinkedHashMap<Skill, Integer> skillLevels, LinkedHashMap<Skill, Integer> skillExps) {
         this.skillLevels = skillLevels;
         this.skillExps = skillExps;
     }
@@ -97,7 +97,7 @@ public class Skills {
         }
     }
 
-    public void addToSkillExp(Skill skill, double amount) {
+    public void addToSkillExp(Skill skill, int amount) {
         skillExps.replace(skill, skillExps.get(skill) + amount);
     }
 
@@ -107,7 +107,7 @@ public class Skills {
         }
     }
 
-    public void removeFromSkillExp(Skill skill, double amount) {
+    public void removeFromSkillExp(Skill skill, int amount) {
         skillExps.replace(skill, skillExps.get(skill) - amount);
     }
 
@@ -126,12 +126,12 @@ public class Skills {
         return 100;
     }
 
-    public double getSkillExp(Skill skill) {
+    public int getSkillExp(Skill skill) {
         return skillExps.get(skill);
     }
 
     // returns the progress percent that the player is for leveling up for given skill (0 -> 1)
-    public double calculateExpPercent(Skill skill) {
+    public int calculateExpPercent(Skill skill) {
         return skillExps.get(skill) / calculateExpToLvlUpSkill(skill);
     }
 
@@ -147,7 +147,7 @@ public class Skills {
         return skillLevels;
     }
 
-    public LinkedHashMap<Skill, Double> getSkillExps() {
+    public LinkedHashMap<Skill, Integer> getSkillExps() {
         return skillExps;
     }
 }

@@ -25,11 +25,11 @@ public class SaveSkillsManager {
         for (String id : config.getConfigurationSection("").getKeys(false)) {
             UUID uuid = UUID.fromString(id);
             LinkedHashMap<Skill, Integer> skillLevels = new LinkedHashMap<>();
-            LinkedHashMap<Skill, Double> skillExps = new LinkedHashMap<>();
+            LinkedHashMap<Skill, Integer> skillExps = new LinkedHashMap<>();
 
             for (Skill skill : Skill.values()) {
                 skillLevels.put(skill, config.getInt(id + ".skills." + skill.toString()));
-                skillExps.put(skill, config.getDouble(id + ".skills." + skill + "Exp"));
+                skillExps.put(skill, config.getInt(id + ".skills." + skill + "Exp"));
             }
 
             skillsMap.put(uuid, new Skills(skillLevels, skillExps));
