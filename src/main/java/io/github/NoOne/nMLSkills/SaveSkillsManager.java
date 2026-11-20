@@ -1,23 +1,20 @@
-package io.github.NoOne.nMLSkills.saveSkillsSystem;
+package io.github.NoOne.nMLSkills;
 
-import io.github.NoOne.nMLSkills.NMLSkills;
+import io.github.NoOne.nMLConfig.ConfigManager;
 import io.github.NoOne.nMLSkills.skillSystem.Skill;
 import io.github.NoOne.nMLSkills.skillSystem.Skills;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
+
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
 
-public class SaveSkillsManager {
+public class SaveSkillsManager extends ConfigManager {
     private HashMap<UUID, Skills> skillsMap; // hashmap of all the profiles of all the players online atm
-    private FileConfiguration config;
-    private SaveSkillsConfig saveSkillsConfig;
 
     public SaveSkillsManager(NMLSkills nmlSkills) {
-        saveSkillsConfig = nmlSkills.getSkillProfileConfig();
-        config = saveSkillsConfig.getConfig();
+        super(nmlSkills.getSkillProfileConfig());
         skillsMap = new HashMap<>();
     }
 

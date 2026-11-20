@@ -1,22 +1,21 @@
 package io.github.NoOne.nMLSkills;
 
 import io.github.NoOne.menuSystem.MenuListener;
+import io.github.NoOne.nMLConfig.ConfigTemplate;
 import io.github.NoOne.nMLSkills.commands.*;
-import io.github.NoOne.nMLSkills.saveSkillsSystem.SaveSkillsConfig;
-import io.github.NoOne.nMLSkills.saveSkillsSystem.SaveSkillsManager;
 import io.github.NoOne.nMLSkills.skillSystem.SkillListener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class NMLSkills extends JavaPlugin {
     private static NMLSkills instance;
     private SaveSkillsManager saveSkillsManager;
-    private SaveSkillsConfig saveSkillsConfig;
+    private ConfigTemplate saveSkillsConfig;
 
     @Override
     public void onEnable() {
         instance = this;
 
-        saveSkillsConfig = new SaveSkillsConfig(this, "skillsets");
+        saveSkillsConfig = new ConfigTemplate(this, "skillsets");
         saveSkillsConfig.loadConfig();
 
         saveSkillsManager = new SaveSkillsManager(this);
@@ -46,7 +45,7 @@ public class NMLSkills extends JavaPlugin {
         return saveSkillsManager;
     }
 
-    public SaveSkillsConfig getSkillProfileConfig() {
+    public ConfigTemplate getSkillProfileConfig() {
         return saveSkillsConfig;
     }
 }

@@ -1,7 +1,7 @@
 package io.github.NoOne.nMLSkills.skillSystem;
 
 import io.github.NoOne.nMLSkills.NMLSkills;
-import io.github.NoOne.nMLSkills.saveSkillsSystem.SaveSkillsManager;
+import io.github.NoOne.nMLSkills.SaveSkillsManager;
 import org.bukkit.Bukkit;
 import org.bukkit.boss.BarColor;
 import org.bukkit.boss.BarStyle;

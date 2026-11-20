@@ -1,7 +1,7 @@
 package io.github.NoOne.nMLSkills.commands;
 
 import io.github.NoOne.nMLSkills.NMLSkills;
-import io.github.NoOne.nMLSkills.saveSkillsSystem.SaveSkillsManager;
+import io.github.NoOne.nMLSkills.SaveSkillsManager;
 import io.github.NoOne.nMLSkills.skillSystem.Skill;
 import io.github.NoOne.nMLSkills.skillSystem.SkillChangeEvent;
 import io.github.NoOne.nMLSkills.skillSystem.Skills;

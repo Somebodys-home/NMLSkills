@@ -2,7 +2,7 @@ package io.github.NoOne.nMLSkills.skillSystem;
 
 import com.destroystokyo.paper.event.player.PlayerPickupExperienceEvent;
 import io.github.NoOne.nMLSkills.NMLSkills;
-import io.github.NoOne.nMLSkills.saveSkillsSystem.SaveSkillsManager;
+import io.github.NoOne.nMLSkills.SaveSkillsManager;
 import org.bukkit.entity.ExperienceOrb;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
