@@ -33,8 +33,8 @@ public class SkillBars {
                         int time = skillTimer.getValue();
                         BossBar bossBar = skillBars.get(uuid).get(skill);
 
-                        if (time > 0) { // if theres time left, show the bar if it isnt already
-                            if (!bossBar.isVisible()) {
+                        if (time > 0) { // if theres time left, show the bar to the player if it isnt already
+                            if (!bossBar.getPlayers().contains(player)) {
                                 bossBar.addPlayer(player);
                             }
                         } else { // if theres no time left, hide the bar and remove the time from the players map
@@ -68,14 +68,19 @@ public class SkillBars {
     public static void updateSkillBarLevel(Player player, Skill skill) {
         Skills skills = nmlSkills.getSaveSkillsManager().getSkills(player.getUniqueId());
 
-        getSkillBar(player, skill).setTitle(makeBarTitle(skills, skill));
-        showSkillBar(player, skill);
+        if (skill == Skill.COMBAT) {
+            player.setLevel(skills.getSkillLevel(Skill.COMBAT));
+        } else {
+            getSkillBar(player, skill).setTitle(makeBarTitle(skills, skill));
+            showSkillBar(player, skill);
+        }
     }
 
+    // todo: fix this
     public static void updateSkillBarProgress(Player player, Skill skill) {
         UUID uuid = player.getUniqueId();
         Skills skills = nmlSkills.getSaveSkillsManager().getSkills(uuid);
-        double barProgress = skills.getSkillExp(skill) / skills.calculateExpToLvlUpSkill(skill);
+        double barProgress = (double) skills.getSkillExp(skill) / skills.calculateExpToLvlUpSkill(skill);
         boolean levelUp = false;
         int levelChange = 0;
 
@@ -91,7 +96,7 @@ public class SkillBars {
             Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill, false, levelChange));
         }
 
-        if (skill.equals("combat")) {
+        if (skill.equals(Skill.COMBAT)) {
             player.setExp((float) barProgress);
         } else {
             getSkillBar(player, skill).setProgress(barProgress);

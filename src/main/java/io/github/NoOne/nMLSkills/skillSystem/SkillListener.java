@@ -33,8 +33,8 @@ public class SkillListener implements Listener {
                 SkillBars.updateSkillBarProgress(player, skill);
             }
         } else {
+            skills.addToSkillLevel(skill, event.getChange());
             SkillBars.updateSkillBarLevel(player, skill);
-            skills.addToSkillLevel(skill, (int) event.getChange());
         }
     }
 

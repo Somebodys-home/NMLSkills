@@ -11,7 +11,7 @@ import java.util.Map;
 import java.util.UUID;
 
 public class SaveSkillsManager extends ConfigManager {
-    private HashMap<UUID, Skills> skillsMap; // hashmap of all the profiles of all the players online atm
+    private HashMap<UUID, Skills> skillsMap;
 
     public SaveSkillsManager(NMLSkills nmlSkills) {
         super(nmlSkills.getSkillProfileConfig());

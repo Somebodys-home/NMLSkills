@@ -7,7 +7,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     farming: 1
     crafting: 1
     cooking: 1
-    acrobatics: 2
+    acrobatics: 9
     stealth: 1
     soldier: 1
     marauder: 1
@@ -24,7 +24,7 @@ cf942050-e942-4990-a113-e3df70b289be:
     foragingExp: 0
     miningExp: 0
     fishingExp: 0
-    farmingExp: 2
+    farmingExp: 0
     craftingExp: 0
     cookingExp: 0
     acrobaticsExp: 0
