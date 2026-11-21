@@ -22,16 +22,10 @@ public class SkillListener implements Listener {
         Player player = event.getPlayer();
         Skill skill = event.getSkill();
         Skills skills = saveSkillsManager.getSkills(player.getUniqueId());
-        int ticks = event.getTicks();
 
         if (event.isExpChange()) {
             skills.addToSkillExp(skill, event.getChange());
-
-            if (ticks > 0 && skill != Skill.COMBAT) {
-                //SkillBars.updateSkillBarProgressOverTime(player, skill, event.getChange(), ticks);
-            } else {
-                SkillBars.updateSkillBarProgress(player, skill);
-            }
+            SkillBars.updateSkillBarProgress(player, skill);
         } else {
             skills.addToSkillLevel(skill, event.getChange());
             SkillBars.updateSkillBarLevel(player, skill);

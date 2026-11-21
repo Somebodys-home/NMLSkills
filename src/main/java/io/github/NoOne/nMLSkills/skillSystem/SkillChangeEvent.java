@@ -12,22 +12,12 @@ public class SkillChangeEvent extends Event {
     private Skill skill;
     private int change;
     private boolean expChange; // true/false if were changing the exp of the skill or the level
-    private int ticks;
-
-    public SkillChangeEvent(@NotNull Player player, Skill skill, boolean expChange, int change, int ticks) {
-        this.player = player;
-        this.skill = skill;
-        this.change = change;
-        this.expChange = expChange;
-        this.ticks = ticks;
-    }
 
     public SkillChangeEvent(@NotNull Player player, Skill skill, boolean expChange, int change) {
         this.player = player;
         this.skill = skill;
         this.expChange = expChange;
         this.change = change;
-        ticks = 0;
     }
 
     @Override
@@ -53,9 +43,5 @@ public class SkillChangeEvent extends Event {
 
     public int getChange() {
         return change;
-    }
-
-    public int getTicks() {
-        return ticks;
     }
 }

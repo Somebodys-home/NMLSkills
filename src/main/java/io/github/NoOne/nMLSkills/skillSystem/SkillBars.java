@@ -16,8 +16,10 @@ import java.util.UUID;
 public class SkillBars {
     private static NMLSkills nmlSkills = NMLSkills.getInstance();
     private static SaveSkillsManager saveSkillsManager = nmlSkills.getSaveSkillsManager();
-    private static HashMap<UUID, HashMap<Skill, BossBar>> skillBars = new HashMap<>(); // stores a hashmap of all the players, that holds a hashmap of every bar with it's associated skill
+    private static HashMap<UUID, HashMap<Skill, BossBar>> skillBars = new HashMap<>();
+    // stores a hashmap of all the players, that holds a hashmap of every bar with it's associated skill
     private static HashMap<UUID, HashMap<Skill, Integer>> showSkillBarTimers = new HashMap<>(); // stores the time that each bar for the skill will be displayed
+    private static HashMap<UUID, HashMap<Skill, Integer>> skillBarExp = new HashMap<>(); // stores the time that each bar for the skill will be displayed
 
     public static void startShowBarsTask() {
         new BukkitRunnable() {
@@ -81,18 +83,16 @@ public class SkillBars {
         UUID uuid = player.getUniqueId();
         Skills skills = nmlSkills.getSaveSkillsManager().getSkills(uuid);
         double barProgress = (double) skills.getSkillExp(skill) / skills.calculateExpToLvlUpSkill(skill);
-        boolean levelUp = false;
         int levelChange = 0;
 
         // if bar progress is over 100%, then for every 100%, level up the skill
         if (barProgress >= 1) {
-            levelUp = true;
             barProgress -= 1;
             levelChange++;
             skills.removeFromSkillExp(skill, skills.calculateExpToLvlUpSkill(skill));
         }
 
-        if (levelUp) { // bar would be shown to the player in the method that updates the skill bar level
+        if (levelChange != 0) { // bar would be shown to the player in the method that updates the skill bar level
             Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, skill, false, levelChange));
         }
 
@@ -103,48 +103,6 @@ public class SkillBars {
             showSkillBar(player, skill);
         }
     }
-
-//    public static void updateSkillBarProgressOverTime(Player player, Skill skill, double expChange, int ticks) {
-//        UUID uuid = player.getUniqueId();
-//        Skills skills = nmlSkills.getSaveSkillsManager().getSkills(uuid);
-//        BossBar skillBar = getSkillBar(player, skill);
-//        double barProgress = skills.getSkillExp(skill) / skills.calculateExpToLvlUpSkill(skill);
-//        double finalBarProgress = (skills.getSkillExp(skill) + expChange) / skills.calculateExpToLvlUpSkill(skill);
-//
-//        String finalSkill = skill;
-//        new BukkitRunnable() {
-//            int timer = 0;
-//            double progressPerTick = (finalBarProgress - barProgress) / ticks;
-//
-//            @Override
-//            public void run() {
-//                timer++;
-//
-//                double newProgress = skillBar.getProgress() + progressPerTick;
-//                boolean levelUp = false;
-//                int levelChange = 0;
-//
-//                while (newProgress >= 1) { // for when to level up from exp
-//                    levelUp = true;
-//                    newProgress -= 1;
-//                    levelChange++;
-//                    skills.removeFromSkillExp(finalSkill, skills.calculateExpToLvlUpSkill(finalSkill));
-//                }
-//
-//                if (levelUp) { // bar would be shown to the player in the method that updates the skill bar level
-//                    Bukkit.getPluginManager().callEvent(new SkillChangeEvent(player, finalSkill, levelChange));
-//                }
-//
-//                skillBar.setProgress(newProgress);
-//
-//                if (timer == ticks) {
-//                    cancel();
-//                }
-//            }
-//        }.runTaskTimer(nmlSkills, 0L, 1L);
-//
-//        showSkillBar(player, skill);
-//    }
 
     private static void showSkillBar(Player player, Skill skill) {
         HashMap<Skill, Integer> playerSkillBarTimers = showSkillBarTimers.getOrDefault(player.getUniqueId(), new HashMap<>());
@@ -164,7 +122,7 @@ public class SkillBars {
     private static double getSkillBarProgress(Player player, Skill skill) {
         Skills skills = saveSkillsManager.getSkills(player.getUniqueId());
 
-        return skills.getSkillExp(skill) / skills.calculateExpToLvlUpSkill(skill);
+        return (double) skills.getSkillExp(skill) / skills.calculateExpToLvlUpSkill(skill);
     }
 
     private static String makeBarTitle(Skills skills, Skill skill) {
