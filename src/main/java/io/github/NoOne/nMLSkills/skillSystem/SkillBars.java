@@ -10,6 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.UUID;
 
@@ -19,7 +20,6 @@ public class SkillBars {
     private static HashMap<UUID, HashMap<Skill, BossBar>> skillBars = new HashMap<>();
     // stores a hashmap of all the players, that holds a hashmap of every bar with it's associated skill
     private static HashMap<UUID, HashMap<Skill, Integer>> showSkillBarTimers = new HashMap<>(); // stores the time that each bar for the skill will be displayed
-    private static HashMap<UUID, HashMap<Skill, Integer>> skillBarExp = new HashMap<>(); // stores the time that each bar for the skill will be displayed
 
     public static void startShowBarsTask() {
         new BukkitRunnable() {
@@ -28,9 +28,11 @@ public class SkillBars {
                 for (UUID uuid : showSkillBarTimers.keySet()) {
                     Player player = Bukkit.getPlayer(uuid);
                     HashMap<Skill, Integer> skillTimers = showSkillBarTimers.get(uuid);
+                    Iterator<Map.Entry<Skill, Integer>> iterator = skillTimers.entrySet().iterator();
 
                     // for every skill timer
-                    for (Map.Entry<Skill, Integer> skillTimer : skillTimers.entrySet()) {
+                    while (iterator.hasNext()) {
+                        Map.Entry<Skill, Integer> skillTimer = iterator.next();
                         Skill skill = skillTimer.getKey();
                         int time = skillTimer.getValue();
                         BossBar bossBar = skillBars.get(uuid).get(skill);

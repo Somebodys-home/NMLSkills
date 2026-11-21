@@ -9,17 +9,17 @@ cf942050-e942-4990-a113-e3df70b289be:
     cooking: 1
     acrobatics: 9
     stealth: 1
-    soldier: 1
-    marauder: 1
-    assassin: 1
-    cavalier: 1
-    martialArtist: 1
-    shieldHero: 1
-    marksman: 1
-    sorcerer: 1
-    primordial: 1
-    hallowed: 1
-    annulled: 1
+    soldier: 99
+    marauder: 99
+    assassin: 99
+    cavalier: 99
+    martialArtist: 99
+    shieldHero: 99
+    marksman: 99
+    sorcerer: 99
+    primordial: 99
+    hallowed: 99
+    annulled: 99
     combatExp: 0
     foragingExp: 0
     miningExp: 0
